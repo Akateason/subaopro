@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>main</key>
+	<string>fa4c60</string>
+	<key>cellSeperate</key>
+	<string>f7f7f7</string>
+	<key>w_cell_title</key>
+	<string>0c0c0c</string>
+	<key>w_cell_desc</key>
+	<string>939393</string>
+</dict>
+</plist>

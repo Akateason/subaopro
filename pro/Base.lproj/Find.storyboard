@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Search Ctrller-->
+        <scene sceneID="AKO-KT-VeZ">
+            <objects>
+                <viewController id="8zz-PG-7KV" customClass="SearchCtrller" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SDs-8n-7LP"/>
+                        <viewControllerLayoutGuide type="bottom" id="qvY-Ur-zNA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Lby-47-ENH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UyZ-rA-jem">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ov-Au-3SU">
+                                        <rect key="frame" x="56" y="8" width="532" height="28"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_find_search" translatesAutoresizingMaskIntoConstraints="NO" id="iLi-pI-WWV">
+                                                <rect key="frame" x="4" y="5" width="18" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="18" id="Gn2-8T-dT2"/>
+                                                    <constraint firstAttribute="width" constant="18" id="cC9-eV-28V"/>
+                                                </constraints>
+                                            </imageView>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="搜索感兴趣的内容" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="61M-fq-EwT">
+                                                <rect key="frame" x="25" y="0.0" width="551" height="28"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.2941176593" green="0.7607843876" blue="0.24313727020000001" alpha="1" colorSpace="deviceRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="iLi-pI-WWV" firstAttribute="centerY" secondItem="8ov-Au-3SU" secondAttribute="centerY" id="3S2-aX-Ddf"/>
+                                            <constraint firstAttribute="trailing" secondItem="61M-fq-EwT" secondAttribute="trailing" constant="-44" id="50x-yY-dTQ"/>
+                                            <constraint firstItem="iLi-pI-WWV" firstAttribute="leading" secondItem="8ov-Au-3SU" secondAttribute="leading" constant="4" id="cFV-9N-gfr"/>
+                                            <constraint firstItem="61M-fq-EwT" firstAttribute="leading" secondItem="iLi-pI-WWV" secondAttribute="trailing" constant="3" id="dq3-So-hQG"/>
+                                            <constraint firstAttribute="bottom" secondItem="61M-fq-EwT" secondAttribute="bottom" id="kP6-45-fMN"/>
+                                            <constraint firstItem="61M-fq-EwT" firstAttribute="top" secondItem="8ov-Au-3SU" secondAttribute="top" id="ldE-aY-bu8"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqb-iW-ewK">
+                                        <rect key="frame" x="0.0" y="7" width="56" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="VMo-8N-QxF"/>
+                                            <constraint firstAttribute="width" constant="56" id="udy-a8-kjX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <state key="normal" title="按标题"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.97254901959999995" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="4HV-Zi-QoD"/>
+                                    <constraint firstItem="8ov-Au-3SU" firstAttribute="leading" secondItem="UyZ-rA-jem" secondAttribute="leading" constant="56" id="6oU-ay-0BH"/>
+                                    <constraint firstItem="eqb-iW-ewK" firstAttribute="top" secondItem="UyZ-rA-jem" secondAttribute="top" constant="7" id="Qcb-Tx-kEd"/>
+                                    <constraint firstItem="eqb-iW-ewK" firstAttribute="leading" secondItem="UyZ-rA-jem" secondAttribute="leading" id="bRJ-fS-QSI"/>
+                                    <constraint firstItem="8ov-Au-3SU" firstAttribute="leading" secondItem="eqb-iW-ewK" secondAttribute="trailing" id="cRE-QA-azd"/>
+                                    <constraint firstAttribute="trailing" secondItem="8ov-Au-3SU" secondAttribute="trailing" constant="12" id="esW-V2-H1N"/>
+                                    <constraint firstAttribute="bottom" secondItem="8ov-Au-3SU" secondAttribute="bottom" constant="8" id="lmU-MS-vIV"/>
+                                    <constraint firstAttribute="bottom" secondItem="eqb-iW-ewK" secondAttribute="bottom" constant="7" id="mBV-bx-ixt"/>
+                                    <constraint firstItem="8ov-Au-3SU" firstAttribute="top" secondItem="UyZ-rA-jem" secondAttribute="top" constant="8" id="zZ8-Uv-8wx"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="UyZ-rA-jem" secondAttribute="trailing" id="WKX-AZ-8gM"/>
+                            <constraint firstItem="UyZ-rA-jem" firstAttribute="top" secondItem="Lby-47-ENH" secondAttribute="top" id="cvV-sC-n9F"/>
+                            <constraint firstItem="UyZ-rA-jem" firstAttribute="leading" secondItem="Lby-47-ENH" secondAttribute="leading" id="iBF-u2-B4g"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Yi3-un-OYG"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EEp-df-ekh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1098" y="291"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="THA-RD-Dp6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mlY-KP-ej8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MPS-C4-XaK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8zz-PG-7KV" kind="relationship" relationship="rootViewController" id="dvb-We-gAk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="953-NX-8Jm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="286" y="291"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="btn_find_search" width="21" height="21"/>
+    </resources>
+</document>

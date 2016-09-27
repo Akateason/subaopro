@@ -1,0 +1,55 @@
+//
+//  PrefixHeader.pch
+//  GroupBuying
+//
+//  Created by TuTu on 15/12/23.
+//  Copyright © 2015年 teason. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "ArchiveHeader.h"
+#import "WordsHeader.h"
+#import "PictureHeader.h"
+#import "KeyChainHeader.h"
+#import "UIColor+AllColors.h"
+
+/*
+ * judge iOS VERSION more than this .
+ * X -- float
+ * e.g. ios7.0 , ios7.1
+ */
+#define IS_IOS_VERSION(FLOAT_X)         ([[[UIDevice currentDevice] systemVersion] floatValue] >= FLOAT_X)
+
+/*
+ * Under iOS VERSION <
+ * X -- float
+ * e.g. ios7.0 , ios7.1
+ */
+#define UNDER_IOS_VERSION(FLOAT_X)      ([[[UIDevice currentDevice] systemVersion] floatValue] < FLOAT_X)
+
+/*
+ * judge iPhone5 type
+ */
+#define DEVICE_IS_IPHONE5               ([[UIScreen mainScreen] bounds].size.height >= 568)
+
+//Global App Frame
+#define APPFRAME                        [UIScreen mainScreen].bounds
+#define APP_WIDTH                       APPFRAME.size.width
+#define APP_HEIGHT                      APPFRAME.size.height
+#define APP_NAVIGATIONBAR_HEIGHT        44.0f
+#define APP_STATUSBAR_HEIGHT            20.0f
+#define APP_TABBAR_HEIGHT               50.0f
+#define ONE_PIXEL_VALUE                 0.5f
+
+//all CORNER RADIUS
+#define CORNER_RADIUS_ALL               5.0f
+
+// place holder image
+#define PLACE_HOLDER_IMG                [UIImage imageNamed:@"1"]
+
+
+#endif /* PrefixHeader_pch */
