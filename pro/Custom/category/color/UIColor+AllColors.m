@@ -31,4 +31,9 @@
     return [[XTColorFetcher class] xt_colorWithKey:@"w_cell_desc"] ;
 }
 
++ (UIColor *)xt_nav
+{
+    return [[XTColorFetcher class] xt_colorWithKey:@"nav"] ;
+}
+
 @end

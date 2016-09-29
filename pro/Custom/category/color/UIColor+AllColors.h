@@ -14,6 +14,7 @@
 + (UIColor *)xt_cellSeperate ;
 + (UIColor *)xt_w_cell_title ;
 + (UIColor *)xt_w_cell_desc ;
++ (UIColor *)xt_nav ;
 
 
 

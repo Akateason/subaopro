@@ -8,18 +8,73 @@
 
 #import "SearchCtrller.h"
 #import "KxMenu.h"
+#import "NormalContentCell.h"
+#import "ServerRequest.h"
+#import "ResultParsered.h"
+#import "YYModel.h"
+#import "Content.h"
+#import "DetailCtrller.h"
+#import "UIImage+AddFunction.h"
 
-@interface SearchCtrller () <UITableViewDataSource,UITableViewDelegate>
+@interface SearchCtrller () <UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
+{
+    BOOL    typeTitleOrTag ; // false - > title , true tag .
+}
+@property (weak, nonatomic) IBOutlet UIView *topBar;
+@property (weak, nonatomic) IBOutlet UIButton *btSwith;
+@property (weak, nonatomic) IBOutlet UITableView *table;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UIView *statusbar;
+//
+@property (nonatomic,strong) NSArray *dataList ;
 @property (nonatomic,strong) NSArray *menuItems ;
 
 @end
 
 @implementation SearchCtrller
 
+
+#pragma mark - life
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad] ;
+    
+    [self configureUI] ;
+    
+    // Do any additional setup after loading the view.
+    [_searchBar becomeFirstResponder] ;
+    _searchBar.delegate = self ;
+    _table.backgroundColor = [UIColor xt_cellSeperate] ;
+    _table.dataSource = self ;
+    _table.delegate = self ;
+    _table.separatorStyle = 0 ;
+}
+
+- (void)configureUI
+{
+    _topBar.backgroundColor = [UIColor clearColor] ;
+    _statusbar.backgroundColor = [UIColor xt_nav] ;
+    _btSwith.backgroundColor = [UIColor xt_nav] ;
+    
+    _searchBar.barTintColor = [UIColor whiteColor] ;
+    _searchBar.tintColor = [UIColor darkGrayColor] ;
+    _searchBar.backgroundColor = [UIColor xt_nav] ;
+    UIImage* searchBarBg = [UIImage imageWithColor:[UIColor whiteColor] size:CGSizeMake(1, 28)] ;
+    [_searchBar setSearchFieldBackgroundImage:searchBarBg forState:UIControlStateNormal] ;
+    
+}
+
+#pragma mark - action
 - (IBAction)btCancelOnClick:(id)sender
 {
-    [self hideSearchBar:YES] ;
+    [self dismissViewControllerAnimated:YES
+                             completion:^{
+        
+    }] ;
 }
+
+#pragma mark - prop
 
 - (IBAction)btSearchConditionOnClick:(UIButton *)sender
 {
@@ -34,11 +89,11 @@
 {
     if (!_menuItems) {
         _menuItems = @[
-                       [KxMenuItem menuItem:@"标题"
+                       [KxMenuItem menuItem:@"按标题"
                                       image:nil
                                      target:self
                                      action:@selector(toTitle:)] ,
-                       [KxMenuItem menuItem:@"标签"
+                       [KxMenuItem menuItem:@"按标签"
                                       image:nil
                                      target:self
                                      action:@selector(toTag:)] ,
@@ -49,51 +104,47 @@
 
 - (void)toTitle:(KxMenuItem *)item
 {
-    [self.btSearchCondition setTitle:@"标题" forState:0] ;
+    [self.btSwith setTitle:@"按标题" forState:0] ;
     typeTitleOrTag = false ;
 }
 
 - (void)toTag:(KxMenuItem *)item
 {
-    [self.btSearchCondition setTitle:@"标签" forState:0] ;
+    [self.btSwith setTitle:@"按标签" forState:0] ;
     typeTitleOrTag = true ;
-}
-
-
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    _table.backgroundColor = [UIColor xt_cellSeperate] ;
-    _table.dataSource = self ;
-    _table.delegate = self ;
-    _table.separatorStyle = 0 ;
-
 }
 
 
 
 
 #pragma mark - UISearchBarDelegate
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [self dismissViewControllerAnimated:YES
+                             completion:^{
+        
+    }] ;
+}
+
 // return NO to not become first responder
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
-    [self hideSearchBar:NO] ;
     return YES ;
 }
 
 // called when keyboard search button pressed
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [self hideSearchBar:YES] ;
-    
     NSLog(@"开始搜索") ;
     if (typeTitleOrTag == false)
     {
         [ServerRequest searchContentsByTitle:self.searchBar.text
                                      success:^(id json) {
                                          [self dealResultJson:json] ;
+                                         [self.searchBar resignFirstResponder] ;
                                      } fail:^{
+                                         [self.searchBar resignFirstResponder] ;
                                      }] ;
     }
     else if (typeTitleOrTag == true)
@@ -101,7 +152,9 @@
         [ServerRequest searchContentByTag:self.searchBar.text
                                   success:^(id json) {
                                       [self dealResultJson:json] ;
+                                      [self.searchBar resignFirstResponder] ;
                                   } fail:^{
+                                      [self.searchBar resignFirstResponder] ;
                                   }] ;
     }
 }
@@ -123,23 +176,9 @@
     
 }
 
-- (void)hideSearchBar:(BOOL)bHide
-{
-    if (bHide) {
-        [self.searchBar resignFirstResponder] ;
-        self.btCancel.hidden = bHide ;
-        self.btCancel_width.constant = 0. ;
-    }
-    else {
-        self.btCancel.hidden = bHide ;
-        self.btCancel_width.constant = 54. ;
-    }
-}
-
-
-
 
 #pragma mark - UITableViewDataSource
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.dataList.count ;
@@ -157,6 +196,7 @@
 }
 
 #pragma mark - UITableViewDelegate
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return [NormalContentCell getHeight] ;
@@ -185,7 +225,8 @@
 
 
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

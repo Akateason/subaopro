@@ -7,24 +7,20 @@
 //
 
 #import "FindViewController.h"
-#import "NormalContentCell.h"
 #import "ServerRequest.h"
 #import "ResultParsered.h"
 #import "YYModel.h"
-#import "Content.h"
-#import "DetailCtrller.h"
+#import "SearchCtrller.h"
 
 
 @interface FindViewController () <UITableViewDataSource,UITableViewDelegate>
-{
-    BOOL    typeTitleOrTag ; // false - > title , true tag .
-}
 
-
+@property (weak, nonatomic) IBOutlet UIView *schbarbg;
+@property (weak, nonatomic) IBOutlet UIView *schbarbg2;
+@property (weak, nonatomic) IBOutlet UIView *navbar;
+@property (weak, nonatomic) IBOutlet UILabel *labelFind;
 @property (weak, nonatomic) IBOutlet UITableView *table;
 
-
-@property (nonatomic,strong) NSArray *dataList ;
 
 @end
 
@@ -32,19 +28,36 @@
 
 #pragma mark - action
 
+- (IBAction)schbarOnClick:(id)sender
+{
+    SearchCtrller *searchVC = (SearchCtrller *)[[self class] getCtrllerFromStory:@"Find" controllerIdentifier:@"SearchCtrller"] ;
+    
+    [self presentViewController:searchVC animated:YES completion:^{
+        
+    }] ;
+}
+
 #pragma mark - prop
 
 
 #pragma mark - life
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+//    self.title = @"发现" ;
     
-    self.title = @"发现" ;
+    [self configureUIs] ;
+}
 
-    
-    
-
+- (void)configureUIs
+{
+    _navbar.backgroundColor = [UIColor xt_nav] ;
+    _schbarbg.backgroundColor = [UIColor xt_nav] ;
+    _schbarbg2.backgroundColor = [UIColor whiteColor] ;
+    _schbarbg2.layer.cornerRadius = 5. ;
+    _schbarbg2.layer.masksToBounds = true ;
+    _labelFind.textColor = [UIColor whiteColor] ;
 }
 
 - (void)viewWillAppear:(BOOL)animated
