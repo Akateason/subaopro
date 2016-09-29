@@ -40,10 +40,10 @@
 {
     [super viewDidLoad] ;
     
+    
     [self configureUI] ;
     
     // Do any additional setup after loading the view.
-    [_searchBar becomeFirstResponder] ;
     _searchBar.delegate = self ;
     _table.backgroundColor = [UIColor xt_cellSeperate] ;
     _table.dataSource = self ;
@@ -63,6 +63,14 @@
     UIImage* searchBarBg = [UIImage imageWithColor:[UIColor whiteColor] size:CGSizeMake(1, 28)] ;
     [_searchBar setSearchFieldBackgroundImage:searchBarBg forState:UIControlStateNormal] ;
     
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated] ;
+    
+    [self.navigationController setNavigationBarHidden:YES] ;
+    [_searchBar becomeFirstResponder] ;
 }
 
 #pragma mark - action
@@ -206,7 +214,7 @@
 {
     DetailCtrller *detailVC = (DetailCtrller *)[[self class] getCtrllerFromStory:@"Index" controllerIdentifier:@"DetailCtrller"] ;
     detailVC.content = self.dataList[indexPath.row] ;
-    [detailVC setHidesBottomBarWhenPushed:YES] ;
+
     [self.navigationController pushViewController:detailVC animated:YES] ;
 }
 

@@ -31,21 +31,8 @@
                           page:(int)page
                          limit:(int)limit ;
 
-#pragma mark -- 微猫 签名
-/*ADD WEMART RSA SIGN*/
-+ (ResultParsered *)getWemartRsaSignWithUserID:(NSString *)userID
-                                         appID:(NSString *)appID ;
 
 
-#pragma mark -- Qi Niu
-/** 取七牛token
- bucket	必填参数	存储空间
- */
-+ (void)getQiniuTokenWithBuckect:(NSString *)bucket
-                         success:(void (^)(id json))success
-                            fail:(void (^)())fail ;
-
-+ (ResultParsered *)getQiniuTokenWithBuckect:(NSString *)bucket ;
 
 
 #pragma mark --
