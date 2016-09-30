@@ -25,7 +25,6 @@
 @property (nonatomic,strong) ParallaxHeaderView *paralaxHeader ;
 @property (nonatomic,strong) DetailParallaxHeader *detaiHeader ;
 
-
 @end
 
 @implementation DetailCtrller

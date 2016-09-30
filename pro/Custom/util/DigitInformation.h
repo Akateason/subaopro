@@ -33,7 +33,7 @@
 @property (nonatomic,copy)      NSString        *uuid ;
 
 // QiniuToken
-@property (nonatomic,copy)      NSString        *token_QiNiuUpload ;
+//@property (nonatomic,copy)      NSString        *token_QiNiuUpload ;
 
 // has weixin or not
 @property (nonatomic)           BOOL            appHasInstalledWX ;

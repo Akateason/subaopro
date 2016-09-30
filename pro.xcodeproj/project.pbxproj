@@ -246,6 +246,7 @@
 		D7A812A41D9D203E001084EB /* UITableView+FDKeyedHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A8129E1D9D203E001084EB /* UITableView+FDKeyedHeightCache.m */; };
 		D7A812A51D9D203E001084EB /* UITableView+FDTemplateLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A812A01D9D203E001084EB /* UITableView+FDTemplateLayoutCell.m */; };
 		D7A812A61D9D203E001084EB /* UITableView+FDTemplateLayoutCellDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A812A21D9D203E001084EB /* UITableView+FDTemplateLayoutCellDebug.m */; };
+		D7A812A91D9E121B001084EB /* ResultSBJ.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A812A81D9E121B001084EB /* ResultSBJ.m */; };
 		D7E0F49F1D868FA600EA663B /* UIImageView+QNExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F49E1D868FA600EA663B /* UIImageView+QNExtention.m */; };
 		D7E0F4AB1D86AC9300EA663B /* AlertBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F4A21D86AC9300EA663B /* AlertBackgroundView.m */; };
 		D7E0F4AC1D86AC9300EA663B /* ShareAlertV.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F4A41D86AC9300EA663B /* ShareAlertV.m */; };
@@ -749,6 +750,8 @@
 		D7A812A01D9D203E001084EB /* UITableView+FDTemplateLayoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDTemplateLayoutCell.m"; sourceTree = "<group>"; };
 		D7A812A11D9D203E001084EB /* UITableView+FDTemplateLayoutCellDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+FDTemplateLayoutCellDebug.h"; sourceTree = "<group>"; };
 		D7A812A21D9D203E001084EB /* UITableView+FDTemplateLayoutCellDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDTemplateLayoutCellDebug.m"; sourceTree = "<group>"; };
+		D7A812A71D9E121B001084EB /* ResultSBJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultSBJ.h; sourceTree = "<group>"; };
+		D7A812A81D9E121B001084EB /* ResultSBJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultSBJ.m; sourceTree = "<group>"; };
 		D7E0F49D1D868FA600EA663B /* UIImageView+QNExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+QNExtention.h"; sourceTree = "<group>"; };
 		D7E0F49E1D868FA600EA663B /* UIImageView+QNExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+QNExtention.m"; sourceTree = "<group>"; };
 		D7E0F4A11D86AC9300EA663B /* AlertBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertBackgroundView.h; sourceTree = "<group>"; };
@@ -1883,6 +1886,8 @@
 		D7A8127D1D9D0B28001084EB /* sbj */ = {
 			isa = PBXGroup;
 			children = (
+				D7A812A71D9E121B001084EB /* ResultSBJ.h */,
+				D7A812A81D9E121B001084EB /* ResultSBJ.m */,
 				D7A8127E1D9D0B28001084EB /* Acategory.h */,
 				D7A8127F1D9D0B28001084EB /* Acategory.m */,
 				D7A812801D9D0B28001084EB /* Article.h */,
@@ -2160,6 +2165,7 @@
 				D75CC5E01C2A965000E590E6 /* NSObject+MKBlockTimer.m in Sources */,
 				D75CC5D71C2A965000E590E6 /* MJRefreshBackStateFooter.m in Sources */,
 				D75CC5C81C2A965000E590E6 /* HWWeakTimer.m in Sources */,
+				D7A812A91D9E121B001084EB /* ResultSBJ.m in Sources */,
 				D75CC6C21C2BEB0400E590E6 /* MyWebController.m in Sources */,
 				D75CC5C91C2A965000E590E6 /* KeyBoardTopBar.m in Sources */,
 				D75CC5D21C2A965000E590E6 /* MJRefreshAutoGifFooter.m in Sources */,

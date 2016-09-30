@@ -11,7 +11,6 @@
 #import "User.h"
 #import "XTTickConvert.h"
 #import "UIImage+AddFunction.h"
-#import "UIImage+RoundedCorner.h"
 #import "Article.h"
 
 @interface HomeUserTableHeaderView ()
@@ -52,7 +51,7 @@
 {
     _img_user.layer.cornerRadius = _img_user.frame.size.width / 2.0 ;
     _img_user.layer.borderWidth = ONE_PIXEL_VALUE ;
-    _img_user.layer.borderColor = COLOR_USERHEAD_BORDER.CGColor ;
+//    _img_user.layer.borderColor = COLOR_USERHEAD_BORDER.CGColor ;
     _img_user.layer.masksToBounds = YES ;
     _img_user.layer.drawsAsynchronously = YES ;
     

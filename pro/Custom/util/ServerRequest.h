@@ -16,6 +16,18 @@
 
 @interface ServerRequest : XTRequest
 
+
+#pragma mark - SBJ 获取首页
+/** 获取首页
+ since_id	选填参数	若指定此参数，则返回ID比since_id大的评论（即比since_id时间晚的评论），默认为0
+ max_id     选填参数	若指定此参数，则返回ID小于或等于max_id的评论，默认为0。
+ count      选填参数	单页返回的记录条数，默认为50。
+ */
++ (id)getHomePageInfoResultWithSinceID:(int)sinceID
+                              AndMaxID:(long long)maxID
+                              AndCount:(int)count ;
+
+
 #pragma mark - 一直播 直播列表
 + (void)yzb_hotliveListWithSDKID:(NSString *)sdkid
                             time:(long long)time

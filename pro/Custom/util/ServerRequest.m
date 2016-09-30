@@ -21,12 +21,11 @@
  max_id     选填参数	若指定此参数，则返回ID小于或等于max_id的评论，默认为0。
  count      选填参数	单页返回的记录条数，默认为50。
  */
-+ (ResultParsered *)getHomePageInfoResultWithSinceID:(int)sinceID
-                                            AndMaxID:(long long)maxID
-                                            AndCount:(int)count
++ (id)getHomePageInfoResultWithSinceID:(int)sinceID
+                              AndMaxID:(long long)maxID
+                              AndCount:(int)count
 {
     NSMutableDictionary *paramer = [self getParameters] ;
-    
     [paramer setObject:[NSNumber numberWithLongLong:maxID]
                 forKey:@"max_id"] ;
     [paramer setObject:[NSNumber numberWithInt:sinceID]
@@ -34,8 +33,12 @@
     [paramer setObject:[NSNumber numberWithInt:count]
                 forKey:@"count"] ;
     
-    return [self getJsonWithURLstr:[self getFinalUrl:URL_HOMEPAGE_GETINFO] AndWithParamer:paramer AndWithMode:GET_MODE] ;
+    return [self getJsonObjWithURLstr:URL_SBJ_INDEX_TIMELINE
+                       AndWithParamer:paramer
+                          AndWithMode:GET_MODE] ;
 }
+
+
 
 
 #pragma mark - 一直播 直播列表

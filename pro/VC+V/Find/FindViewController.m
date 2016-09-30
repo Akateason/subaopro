@@ -8,7 +8,7 @@
 
 #import "FindViewController.h"
 #import "ServerRequest.h"
-#import "ResultParsered.h"
+//#import "ResultParsered.h"
 #import "YYModel.h"
 #import "SearchCtrller.h"
 #import "HomeCell.h"
@@ -17,6 +17,7 @@
 #import "Article.h"
 #import "ArticleTopic.h"
 #import "Themes.h"
+#import "ResultSBJ.h"
 
 
 float const SIZE_OF_PAGE = 20 ;
@@ -95,7 +96,7 @@ float const SIZE_OF_PAGE = 20 ;
 
 #pragma mark --
 #pragma mark - parser Home Info
-- (BOOL)parserResult:(ResultParsered *)result
+- (BOOL)parserResult:(ResultSBJ *)result
               getNew:(BOOL)bGetNew
 {
     @synchronized (self.articleList)
@@ -124,9 +125,10 @@ float const SIZE_OF_PAGE = 20 ;
 - (BOOL)getHomeInfoFromServerWithPullUpDown:(BOOL)bUpDown
 {
     if (bUpDown) m_lastUpdateTime = 0 ;
-    ResultParsered *result = [ServerRequest getHomePageInfoResultWithSinceID:0
-                                                                    AndMaxID:m_lastUpdateTime
-                                                                    AndCount:SIZE_OF_PAGE] ;
+    id json = [ServerRequest getHomePageInfoResultWithSinceID:0
+                                                     AndMaxID:m_lastUpdateTime
+                                                     AndCount:SIZE_OF_PAGE] ;
+    ResultSBJ *result = [ResultSBJ yy_modelWithJSON:json] ;
     BOOL bHas = [self parserResult:result getNew:bUpDown] ;
     if ( (bUpDown && !bHas) || (!bUpDown && !bHas) ) return NO ;
     
@@ -183,11 +185,11 @@ float const SIZE_OF_PAGE = 20 ;
     NSInteger section = indexPath.section ;
     Article *articleTemp = self.articleList[section - 1] ;
     
-    [DetailSubaoCtrller jump2DetailSubaoCtrller:self
-                               AndWithArticleID:articleTemp.a_id
-                               AndWithCommentID:0
-                                       FromRect:self.fromRect
-                                        imgSend:self.imgTempWillSend] ;
+//    [DetailSubaoCtrller jump2DetailSubaoCtrller:self
+//                               AndWithArticleID:articleTemp.a_id
+//                               AndWithCommentID:0
+//                                       FromRect:self.fromRect
+//                                        imgSend:self.imgTempWillSend] ;
 
 }
 

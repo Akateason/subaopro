@@ -27,20 +27,19 @@
     return self;
 }
 
-- (instancetype)initByOwner
-{
-    self = [super init];
-    if (self) {
-        _ao_id = 0 ;
-        _user = G_USER ;
-        _img = G_USER.u_headpic ;
-        _a_id = 0 ;
-        _author_id = 0 ;
-        _p_createTime = 0 ;
-    }
-    return self;
-
-}
+//- (instancetype)initByOwner
+//{
+//    self = [super init];
+//    if (self) {
+//        _ao_id = 0 ;
+//        _user = G_USER ;
+//        _img = G_USER.u_headpic ;
+//        _a_id = 0 ;
+//        _author_id = 0 ;
+//        _p_createTime = 0 ;
+//    }
+//    return self;
+//}
 
 + (NSArray *)getPraiseListWithDictList:(NSArray *)tempPraiseList
 {

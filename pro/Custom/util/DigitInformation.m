@@ -87,22 +87,22 @@ static DigitInformation *instance ;
 
 
 #define BUCKECT     @"social"
-- (NSString *)token_QiNiuUpload
-{
-    ResultParsered *result = [ServerRequest getQiniuTokenWithBuckect:BUCKECT] ;
-    if (!result.errCode)
-    {
-        // Success
-        _token_QiNiuUpload = [result.info objectForKey:@"uptoken"] ;
-    }
-    else
-    {
-        // Fail
-        return nil ;
-    }
-        
-    return _token_QiNiuUpload ;
-}
+//- (NSString *)token_QiNiuUpload
+//{
+//    ResultParsered *result = [ServerRequest getQiniuTokenWithBuckect:BUCKECT] ;
+//    if (!result.errCode)
+//    {
+//        // Success
+//        _token_QiNiuUpload = [result.info objectForKey:@"uptoken"] ;
+//    }
+//    else
+//    {
+//        // Fail
+//        return nil ;
+//    }
+//        
+//    return _token_QiNiuUpload ;
+//}
 
 - (BOOL)appHasInstalledWX
 {

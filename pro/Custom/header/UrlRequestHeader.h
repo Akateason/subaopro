@@ -39,6 +39,8 @@ static NSString *const URL_TAG_SEARCH           = @"tag/search" ;
 //  增加阅读数
 static NSString *const URL_ADD_READ             = @"content/addRead" ;
 
+//  速报酱
+static NSString *const URL_SBJ_INDEX_TIMELINE   = @"http://api3.subaojiang.com/index/public_timeline_by_time" ;
 
 // 一直播 列表
 static NSString *const URL_YZB_LIST             = @"http://api.open.xiaoka.tv/openapi/live/get_hot_live_video" ;

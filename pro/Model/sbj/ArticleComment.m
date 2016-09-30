@@ -81,7 +81,7 @@
     self = [super init];
     if (self)
     {
-        _userCurrent = G_USER ;
+//        _userCurrent = G_USER ;
         
         _c_id = commentID ;
         _c_content = content ;
