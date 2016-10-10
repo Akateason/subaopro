@@ -229,8 +229,6 @@ float const SIZE_OF_PAGE = 20 ;
                                         imgSend:nil] ;
     //self.fromRect
     //self.imgTempWillSend
-    
-
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

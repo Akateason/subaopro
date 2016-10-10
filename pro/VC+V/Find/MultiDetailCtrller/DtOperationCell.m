@@ -49,6 +49,7 @@
     self.contentView.backgroundColor = COLOR_BACKGROUND ;
     // hide share to check AppStore
 //    _bt_share.hidden = !G_BOOL_OPEN_APPSTORE ;
+    _bt_share.hidden = false ;
     //
     [self praiseList] ;
     _collection_praisers.delegate = self ;
@@ -207,7 +208,7 @@
 
 - (BOOL)bMyArticle
 {
-    return true ;
+    return false ;
 //    return (G_USER.u_id == self.superArticle.userCurrent.u_id) ;
 }
 

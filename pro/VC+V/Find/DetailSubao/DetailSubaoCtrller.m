@@ -31,7 +31,7 @@
 }
 //UIs
 @property (weak, nonatomic) IBOutlet RootTableView      *table          ;
-@property (nonatomic,strong)         WordSendView       *wordView       ;
+
 //Attrs
 @property (nonatomic,strong)         UIImage            *cacheImage     ;
 @property (nonatomic,strong)         Article            *articleSuper   ;
@@ -65,18 +65,18 @@
     self = [super initWithCoder:coder];
     if (self)
     {
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(keyboardWillShow:)
-                                                     name:UIKeyboardWillShowNotification
-                                                   object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(keyboardWillHide:)
-                                                     name:UIKeyboardWillHideNotification
-                                                   object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(UIKeyboardDidChange:)
-                                                     name:UIKeyboardWillChangeFrameNotification
-                                                   object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self
+//                                                 selector:@selector(keyboardWillShow:)
+//                                                     name:UIKeyboardWillShowNotification
+//                                                   object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self
+//                                                 selector:@selector(keyboardWillHide:)
+//                                                     name:UIKeyboardWillHideNotification
+//                                                   object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self
+//                                                 selector:@selector(UIKeyboardDidChange:)
+//                                                     name:UIKeyboardWillChangeFrameNotification
+//                                                   object:nil];
     }
     return self;
 }
@@ -85,7 +85,7 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self ];
 }
-
+/*
 #pragma mark --
 #pragma mark - notification
 - (void)keyboardWillShow:(NSNotification *)notification
@@ -123,6 +123,7 @@
         [self setflywordPropertyButtonsHeight:theHeight] ;
     }];
 }
+*/
 
 #pragma mark -- setup
 - (void)setupSth
@@ -141,78 +142,13 @@
     [_table registerNib:[UINib nibWithNibName:HeaderIdentifier bundle:nil] forHeaderFooterViewReuseIdentifier:HeaderIdentifier] ;
     [_table registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:kEmptyHeaderFooterIdentifier] ;
     
-    // long press gesture
-//    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self
-//                                                                                       action:@selector(handleLongPressAtComment:)] ;
-//    lpgr.minimumPressDuration = 1.0f ;
-//    [_table addGestureRecognizer:lpgr] ;
     
 }
 
 #pragma mark -- long press on commet
 - (void)handleLongPressAtComment:(UILongPressGestureRecognizer *)longPressRecognizer
 {
-//    if (longPressRecognizer.state != UIGestureRecognizerStateBegan) return ; // except multiple pressed it !
-//    
-//    CGPoint p = [longPressRecognizer locationInView:_table] ;
-//    NSIndexPath *indexPath = [_table indexPathForRowAtPoint:p] ;
-//    
-//    // replyLists
-//    if (indexPath.section != self.articleSuper.childList.count + 2) return ; // ONLY CMT CAN BE PRESSED .
-//    
-//    NSInteger row = indexPath.row ;
-//    NSLog(@"long press on commt at row %ld", (long)row) ;
-//    
-//    ArticleComment *cmt = (ArticleComment *)self.allComments[row] ;
-//    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:nil
-//                                                     andMessage:nil] ;
-
-//    // when pressed my commet
-//    if (G_USER.u_id == cmt.userCurrent.u_id)
-//    {
-//        //删除
-//        [alertView addButtonWithTitle:WD_DELETE
-//                                 type:SIAlertViewButtonTypeDefault
-//                              handler:^(SIAlertView *alertView) {
-//                                  [self deleteMyCommentWithRow:row] ;
-//        }] ;
-//    }
-//    else
-//    // press others
-//    {
-//        //回复
-//        [alertView addButtonWithTitle:WD_REPLY
-//                                 type:SIAlertViewButtonTypeDefault
-//                              handler:^(SIAlertView *alertView) {
-//                                  [self replyWithCmt:cmt] ;
-//                              }];
-//    }
     
-    //复制
-//    [alertView addButtonWithTitle:WD_COPY
-//                             type:SIAlertViewButtonTypeDefault
-//                          handler:^(SIAlertView *alertView) {
-//                              
-//                              UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-//                              pasteboard.string = cmt.c_content ;
-//                              [self performSelector:@selector(showHud:) withObject:WD_HUD_COPY_SUCCESS afterDelay:0.5] ;
-//                          }];
-//    //举报
-//    [alertView addButtonWithTitle:WD_REPORT
-//                             type:SIAlertViewButtonTypeDefault
-//                          handler:^(SIAlertView *alertView) {
-//                              [ServerRequest reportWithType:mode_User contentID:cmt.userCurrent.u_id success:^(id json) {
-//                                  [self performSelector:@selector(showHud:) withObject:WD_HUD_REPORT_FINISHED afterDelay:0.5] ;
-//                              } fail:nil] ;
-//                          }];
-//    
-//    [alertView addButtonWithTitle:WD_CANCEL
-//                             type:SIAlertViewButtonTypeDestructive
-//                          handler:^(SIAlertView *alertView) {
-//                          }];
-//    
-//    alertView.positionStyle = SIALertViewPositionBottom ;
-//    [alertView show];
 }
 
 - (void)note2DetailReply
@@ -254,30 +190,30 @@
 
 #pragma mark --
 #pragma mark - fly word view setup
-- (void)showFlyBack:(BOOL)bShow
-{
-    if (![self.wordView.flywordInputView superview])
-    {
-        [self.view addSubview:self.wordView.flywordInputView] ;
-        self.wordView.flywordInputView.frame = APPFRAME ;
-        self.wordView.flywordInputView.delegate = self ;
-    }
-    
-    if (bShow)
-    {
-        [self.view bringSubviewToFront:self.wordView] ;
-        self.wordView.flywordInputView.hidden = NO ;
-    }
-    else
-    {
-        self.wordView.flywordInputView.hidden = YES ;
-    }
-}
-
-- (void)setflywordPropertyButtonsHeight:(float)height
-{
-    [self.wordView.flywordInputView setButtonsHeight:height] ;
-}
+//- (void)showFlyBack:(BOOL)bShow
+//{
+//    if (![self.wordView.flywordInputView superview])
+//    {
+//        [self.view addSubview:self.wordView.flywordInputView] ;
+//        self.wordView.flywordInputView.frame = APPFRAME ;
+//        self.wordView.flywordInputView.delegate = self ;
+//    }
+//    
+//    if (bShow)
+//    {
+//        [self.view bringSubviewToFront:self.wordView] ;
+//        self.wordView.flywordInputView.hidden = NO ;
+//    }
+//    else
+//    {
+//        self.wordView.flywordInputView.hidden = YES ;
+//    }
+//}
+//
+//- (void)setflywordPropertyButtonsHeight:(float)height
+//{
+//    [self.wordView.flywordInputView setButtonsHeight:height] ;
+//}
 
 #pragma mark --
 #pragma mark - Properties
@@ -388,10 +324,8 @@
 //        [self setupSuspendButton] ;
 //    }
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.flex_bottom.constant = 48.0f ;
-        self.wordView.hidden = NO ;
-    }) ;
+
+    
 }
 
 - (void)setSuperArticleID:(int)superArticleID
@@ -414,42 +348,8 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [XTHudManager showWordHudWithTitle:WD_HUD_FAIL_RETRY] ;
             self.table.hidden = NO ;
-            self.wordView.hidden = YES ;
-            _flex_bottom.constant = 0.0 ;
         }) ;
     }] ;
-}
-
-- (WordSendView *)wordView
-{
-    if (!_wordView)
-    {
-        _wordView = (WordSendView *)[[[NSBundle mainBundle] loadNibNamed:@"WordSendView" owner:self options:nil] lastObject] ;
-        _wordView.delegate = self ;
-        _wordView.backgroundColor = [UIColor whiteColor] ;
-        CGRect frame = CGRectZero ;
-        frame.origin.x = 0.0f ;
-        frame.origin.y = APPFRAME.size.height - 48.0f - APP_NAVIGATIONBAR_HEIGHT - APP_STATUSBAR_HEIGHT ;
-        frame.size.width = APPFRAME.size.width ;
-        frame.size.height = 48.0f ;
-        _wordView.frame = frame ;
-        if (![_wordView superview])
-        {
-            [self.view addSubview:_wordView] ;
-        }
-    }
-    
-    return _wordView ;
-}
-
-- (void)resetWordViewFrame
-{
-    CGRect frame = CGRectZero ;
-    frame.origin.x = 0.0f ;
-    frame.origin.y = APPFRAME.size.height - 48.0f - APP_NAVIGATIONBAR_HEIGHT - APP_STATUSBAR_HEIGHT ;
-    frame.size.width = APPFRAME.size.width ;
-    frame.size.height = 48.0f ;
-    self.wordView.frame = frame ;
 }
 
 - (UIImage *)cacheImage
@@ -554,29 +454,17 @@
     self.table.hidden = YES ;
     
     [self setupSth] ;
-    [self wordView] ;
+//    [self wordView] ;
     [self putNavBarItem] ;
 }
 
-//- (void)setupSuspendButton
-//{
-//    [self bt_suspendLike] ;
-//    [self bt_suspendShare] ;
-//    if (![_bt_suspendLike superview]) {
-//        [self.view addSubview:_bt_suspendLike] ;
-//    }
-//    if (![_bt_suspendShare superview]) {
-//        [self.view addSubview:_bt_suspendShare] ;
-//    }
-//    
-//    [self runTransitionAnimationWithButtonOne:_bt_suspendLike
-//                                    ButtonTwo:_bt_suspendShare
-//                             pullUpOrPullDown:YES] ;
-//}
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated] ;    
+    [super viewWillAppear:animated] ;
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO] ;
+    [self.navigationController setNavigationBarHidden:NO] ;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -585,7 +473,7 @@
 
     if (!isFirstTime) return ;
     
-    [self resetWordViewFrame] ;
+//    [self resetWordViewFrame] ;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -612,7 +500,7 @@
         
         // Add code to clean up other strong references to the view in .
         // the view hierarchy .
-        self.wordView = nil ;
+//        self.wordView = nil ;
         self.imgAnimateView = nil ;
         self.cacheImage = nil ;
         self.imgArticleSend = nil ;
@@ -638,7 +526,7 @@
     return bHas ;
 }
 
-- (BOOL)parserResult:(ResultParsered *)result
+- (BOOL)parserResult:(ResultSBJ *)result
 {
     self.articleSuper = [[Article alloc] initWithDict:result.info] ;
     [self getlastCommentID] ;
@@ -671,12 +559,12 @@
 }
 
 #pragma mark -- RootTableViewDelegate
-- (void)loadNewData
+- (void)loadNewData:(UITableView *)table
 {
     BOOL bHas = [self getFromServer]  ;
     if (!bHas) {
         [self showNetReloaderWithReloadButtonClickBlock:^{
-            [self loadNewData] ;
+            [self loadNewData:table] ;
         }] ;
     } else {
         [self dismissNetReloader] ;
@@ -694,7 +582,7 @@
 {
     if (self.isMultiType)
     {
-        [self controlBottomBarShowOrNot] ;
+//        [self controlBottomBarShowOrNot] ;
 //        [self suspendButtonRunAnimation:NO
 //                                 likeBt:_bt_suspendLike
 //                                shareBt:_bt_suspendShare] ;
@@ -706,7 +594,7 @@
 {
     if (self.isMultiType)
     {
-        [self controlBottomBarShowOrNot] ;
+//        [self controlBottomBarShowOrNot] ;
 //        [self suspendButtonRunAnimation:YES
 //                                 likeBt:_bt_suspendLike
 //                                shareBt:_bt_suspendShare] ;
@@ -718,7 +606,7 @@
 {
     if (self.isMultiType && !decelerate)
     {
-        [self controlBottomBarShowOrNot] ;
+//        [self controlBottomBarShowOrNot] ;
 //        [self suspendButtonRunAnimation:YES
 //                                 likeBt:_bt_suspendLike
 //                                shareBt:_bt_suspendShare] ;
@@ -745,14 +633,12 @@
 //                                        ButtonTwo:_bt_suspendShare
 //                                 pullUpOrPullDown:!bDtOperationCellIsOnShow] ;
     }
-    
 }
 
-- (void)controlBottomBarShowOrNot
-{
-    _flex_bottom.constant = 48.0f ;
-    self.wordView.hidden = NO ;
-}
+//- (void)controlBottomBarShowOrNot
+//{
+//    self.wordView.hidden = NO ;
+//}
 
 #pragma mark --
 #pragma mark - ios8 table view seperator line full screen
@@ -1077,36 +963,6 @@ static NSString * const CellId_replyCell = @"ReplyCell" ;
     cell.comment = comment ;
 }
 
-// After a row has the minus or plus button invoked (based on the UITableViewCellEditingStyle for the cell), the dataSource must commit the change
-// Not called for edit actions using UITableViewRowAction - the action's handler will be invoked instead
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    // replyLists
-//    if (indexPath.section != self.articleSuper.childList.count + 2) return ;
-//    
-//    // commit delete cmt
-//    if (editingStyle == UITableViewCellEditingStyleDelete)
-//    {
-//        m_rowWillDelete = indexPath.row ;
-//        
-//        SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:nil
-//                                                         andMessage:WD_DEL_CMT] ;
-//        
-//        [alertView addButtonWithTitle:WD_CORRECT
-//                                 type:SIAlertViewButtonTypeDestructive
-//                              handler:^(SIAlertView *alertView) {
-//                                  [self delCmt] ;
-//                              }] ;
-//        
-//        [alertView addButtonWithTitle:WD_CANCEL
-//                                 type:SIAlertViewButtonTypeDefault
-//                              handler:nil] ;
-//        
-//        alertView.positionStyle = SIALertViewPositionBottom ;
-//        [alertView show] ;
-//    }
-//}
-
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
            editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -1128,12 +984,12 @@ static NSString * const CellId_replyCell = @"ReplyCell" ;
 {
 //    if (![self.articleSuper isMultyStyle]) return ;
     self.focusOn_aid = a_id ;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.wordView.textView becomeFirstResponder] ;
-        if (self.wordView.hidden) {
-            self.wordView.hidden = NO ;
-        }
-    }) ;
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [self.wordView.textView becomeFirstResponder] ;
+//        if (self.wordView.hidden) {
+//            self.wordView.hidden = NO ;
+//        }
+//    }) ;
 }
 
 - (void)imgDownloadFinished
@@ -1176,12 +1032,6 @@ static NSString * const CellId_replyCell = @"ReplyCell" ;
 //                             originCtrller:self] ;
 }
 
-// 去登陆 (多处公用此回调) wordSendViewDelegate,DetailCellDelegate
-//- (void)goToLogin
-//{
-//    [NavLogCtller modalLogCtrllerWithCurrentController:self] ;
-//}
-
 // 更多点赞人
 - (void)moreLikersPressedWithArticleID:(int)articleID
 {
@@ -1197,50 +1047,6 @@ static NSString * const CellId_replyCell = @"ReplyCell" ;
 }
 
 
-/*
-#pragma mark --
-#pragma mark - ShareAlertVDelegate
-- (void)clickIndex:(NSInteger)index
-{
-    // share call back
-    switch (index)
-    {
-        case 0:
-        {
-            //@"保存图片" ;
-            [self savingPhoto] ;
-        }
-            break;
-        case 1:
-        {
-            //@"新浪微博" ;
-            m_bWeiboSelect = YES ;
-        }
-            break;
-        case 2:
-        {
-            //@"微信" ;
-            m_bWeixinSelect = YES ;
-        }
-            break;
-        case 3:
-        {
-            //@"朋友圈" ;
-            m_bWxTimelineSelect = YES ;
-        }
-            break;
-        default:
-            break;
-    }
-    
-    if (index != 0)
-    {
-        [self shareWithArticleID:self.articleSuper.a_id] ;
-    }
-}
-*/
-
-
 - (void)savingPhoto
 {
     if (self.isMultiType)
@@ -1254,78 +1060,7 @@ static NSString * const CellId_replyCell = @"ReplyCell" ;
     }
 }
 
-/*
-- (void)shareWithArticleID:(int)a_id
-{
-    [self cacheImage] ;
-    
-    // topicStr
-    NSString *topicStr = (self.articleSuper.articleTopicList.count) ? ((ArticleTopic *)[self.articleSuper.articleTopicList firstObject]).t_content : nil ;
-    
-    // 要跳的链接
-    NSString *strUrl = [NSString stringWithFormat:SHARE_DETAIL_URL,a_id] ;
-    
-    // share to weibo       if needed
-    if (m_bWeiboSelect)
-    {
-        NSString *strShow = [ShareUtils shareContent:self.articleSuper
-                                              urlStr:strUrl
-                                             isMulty:self.isMultiType
-                                              isSelf:self.articleSuper.is_author
-                                            isWeiXin:NO] ;
-        
-        [ShareUtils weiboShareFuncWithContent:strShow
-                                        image:self.cacheImage
-                                        topic:topicStr
-                                      ctrller:self] ;
-    }
-    
-    NSString *wxstrShow = [ShareUtils shareContent:self.articleSuper
-                                          urlStr:strUrl
-                                         isMulty:self.isMultiType
-                                          isSelf:self.articleSuper.is_author
-                                        isWeiXin:NO] ;
 
-    // share to weixin      if needed
-    if (m_bWeixinSelect)
-        [ShareUtils weixinShareFuncContent:wxstrShow
-                                     image:self.cacheImage
-                                     topic:topicStr
-                                       url:strUrl
-                                   ctrller:self] ;
-    
-    // share to wxfriend    if needed
-    if (m_bWxTimelineSelect)
-        [ShareUtils wxFriendShareFuncContent:wxstrShow
-                                       image:self.cacheImage
-                                       topic:topicStr
-                                         url:strUrl
-                                     ctrller:self] ;
-    
-    // clear
-    m_bWeiboSelect = NO ;
-    m_bWeixinSelect = NO ;
-    m_bWxTimelineSelect = NO ;
-}
-
-// 删除当前文章
-- (void)deleteMyArticle
-{
-    
-    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:nil
-                                                     andMessage:WD_DEL_SUBAO] ;
-    [alertView addButtonWithTitle:WD_CORRECT
-                             type:SIAlertViewButtonTypeDestructive
-                          handler:^(SIAlertView *alertView) {
-                              [self delArticle] ;
-                          }];
-    [alertView addButtonWithTitle:WD_CANCEL
-                             type:SIAlertViewButtonTypeDefault
-                          handler:nil];
-    alertView.positionStyle = SIALertViewPositionBottom ;
-    [alertView show] ;
-}
-*/
 // 举报
 - (void)reportCallBack
 {
@@ -1375,81 +1110,7 @@ static NSString * const CellId_replyCell = @"ReplyCell" ;
     
 }
 
-/*
-- (void)delArticle
-{
-    [ServerRequest deleteMyArticleWithA_id:self.superArticleID success:^(id json) {
-        ResultParsered *result = [[ResultParsered alloc] initWithDic:json] ;
-        if (!result.errCode)
-        {
-            // NSLog(@"删除成功") ;
-            // 跳回去,删除数据源,并刷新
-            [XTHudManager showWordHudWithTitle:WD_DELETE_SUCCESS] ;
-            
-            [self.navigationController popViewControllerAnimated:YES] ;
-            [[NSNotificationCenter defaultCenter] postNotificationName:NSNOTIFICATION_DELETE_MY_ARTICLE object:self.articleSuper] ;
-        }
-        else
-        {
-            NSLog(@"err code %@ : %@",@(result.errCode),result.message) ;
-        }
-    } fail:^{
-        [XTHudManager showWordHudWithTitle:WD_HUD_FAIL_RETRY] ;
-    }] ;
 
-}
-
-- (void)delCmt
-{
-    [self deleteMyCommentWithRow:m_rowWillDelete] ;
-}
-*/
-/*
-- (void)deleteMyCommentWithRow:(NSInteger)row
-{
-    ArticleComment *cmtWillDelete = self.allComments[row] ;
-    NSInteger sectionReply = self.articleSuper.childList.count + 2 ;
-    
-    [self.allComments removeObjectAtIndex:row] ;
-    
-    if (self.isMultiType)
-    {
-        [self.articleSuper.childList enumerateObjectsUsingBlock:^(Article *subArticle, NSUInteger idx, BOOL * _Nonnull stopArt) {
-            if (subArticle.a_id == cmtWillDelete.a_id) {
-                [subArticle.articleCommentList enumerateObjectsUsingBlock:^(ArticleComment *cmt, NSUInteger idxCmt, BOOL * _Nonnull stopCmt) {
-                    if (cmt.c_id == cmtWillDelete.c_id) {
-                        [subArticle.articleCommentList removeObjectAtIndex:idxCmt] ;
-                        
-                        *stopCmt = YES ;
-                    }
-                }] ;
-
-                *stopArt = YES ;
-            }
-        }] ;
-        
-    }
-    else
-    {
-        [self.articleSuper.articleCommentList removeObject:cmtWillDelete] ;
-    }
-
-    [_table deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row inSection:sectionReply]] withRowAnimation:UITableViewRowAnimationAutomatic] ;
-    
-    [ServerRequest deleteMyCmt:cmtWillDelete.c_id
-                       Success:^(id json) {
-                           
-                           ResultParsered *result = [[ResultParsered alloc] initWithDic:json] ;
-                           NSLog(@"err code %@ : %@",@(result.errCode),result.message) ;
-                           self.articleSuper.article_comments_count-- ;
-                           [_table reloadData] ;
-                           
-                       } fail:^{
-                           [XTHudManager showWordHudWithTitle:WD_HUD_FAIL_RETRY] ;
-                       }] ;
-
-}
-*/
 
 - (void)reportActionWithMode:(MODE_TYPE_REPORT)reportMode
 {
@@ -1674,10 +1335,10 @@ static NSString * const CellId_replyCell = @"ReplyCell" ;
 #pragma mark - FlywordInputViewDelegate
 - (void)resignWordSendViewAndKeyBoard
 {
-    self.wordView.comment = nil ;
-    [self.wordView.textView resignFirstResponder] ;
-    
-    if (self.isMultiType) [self controlBottomBarShowOrNot] ;
+//    self.wordView.comment = nil ;
+//    [self.wordView.textView resignFirstResponder] ;
+//    
+//    if (self.isMultiType) [self controlBottomBarShowOrNot] ;
 }
 
 #pragma mark - Navigation

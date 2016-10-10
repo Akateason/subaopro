@@ -60,7 +60,9 @@
     _searchBar.barTintColor = [UIColor whiteColor] ;
     _searchBar.tintColor = [UIColor darkGrayColor] ;
     _searchBar.backgroundColor = [UIColor xt_nav] ;
-    UIImage* searchBarBg = [UIImage imageWithColor:[UIColor whiteColor] size:CGSizeMake(1, 28)] ;
+    UIImage* searchBarBg = [UIImage imageNamed:@"schbar"] ;
+    //[UIImage imageNamed:@"schbar"] ;
+    //[UIImage imageWithColor:[UIColor whiteColor] size:CGSizeMake(1, 28)] ;
     [_searchBar setSearchFieldBackgroundImage:searchBarBg forState:UIControlStateNormal] ;
     
 }

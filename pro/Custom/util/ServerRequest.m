@@ -277,6 +277,7 @@
 {
     NSMutableDictionary *paramer = [self getParameters] ;
     [paramer setObject:[NSNumber numberWithInt:a_id]   forKey:@"a_id"] ;
+    [paramer setObject:@0 forKey:@"token"] ;
     
     return [self getJsonObjWithURLstr:URL_ARTICLE_DETAIL AndWithParamer:paramer AndWithMode:GET_MODE] ;
 }
@@ -287,7 +288,8 @@
 {
     NSMutableDictionary *paramer = [self getParameters] ;
     [paramer setObject:[NSNumber numberWithInt:a_id]   forKey:@"a_id"] ;
-    
+    [paramer setObject:@0 forKey:@"token"] ;
+
     [XTRequest GETWithUrl:URL_ARTICLE_DETAIL parameters:paramer success:^(id json) {
         if (success) success(json);
     } fail:^{
