@@ -38,6 +38,8 @@
 // has weixin or not
 @property (nonatomic)           BOOL            appHasInstalledWX ;
 
+// cate color
+@property (nonatomic,copy)      NSArray         *cateColors ;
 
 @end
 

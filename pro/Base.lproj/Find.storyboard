@@ -92,6 +92,72 @@
             </objects>
             <point key="canvasLocation" x="989" y="291"/>
         </scene>
+        <!--User Center Controller-->
+        <scene sceneID="A1L-LL-ma1">
+            <objects>
+                <viewController storyboardIdentifier="UserCenterController" id="z49-B2-nrx" customClass="UserCenterController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="M2Y-1A-snU"/>
+                        <viewControllerLayoutGuide type="bottom" id="16y-Tk-FO3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="euW-9o-kJY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fug-ap-O8x" customClass="RootTableView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="16y-Tk-FO3" firstAttribute="top" secondItem="fug-ap-O8x" secondAttribute="bottom" id="4eq-GC-DVL"/>
+                            <constraint firstItem="fug-ap-O8x" firstAttribute="leading" secondItem="euW-9o-kJY" secondAttribute="leading" id="ZHh-ZA-bou"/>
+                            <constraint firstItem="fug-ap-O8x" firstAttribute="top" secondItem="euW-9o-kJY" secondAttribute="top" id="cFT-eT-AAt"/>
+                            <constraint firstAttribute="trailing" secondItem="fug-ap-O8x" secondAttribute="trailing" id="oVd-TS-GLm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="table" destination="fug-ap-O8x" id="xbw-CM-s2m"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IN2-Ru-MRG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1652" y="291"/>
+        </scene>
+        <!--Detail Subao Ctrller-->
+        <scene sceneID="POY-t8-fEH">
+            <objects>
+                <viewController storyboardIdentifier="DetailSubaoCtrller" id="mcF-O1-kK7" customClass="DetailSubaoCtrller" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wzs-6S-K9Y"/>
+                        <viewControllerLayoutGuide type="bottom" id="Dbn-VC-ZZg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uF3-x2-uTp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="c9s-ib-gcP" customClass="RootTableView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="c9s-ib-gcP" firstAttribute="leading" secondItem="uF3-x2-uTp" secondAttribute="leading" id="M17-xo-dXa"/>
+                            <constraint firstItem="Dbn-VC-ZZg" firstAttribute="top" secondItem="c9s-ib-gcP" secondAttribute="bottom" id="hon-Tx-j8b"/>
+                            <constraint firstItem="c9s-ib-gcP" firstAttribute="top" secondItem="uF3-x2-uTp" secondAttribute="top" id="vdw-fh-72R"/>
+                            <constraint firstAttribute="trailing" secondItem="c9s-ib-gcP" secondAttribute="trailing" id="xwT-lC-0lW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="table" destination="c9s-ib-gcP" id="W3G-2u-pdw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ta9-K0-Jd1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1652" y="997"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="THA-RD-Dp6">
             <objects>

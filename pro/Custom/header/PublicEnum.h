@@ -31,4 +31,13 @@ typedef NS_ENUM(NSInteger , MODE_LOGIN_CATE)
     mode_Local
 } ;
 
+/**
+ 举报类型，1为文章，2为用户
+ */
+typedef enum {
+    mode_Article = 1 ,
+    mode_User  ,
+} MODE_TYPE_REPORT ;
+
+
 #endif

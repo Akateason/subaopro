@@ -12,6 +12,9 @@
 #import "XTFileManager.h"
 #import "CommonFunc.h"
 #import "WXApi.h"
+#import "Acategory.h"
+#import "ResultSBJ.h"
+
 
 static dispatch_once_t onceToken ;
 static DigitInformation *instance ;
@@ -111,6 +114,28 @@ static DigitInformation *instance ;
     _appHasInstalledWX = [WXApi isWXAppInstalled] ;
     return _appHasInstalledWX ;
 }
+
+
+- (NSArray *)cateColors
+{
+    if (!_cateColors || !_cateColors.count)
+    {
+        _cateColors = [[NSArray alloc] init] ;
+        
+        NSMutableArray *list = [NSMutableArray array] ;
+        id jsonObj = [ServerRequest getCateTypeColor] ;
+        ResultSBJ *result = [[ResultSBJ alloc] initWithDic:jsonObj] ;
+        for (NSDictionary *tempDic in (NSArray *)result.info)
+        {
+            Acategory *acate = [[Acategory alloc] initWithDic:tempDic] ;
+            [list addObject:acate] ;
+        }
+        _cateColors = list ;
+    }
+    
+    return _cateColors ;
+}
+
 
 @end
 

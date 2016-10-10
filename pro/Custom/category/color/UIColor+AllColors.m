@@ -36,4 +36,30 @@
     return [[XTColorFetcher class] xt_colorWithKey:@"nav"] ;
 }
 
++ (UIColor *)xt_fw_red
+{
+    return [[XTColorFetcher class] xt_colorWithKey:@"fw_red"] ;
+}
+
++ (UIColor *)xt_fw_yellow
+{
+    return [[XTColorFetcher class] xt_colorWithKey:@"fw_yellow"] ;
+}
+
++ (UIColor *)xt_fw_green
+{
+    return [[XTColorFetcher class] xt_colorWithKey:@"fw_green"] ;
+}
+
++ (UIColor *)xt_fw_blue
+{
+    return [[XTColorFetcher class] xt_colorWithKey:@"fw_blue"] ;
+}
+
++ (UIColor *)xt_fw_purple
+{
+    return [[XTColorFetcher class] xt_colorWithKey:@"fw_purple"] ;
+}
+
+
 @end

@@ -80,7 +80,7 @@
             topicTemp.t_content = topic ;
             _articleTopicList = @[topicTemp] ;
         }
-        _userCurrent = G_USER ;
+//        _userCurrent = G_USER ;
         _a_title = title ;
     
         _isUploaded = YES ;
@@ -123,7 +123,7 @@
             _articleTopicList = @[topicTemp] ;
         }
         
-        _userCurrent = G_USER ;
+//        _userCurrent = G_USER ;
         
         _isDeleted = NO ;
         _isUploaded = NO ;
@@ -132,10 +132,10 @@
     return self ;
 }
 
-+ (NSString *)getPicPath:(long long)tick aid:(int)aid
-{
-    return [NSString stringWithFormat:@"%lld_%d_%d",tick,G_USER.u_id,aid] ;
-}
+//+ (NSString *)getPicPath:(long long)tick aid:(int)aid
+//{
+//    return [NSString stringWithFormat:@"%lld_%d_%d",tick,G_USER.u_id,aid] ;
+//}
 
 - (void)cachePicInLocal:(UIImage *)picture tick:(long long)tick
 {

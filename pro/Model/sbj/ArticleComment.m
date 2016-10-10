@@ -179,27 +179,27 @@
             break;
         case colorf_red:
         {
-            tempColor = COLOR_FW_RED ;
+            tempColor = [UIColor xt_fw_red] ;
         }
             break;
         case colorf_yellow:
         {
-            tempColor = COLOR_FW_YELLOW ;
+            tempColor = [UIColor xt_fw_yellow] ;
         }
             break;
         case colorf_green:
         {
-            tempColor = COLOR_FW_GREEN ;
+            tempColor = [UIColor xt_fw_green] ;
         }
             break;
         case colorf_blue:
         {
-            tempColor = COLOR_FW_BLUE ;
+            tempColor = [UIColor xt_fw_blue] ;
         }
             break;
         case colorf_purple:
         {
-            tempColor = COLOR_FW_PURPLE ;
+            tempColor = [UIColor xt_fw_purple] ;
         }
             break;
         default:

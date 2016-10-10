@@ -45,4 +45,23 @@ static NSString *const URL_SBJ_INDEX_TIMELINE   = @"http://api3.subaojiang.com/i
 // 一直播 列表
 static NSString *const URL_YZB_LIST             = @"http://api.open.xiaoka.tv/openapi/live/get_hot_live_video" ;
 
+
+//获取话题颜色
+static NSString *const URL_CATE_COLOR           = @"http://api3.subaojiang.com/index/get_category_color" ;
+
+//获取他人主页
+static NSString *const URL_OTHER_HOMEPAGE       = @"http://api3.subaojiang.com/user/homepage" ;
+
+//获取文章点赞集合
+static NSString *const URL_DETAIL_PRAISE        = @"http://api3.subaojiang.com/index/show_detail_praise" ;
+
+//获取文章详情
+#define URL_ARTICLE_DETAIL                        @"http://api3.subaojiang.com/index/show_article_total"
+
+//获取文章评论
+#define URL_GET_COMMENT                           @"http://api3.subaojiang.com/index/show_detail_comment"
+
+//举报
+#define URL_REPORT                                @"http://api3.subaojiang.com/index/report_article"
+
 #endif

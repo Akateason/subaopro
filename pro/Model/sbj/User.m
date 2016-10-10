@@ -37,15 +37,6 @@
     return self;
 }
 
-- (BOOL)isCurrentUserBeOwner
-{
-    if (self.u_id != 0 && self.u_id == G_USER.u_id)
-    {
-        return YES ;
-    }
-    
-    return NO ;
-}
 
 - (NSString *)getUserSex
 {

@@ -20,11 +20,10 @@ NSString *const XHBirthdayKey = @"XHBirthday";
 @implementation XHPathCover
 
 #pragma mark - Publish Api
-
-- (void)animateStart
-{
+//- (void)animateStart
+//{
 //    [self.infoView animationForUserHead] ;
-}
+//}
 
 - (void)stopRefresh
 {
@@ -35,14 +34,14 @@ NSString *const XHBirthdayKey = @"XHBirthday";
     }
 }
 
-/*
+
 - (void)setUserObj:(User *)userObj
 {
     _userObj = userObj ;
     
     self.infoView.theUser = userObj ;
 }
-*/
+
 
 // background
 - (void)setBackgroundImage:(UIImage *)backgroundImage
@@ -63,7 +62,7 @@ NSString *const XHBirthdayKey = @"XHBirthday";
     }
 }
 
-/*
+
 - (UserInfoView *)infoView
 {
     if (!_infoView) {
@@ -76,7 +75,7 @@ NSString *const XHBirthdayKey = @"XHBirthday";
 
     return _infoView ;
 }
-*/
+
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
@@ -196,7 +195,7 @@ NSString *const XHBirthdayKey = @"XHBirthday";
     _bannerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, - self.parallaxHeight, CGRectGetWidth(_bannerView.frame), CGRectGetHeight(_bannerView.frame) + self.parallaxHeight * 2)];
 
     _bannerImageView.contentMode = UIViewContentModeScaleAspectFit;
-//    _bannerImageView.backgroundColor = COLOR_MAIN ;
+    _bannerImageView.backgroundColor = COLOR_MAIN ;
     [_bannerView addSubview:self.bannerImageView];
     [self addSubview:self.bannerView];
     
@@ -204,10 +203,10 @@ NSString *const XHBirthdayKey = @"XHBirthday";
     
     _showView.backgroundColor = nil ;
     
-//    [self infoView] ;
-//    if (![_infoView superview]) {
-//        [_showView addSubview:_infoView] ;
-//    }
+    [self infoView] ;
+    if (![_infoView superview]) {
+        [_showView addSubview:_infoView] ;
+    }
     
     [self addSubview:self.showView];
 }

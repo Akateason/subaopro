@@ -1,15 +1,15 @@
 
 #import <UIKit/UIKit.h>
-//#import "User.h"
-//#import "UserInfoView.h"
+#import "User.h"
+#import "UserInfoView.h"
 
 // user info key for Dictionary
 extern NSString *const XHUserNameKey;
 extern NSString *const XHBirthdayKey;
 
 @interface XHPathCover : UIView
-//@property (nonatomic, strong) User *userObj ;
-//@property (nonatomic, strong) UserInfoView *infoView ;
+@property (nonatomic, strong) User *userObj ;
+@property (nonatomic, strong) UserInfoView *infoView ;
 
 // parallax background
 @property (nonatomic, strong) UIImageView *bannerImageView;
@@ -28,7 +28,7 @@ extern NSString *const XHBirthdayKey;
 
 @property (nonatomic, copy) void(^handleRefreshEvent)(void);
 
-//@property (nonatomic, copy) void(^handleTapBackgroundImageEvent)(void);
+@property (nonatomic, copy) void(^handleTapBackgroundImageEvent)(void);
 
 // stop Refresh
 - (void)stopRefresh;

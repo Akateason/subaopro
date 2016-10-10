@@ -42,7 +42,7 @@
 #pragma mark - ArticleDelegate
 - (void)topicHotPotClicked
 {
-    [self.delegate topicSelected:[[self.article articleTopicList] firstObject]] ;
+//    [self.delegate topicSelected:[[self.article articleTopicList] firstObject]] ;
 }
 
 - (void)dealloc
@@ -177,27 +177,29 @@
 
 - (IBAction)likePressedAction:(id)sender
 {
-    if (!G_TOKEN || !G_USER.u_id)
-    {
-        [self.delegate goToLogin] ;
-        return ;
-    }
+    return ;
     
-    _bt_likeOrNot.selected = !_bt_likeOrNot.selected ;
-    
-    [self getNewPraiseAndRefreshCollectionFromLocal] ;
-
-    [self.delegate articleHasPraised:_bt_likeOrNot.selected
-                           articleID:_article.a_id] ;
-    
-    [ServerRequest praiseThisArticle:_article.a_id
-                         AndWithBool:_bt_likeOrNot.selected
-                             Success:^(id json) {
-                                 
-        ResultParsered *result = [[ResultParsered alloc] initWithDic:json] ;
-        NSLog(@"message : %@",result.message) ;
-//        [self getNewPraiseAndRefreshCollectionFromServer] ;
-    } fail:^{}] ;
+//    if (!G_TOKEN || !G_USER.u_id)
+//    {
+//        [self.delegate goToLogin] ;
+//        return ;
+//    }
+//    
+//    _bt_likeOrNot.selected = !_bt_likeOrNot.selected ;
+//    
+//    [self getNewPraiseAndRefreshCollectionFromLocal] ;
+//
+//    [self.delegate articleHasPraised:_bt_likeOrNot.selected
+//                           articleID:_article.a_id] ;
+//    
+//    [ServerRequest praiseThisArticle:_article.a_id
+//                         AndWithBool:_bt_likeOrNot.selected
+//                             Success:^(id json) {
+//                                 
+//        ResultParsered *result = [[ResultParsered alloc] initWithDic:json] ;
+//        NSLog(@"message : %@",result.message) ;
+////        [self getNewPraiseAndRefreshCollectionFromServer] ;
+//    } fail:^{}] ;
     
 }
 

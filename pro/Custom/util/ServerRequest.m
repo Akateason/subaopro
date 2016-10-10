@@ -221,10 +221,125 @@
 
 
 
+#pragma mark - 首页
+/** 标签颜色
+ */
++ (id)getCateTypeColor
+{
+     id jsonObj = [self getJsonObjWithURLstr:URL_CATE_COLOR
+                    AndWithParamer:nil
+                       AndWithMode:GET_MODE] ;        
+    return jsonObj ;
+}
+
+//获取他人主页
++ (id)getOtherHomePageWithUserID:(int)uid
+                    AndWithMaxID:(int)maxID
+                    AndWithCount:(int)count
+{
+    NSMutableDictionary *paramer = [self getParameters] ;
+    [paramer setObject:@0 forKey:@"token"] ;
+    [paramer setObject:[NSNumber numberWithInt:uid]
+                forKey:@"u_id"] ;
+    [paramer setObject:[NSNumber numberWithInt:maxID]
+                forKey:@"max_id"] ;
+    [paramer setObject:[NSNumber numberWithInt:count]
+                forKey:@"count"] ;
+    
+    return [self getJsonObjWithURLstr:URL_OTHER_HOMEPAGE AndWithParamer:paramer AndWithMode:GET_MODE] ;
+}
+
+/** 文章信息_赞的人数
+ 请求参数	是否必须	说明
+ a_id	必填参数	文章id
+ page	选填参数	分页当前页码，默认为1
+ count	选填参数	单页返回的记录条数，默认为50。
+ */
++ (id)getPraisedInfoWithArticleID:(int)a_id
+                                 AndWithSinceID:(int)sinceID
+                                   AndWithMaxID:(int)maxID
+                                   AndWithCount:(int)count
+{
+    NSMutableDictionary *paramer = [self getParameters] ;
+    [paramer setObject:[NSNumber numberWithInt:a_id]    forKey:@"a_id"] ;
+    [paramer setObject:[NSNumber numberWithInt:sinceID] forKey:@"since_id"] ;
+    [paramer setObject:[NSNumber numberWithInt:maxID]   forKey:@"max_id"] ;
+    [paramer setObject:[NSNumber numberWithInt:count]   forKey:@"count"] ;
+    
+    return [self getJsonObjWithURLstr:URL_DETAIL_PRAISE AndWithParamer:paramer AndWithMode:GET_MODE] ;
+}
 
 
+/** 获取文章详情
+ a_id  文章id
+ */
++ (id)getArticleDetailWithArticleID:(int)a_id
+{
+    NSMutableDictionary *paramer = [self getParameters] ;
+    [paramer setObject:[NSNumber numberWithInt:a_id]   forKey:@"a_id"] ;
+    
+    return [self getJsonObjWithURLstr:URL_ARTICLE_DETAIL AndWithParamer:paramer AndWithMode:GET_MODE] ;
+}
 
++ (void)getArticleDetailWithArticleID:(int)a_id
+                              Success:(void (^)(id json))success
+                                 fail:(void (^)())fail
+{
+    NSMutableDictionary *paramer = [self getParameters] ;
+    [paramer setObject:[NSNumber numberWithInt:a_id]   forKey:@"a_id"] ;
+    
+    [XTRequest GETWithUrl:URL_ARTICLE_DETAIL parameters:paramer success:^(id json) {
+        if (success) success(json);
+    } fail:^{
+        if (fail) fail();
+    }] ;
+}
 
+/** 文章详情_评论信息
+ 请求参数	是否必须	说明
+ a_id	必填参数	文章id
+ page	选填参数	分页当前页码，默认为1
+ since_id	选填参数	若指定此参数，则返回ID比since_id大的评论（即比since_id时间晚的评论），默认为0
+ max_id	选填参数	若指定此参数，则返回ID小于或等于max_id的评论，默认为0。
+ count	选填参数	单页返回的记录条数，默认为50。
+ */
++ (id)getCommentWithArticleID:(int)a_id
+               AndWithSinceID:(int)sinceID
+                 AndWithMaxID:(int)maxID
+                 AndWithCount:(int)count
+{
+    NSMutableDictionary *paramer = [self getParameters] ;
+    [paramer setObject:[NSNumber numberWithInt:a_id]    forKey:@"a_id"] ;
+    [paramer setObject:[NSNumber numberWithInt:sinceID] forKey:@"since_id"] ;
+    [paramer setObject:[NSNumber numberWithInt:maxID]   forKey:@"max_id"] ;
+    [paramer setObject:[NSNumber numberWithInt:count]   forKey:@"count"] ;
+    
+    return [self getJsonObjWithURLstr:URL_GET_COMMENT AndWithParamer:paramer AndWithMode:GET_MODE] ;
+}
+
+#pragma mark -- 举报
+/**
+ 请求参数	是否必须	说明
+ r_type	必填参数	举报类型，1为文章，2为用户
+ r_content	必填参数	举报内容，文章id或者用户id
+ */
++ (void)reportWithType:(MODE_TYPE_REPORT)modeReport
+             contentID:(int)aidOrUid
+               success:(void (^)(id json))success
+                  fail:(void (^)())fail
+{
+    NSMutableDictionary *paramer = [self getParameters] ;
+    [paramer setObject:[NSNumber numberWithInt:(int)modeReport]
+                forKey:@"r_type"] ;
+    [paramer setObject:[NSNumber numberWithInt:aidOrUid]
+                forKey:@"r_content"] ;
+    
+    [XTRequest POSTWithUrl:URL_REPORT parameters:paramer success:^(id json) {
+        if (success) success(json);
+    } fail:^{
+        if (fail) fail();
+    }] ;
+}
 
 
 #pragma mark - PRIVATE

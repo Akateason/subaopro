@@ -25,7 +25,10 @@
 
 - (IBAction)tapHeadAction:(id)sender
 {
-    [self.delegate clickUserHead:_article.userCurrent.u_id] ;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(clickUserHead:)]) {
+        [self.delegate clickUserHead:_article.userCurrent.u_id] ;
+    }
+    
 }
 
     

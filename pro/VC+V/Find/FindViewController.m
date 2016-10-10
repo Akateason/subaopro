@@ -8,7 +8,6 @@
 
 #import "FindViewController.h"
 #import "ServerRequest.h"
-//#import "ResultParsered.h"
 #import "YYModel.h"
 #import "SearchCtrller.h"
 #import "HomeCell.h"
@@ -18,6 +17,9 @@
 #import "ArticleTopic.h"
 #import "Themes.h"
 #import "ResultSBJ.h"
+#import "UserCenterController.h"
+#import "DetailSubaoCtrller.h"
+#import "DetailSubaoCtrller+TaskModuleTransition.h"
 
 
 float const SIZE_OF_PAGE = 20 ;
@@ -25,7 +27,7 @@ float const SIZE_OF_PAGE = 20 ;
 
 @interface FindViewController () <UITableViewDataSource,UITableViewDelegate,RootTableViewDelegate,HomeCellDelegate,HomeUserTableHeaderViewDelegate>
 {
-    long long           m_lastUpdateTime    ; // 首页最新的updateTime && 话题页
+    long long           m_lastUpdateTime ; // 首页最新的updateTime && 话题页
     
 }
 @property (weak, nonatomic) IBOutlet UIView         *schbarbg;
@@ -34,11 +36,21 @@ float const SIZE_OF_PAGE = 20 ;
 @property (weak, nonatomic) IBOutlet UILabel        *labelFind;
 @property (weak, nonatomic) IBOutlet RootTableView  *table;
 
-@property (atomic, strong)  NSMutableArray          *articleList ;
+@property (nonatomic,strong) dispatch_queue_t       myQueue ;
+@property (nonatomic,strong)  NSArray               *articleList ;
 
 @end
 
 @implementation FindViewController
+@synthesize articleList = _articleList ;
+
+
+#pragma mark - SuBaoHeaderViewDelegate
+- (void)clickUserHead:(int)userID
+{
+    [UserCenterController jump2UserCenterCtrller:self
+                                       AndUserID:userID] ;
+}
 
 #pragma mark - action
 
@@ -54,6 +66,37 @@ float const SIZE_OF_PAGE = 20 ;
 }
 
 #pragma mark - prop
+- (dispatch_queue_t)myQueue
+{
+    if (!_myQueue) {
+        _myQueue = dispatch_queue_create("mySyncQueue", DISPATCH_QUEUE_CONCURRENT) ;
+    }
+    return _myQueue ;
+}
+
+- (NSArray *)articleList
+{
+    if (!_articleList) {
+        _articleList = @[] ;
+    }
+    return _articleList ;
+    
+    __block NSArray *list ;
+    dispatch_sync(self.myQueue, ^{
+        list = _articleList ;
+    }) ;
+    return list ;
+}
+
+- (void)setArticleList:(NSArray *)articleList
+{
+    dispatch_barrier_async(self.myQueue, ^{
+        _articleList = articleList ;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_table reloadData] ;
+        }) ;
+    }) ;
+}
 
 
 #pragma mark - life
@@ -69,9 +112,6 @@ float const SIZE_OF_PAGE = 20 ;
     _table.dataSource = self ;
     _table.separatorStyle = UITableViewCellSeparatorStyleNone ;
     _table.xt_Delegate = self ;
-//    _table.backgroundColor = COLOR_BACKGROUND ;
-//    _table.customLoadMore = YES ;
-    
 }
 
 - (void)configureUIs
@@ -99,25 +139,20 @@ float const SIZE_OF_PAGE = 20 ;
 - (BOOL)parserResult:(ResultSBJ *)result
               getNew:(BOOL)bGetNew
 {
-    @synchronized (self.articleList)
-    {
-        result.info = [result.info objectForKey:@"items"] ;
-        //1 get article
-        NSArray *tempArticleList = [[result.info objectForKey:@"articles"] objectForKey:@"article_list"] ;
-        if (!tempArticleList.count) return NO ;
-        if (bGetNew) {
-            [self.articleList removeAllObjects] ;
-        }
-        
-        NSMutableArray *mutableList = self.articleList ;
-        [tempArticleList enumerateObjectsUsingBlock:^(NSDictionary *articleDic, NSUInteger idx, BOOL * _Nonnull stop) {
-            Article *arti = [[Article alloc] initWithDict:articleDic] ;
-            [mutableList addObject:arti] ;
-        }] ;
-        self.articleList = mutableList ;
-        
-        m_lastUpdateTime = ((Article *)[self.articleList lastObject]).a_updatetime ;
-    }
+    result.info = [result.info objectForKey:@"items"] ;
+    //1 get article
+    NSArray *tempArticleList = [[result.info objectForKey:@"articles"] objectForKey:@"article_list"] ;
+    if (!tempArticleList.count) return NO ;
+    
+    NSMutableArray *mutableList = bGetNew ? [@[] mutableCopy] : self.articleList ;
+    
+    [tempArticleList enumerateObjectsUsingBlock:^(NSDictionary *articleDic, NSUInteger idx, BOOL * _Nonnull stop) {
+        Article *arti = [[Article alloc] initWithDict:articleDic] ;
+        [mutableList addObject:arti] ;
+    }] ;
+    self.articleList = mutableList ;
+    
+    m_lastUpdateTime = ((Article *)[self.articleList lastObject]).a_updatetime ;
     
     return YES ;
 }
@@ -138,22 +173,27 @@ float const SIZE_OF_PAGE = 20 ;
 
 #pragma mark --
 #pragma mark -- RootTableViewDelegate
-- (void)loadNewData
+- (void)loadNewData:(UITableView *)table
 {
-    BOOL bSuccess = [self getHomeInfoFromServerWithPullUpDown:YES] ;
+    [self getHomeInfoFromServerWithPullUpDown:YES] ;
 }
 
 - (void)loadMoreData
 {
-    BOOL hasNew = [self getHomeInfoFromServerWithPullUpDown:NO] ;
+    [self getHomeInfoFromServerWithPullUpDown:NO] ;
 }
 
 
 
 #pragma mark - table view data source
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1 ;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.articleList.count + 1 ;
+    return self.articleList.count ;
 }
 
 - (HomeCell *)getHomeCellWithIndexPath:(NSIndexPath *)indexPath
@@ -169,9 +209,7 @@ float const SIZE_OF_PAGE = 20 ;
 - (void)configureHomeCell:(HomeCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     cell.fd_enforceFrameLayout = YES ; // Enable to use "-sizeThatFits:"
-    @synchronized (self.articleList) {
-        cell.article = (Article *)self.articleList[indexPath.section] ;
-    }
+    cell.article = (Article *)self.articleList[indexPath.section] ;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -183,19 +221,21 @@ float const SIZE_OF_PAGE = 20 ;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger section = indexPath.section ;
-    Article *articleTemp = self.articleList[section - 1] ;
+    Article *articleTemp = self.articleList[section] ;
+    [DetailSubaoCtrller jump2DetailSubaoCtrller:self
+                               AndWithArticleID:articleTemp.a_id
+                               AndWithCommentID:0
+                                       FromRect:CGRectZero
+                                        imgSend:nil] ;
+    //self.fromRect
+    //self.imgTempWillSend
     
-//    [DetailSubaoCtrller jump2DetailSubaoCtrller:self
-//                               AndWithArticleID:articleTemp.a_id
-//                               AndWithCommentID:0
-//                                       FromRect:self.fromRect
-//                                        imgSend:self.imgTempWillSend] ;
 
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger section = indexPath.section ;
+//    NSInteger section = indexPath.section ;
     return [tableView fd_heightForCellWithIdentifier:HomeCellID
                                     cacheByIndexPath:indexPath
                                        configuration:^(HomeCell *cell) {
@@ -217,9 +257,13 @@ float const SIZE_OF_PAGE = 20 ;
     return 48.0f ;
 }
 
+static NSString *const kFooterIdentifer = @"kFooterIdentifer" ;
 - (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
-    UITableViewHeaderFooterView *emtpyHeader = [[UITableViewHeaderFooterView alloc] init] ;
+    UITableViewHeaderFooterView *emtpyHeader = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kFooterIdentifer] ;
+    if (!emtpyHeader) {
+        emtpyHeader = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:kFooterIdentifer] ;
+    }
     return emtpyHeader ;
 }
 

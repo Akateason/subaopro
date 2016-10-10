@@ -17,7 +17,7 @@
 @property (nonatomic)           int             gender ; // 0-无,1-男,2-女
 
 - (instancetype)initWithDic:(NSDictionary *)dic ;
-- (BOOL)isCurrentUserBeOwner ;
+
 - (NSString *)getUserSex ;
 - (NSString *)getUserSexImageString ;
 @end

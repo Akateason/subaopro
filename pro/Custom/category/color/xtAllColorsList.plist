@@ -12,5 +12,15 @@
 	<string>0c0c0c</string>
 	<key>w_cell_desc</key>
 	<string>939393</string>
+	<key>fw_red</key>
+	<string>[255,0,0]</string>
+	<key>fw_yellow</key>
+	<string>[255,234,0]</string>
+	<key>fw_green</key>
+	<string>[19,206,102]</string>
+	<key>fw_blue</key>
+	<string>[0,192,255]</string>
+	<key>fw_purple</key>
+	<string>[146,7,131]</string>
 </dict>
 </plist>

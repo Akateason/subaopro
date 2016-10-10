@@ -56,4 +56,15 @@ static NSString *const WD_EXIT_YES              = @"是的,我要退出了" ;
 static NSString *const WD_CORRECT               = @"确 认" ;
 static NSString *const WD_CANCEL                = @"取 消" ;
 
+#define WD_NONE_CONTENT             @"无文字内容"
+#define WORD_LABEL_PLACEHOLDER      @"添加评论"
+
+#define WORD_NONE_STR               @""
+#define WD_PICTURE_SAVE             @"是否保存该图片?"
+
+#define WD_REPORT_ARTICLE           @"我要举报该作品"
+#define WD_REPORT_USER              @"我要举报该用户"
+
+#define WD_HUD_REPORT_FINISHED      @"感谢您的帮助,速报酱的小\n管家将尽快核实并处理"
+
 #endif
