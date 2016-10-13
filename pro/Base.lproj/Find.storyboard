@@ -125,6 +125,40 @@
             </objects>
             <point key="canvasLocation" x="1652" y="291"/>
         </scene>
+        <!--Praised Controller-->
+        <scene sceneID="QY3-Vw-r50">
+            <objects>
+                <viewController storyboardIdentifier="PraisedController" id="Jnk-sh-e22" customClass="PraisedController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LbR-rw-3S8"/>
+                        <viewControllerLayoutGuide type="bottom" id="C94-x3-Pz3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Liv-Mp-yTZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="86k-u6-bMv" customClass="RootTableView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="86k-u6-bMv" firstAttribute="leading" secondItem="Liv-Mp-yTZ" secondAttribute="leading" id="34g-cU-erE"/>
+                            <constraint firstAttribute="trailing" secondItem="86k-u6-bMv" secondAttribute="trailing" id="QfQ-vf-kIM"/>
+                            <constraint firstItem="C94-x3-Pz3" firstAttribute="top" secondItem="86k-u6-bMv" secondAttribute="bottom" id="eu7-zc-Ty5"/>
+                            <constraint firstItem="86k-u6-bMv" firstAttribute="top" secondItem="Liv-Mp-yTZ" secondAttribute="top" id="lsg-Gp-Ycj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="7ca-CW-L7e"/>
+                    <connections>
+                        <outlet property="table" destination="86k-u6-bMv" id="3rD-EJ-ev0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q1d-Uv-bg2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1652" y="1762"/>
+        </scene>
         <!--Detail Subao Ctrller-->
         <scene sceneID="POY-t8-fEH">
             <objects>
@@ -152,6 +186,7 @@
                     </view>
                     <connections>
                         <outlet property="table" destination="c9s-ib-gcP" id="W3G-2u-pdw"/>
+                        <segue destination="Jnk-sh-e22" kind="push" identifier="detail2Praised" id="HRW-LH-6B4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ta9-K0-Jd1" userLabel="First Responder" sceneMemberID="firstResponder"/>

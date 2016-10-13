@@ -7,7 +7,6 @@
 //
 
 #import "PlaceHolderTextView.h"
-#import "XTHudManager.h"
 
 #define flex 5.0f
 
@@ -114,7 +113,8 @@
         textView.text = [textView.text substringToIndex:self.maxWordsRange] ;
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [XTHudManager showWordHudWithTitle:[NSString stringWithFormat:@"最多不能超过%d个字哟",self.maxWordsRange]] ;
+            
+//            [XTHudManager showWordHudWithTitle:[NSString stringWithFormat:@"最多不能超过%d个字哟",self.maxWordsRange]] ;
         }) ;
     }
 }

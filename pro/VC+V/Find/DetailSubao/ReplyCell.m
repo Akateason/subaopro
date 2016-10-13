@@ -32,6 +32,7 @@
     
 //    [XTCornerView setRoundHeadPicWithView:_bt_userHead] ;
     _bt_userHead.layer.cornerRadius = _bt_userHead.frame.size.width / 2. ;
+    _bt_userHead.layer.masksToBounds = YES ;
     _bt_userHead.layer.borderColor = COLOR_USERHEAD_BORDER.CGColor ;
     _bt_userHead.layer.borderWidth = ONE_PIXEL_VALUE ;
     

@@ -26,6 +26,7 @@
     
 //    [XTCornerView setRoundHeadPicWithView:_img_head] ;
     _img_head.layer.cornerRadius = _img_head.frame.size.width / 2 ;
+    _img_head.layer.masksToBounds = YES ;
     _img_head.layer.borderColor = COLOR_USERHEAD_BORDER.CGColor ;
     _img_head.layer.borderWidth = ONE_PIXEL_VALUE ;
 

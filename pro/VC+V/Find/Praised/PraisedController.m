@@ -100,6 +100,7 @@
     }
     
     m_lastPraisedID = ((ArticlePraise *)[m_praisedList lastObject]).ao_id ;
+    [_table reloadData] ;
     
     return YES ;
 }
@@ -177,7 +178,7 @@
 }
 
 #pragma mark -- RootTableViewDelegate
-- (void)loadNewData
+- (void)loadNewData:(UITableView *)table
 {
     [self getPraiseInfoWithPullUpOrDown:YES] ;
 }

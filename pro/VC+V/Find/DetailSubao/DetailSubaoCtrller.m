@@ -346,7 +346,7 @@
         }) ;
     } fail:^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [XTHudManager showWordHudWithTitle:WD_HUD_FAIL_RETRY] ;
+            [SVProgressHUD showInfoWithStatus:WD_HUD_FAIL_RETRY] ;
             self.table.hidden = NO ;
         }) ;
     }] ;
@@ -1144,8 +1144,9 @@ static NSString * const CellId_replyCell = @"ReplyCell" ;
 
 - (void)showHud:(NSString *)content
 {
-    [XTHudManager showWordHudWithTitle:content
-                                  delay:2.0] ;
+//    [XTHudManager showWordHudWithTitle:content
+//                                  delay:2.0] ;
+    [SVProgressHUD showInfoWithStatus:content] ;
 }
 
 #pragma mark --

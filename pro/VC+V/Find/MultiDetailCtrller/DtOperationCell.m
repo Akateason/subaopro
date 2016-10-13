@@ -50,12 +50,15 @@
     // hide share to check AppStore
 //    _bt_share.hidden = !G_BOOL_OPEN_APPSTORE ;
     _bt_share.hidden = false ;
+    _bt_delete.hidden = true ;
     //
     [self praiseList] ;
     _collection_praisers.delegate = self ;
     _collection_praisers.dataSource = self ;
     _collection_praisers.backgroundColor = nil ;
     _collection_praisers.scrollEnabled = NO ;
+    
+    
 }
 
 - (void)awakeFromNib
@@ -151,7 +154,7 @@
     
     //hide
     _lb_countOfCmtAndPraise.hidden = !superArticle.a_id ;
-    _bt_delete.hidden = !superArticle.a_id ;
+//    _bt_delete.hidden = !superArticle.a_id ;
 //    _bt_share.hidden = !superArticle.a_id || !G_BOOL_OPEN_APPSTORE ;
     _bt_like.hidden = !superArticle.a_id ;
     _bt_more.hidden = !superArticle.a_id  ;

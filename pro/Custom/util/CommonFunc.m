@@ -11,7 +11,6 @@
 //#import "SBJson.h"
 #import "SDImageCache.h"
 #import "XTFileManager.h"
-#import "XTHudManager.h"
 #import "CommonFunc.h"
 #import "SIAlertView.h"
 #import "ALAssetsLibrary+CustomPhotoAlbum.h"
@@ -72,7 +71,8 @@ NSString *const URL_QINIU_HEAD          = @"http://img.subaojiang.com/" ;
        withCompletionBlock:^(NSError *error) {
            if (!error) {
                dispatch_async(dispatch_get_main_queue(), ^{
-                   [XTHudManager showWordHudWithTitle:WD_HUD_PIC_SAVE_SUCCESS] ;
+//                   [XTHudManager showWordHudWithTitle:WD_HUD_PIC_SAVE_SUCCESS] ;
+//                   [SVProgressHUD show]
                }) ;
            }
        }] ;
@@ -199,7 +199,7 @@ NSString *const URL_QINIU_HEAD          = @"http://img.subaojiang.com/" ;
 {
     if (result.errCode) {
         NSLog(@"err code : %@",result.message) ;
-        [XTHudManager showWordHudWithTitle:WD_LOGIN_FAILURE] ;
+//        [XTHudManager showWordHudWithTitle:WD_LOGIN_FAILURE] ;
         return;
     }
     
@@ -213,7 +213,7 @@ NSString *const URL_QINIU_HEAD          = @"http://img.subaojiang.com/" ;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [contoller dismissViewControllerAnimated:YES completion:^{
-                [XTHudManager showWordHudWithTitle:WD_LOGIN_SUCCESS] ;
+//                [XTHudManager showWordHudWithTitle:WD_LOGIN_SUCCESS] ;
             }] ;
 
         }) ;

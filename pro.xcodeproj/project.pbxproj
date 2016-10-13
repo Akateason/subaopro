@@ -46,7 +46,6 @@
 		D75CC44E1C2A95DE00E590E6 /* ServerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D75CC42D1C2A95DE00E590E6 /* ServerRequest.m */; };
 		D75CC4501C2A95DE00E590E6 /* XTAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = D75CC4311C2A95DE00E590E6 /* XTAnimation.m */; };
 		D75CC4511C2A95DE00E590E6 /* XTFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D75CC4331C2A95DE00E590E6 /* XTFileManager.m */; };
-		D75CC4521C2A95DE00E590E6 /* XTHudManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D75CC4351C2A95DE00E590E6 /* XTHudManager.m */; };
 		D75CC4531C2A95DE00E590E6 /* XTRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D75CC4371C2A95DE00E590E6 /* XTRequest.m */; };
 		D75CC4541C2A95DE00E590E6 /* XTTickConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = D75CC4391C2A95DE00E590E6 /* XTTickConvert.m */; };
 		D75CC4551C2A95DE00E590E6 /* XTVerification.m in Sources */ = {isa = PBXBuildFile; fileRef = D75CC43B1C2A95DE00E590E6 /* XTVerification.m */; };
@@ -302,6 +301,11 @@
 		D7CE29C41DAA2A0600FF452C /* DtSuperCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CE29BC1DAA2A0600FF452C /* DtSuperCell.m */; };
 		D7CE29C51DAA2A0600FF452C /* DtSuperCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7CE29BD1DAA2A0600FF452C /* DtSuperCell.xib */; };
 		D7CE29C81DAA2A8D00FF452C /* XTlineSpaceLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CE29C71DAA2A8D00FF452C /* XTlineSpaceLabel.m */; };
+		D7CE29FD1DAF6DE800FF452C /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CE29F41DAF6DE800FF452C /* SVIndefiniteAnimatedView.m */; };
+		D7CE29FE1DAF6DE800FF452C /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CE29F61DAF6DE800FF452C /* SVProgressAnimatedView.m */; };
+		D7CE29FF1DAF6DE800FF452C /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D7CE29F81DAF6DE800FF452C /* SVProgressHUD.bundle */; };
+		D7CE2A001DAF6DE800FF452C /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CE29FA1DAF6DE800FF452C /* SVProgressHUD.m */; };
+		D7CE2A011DAF6DE800FF452C /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CE29FC1DAF6DE800FF452C /* SVRadialGradientLayer.m */; };
 		D7E0F49F1D868FA600EA663B /* UIImageView+QNExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F49E1D868FA600EA663B /* UIImageView+QNExtention.m */; };
 		D7E0F4AB1D86AC9300EA663B /* AlertBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F4A21D86AC9300EA663B /* AlertBackgroundView.m */; };
 		D7E0F4AC1D86AC9300EA663B /* ShareAlertV.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F4A41D86AC9300EA663B /* ShareAlertV.m */; };
@@ -415,8 +419,6 @@
 		D75CC4311C2A95DE00E590E6 /* XTAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTAnimation.m; sourceTree = "<group>"; };
 		D75CC4321C2A95DE00E590E6 /* XTFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTFileManager.h; sourceTree = "<group>"; };
 		D75CC4331C2A95DE00E590E6 /* XTFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTFileManager.m; sourceTree = "<group>"; };
-		D75CC4341C2A95DE00E590E6 /* XTHudManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTHudManager.h; sourceTree = "<group>"; };
-		D75CC4351C2A95DE00E590E6 /* XTHudManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTHudManager.m; sourceTree = "<group>"; };
 		D75CC4361C2A95DE00E590E6 /* XTRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTRequest.h; sourceTree = "<group>"; };
 		D75CC4371C2A95DE00E590E6 /* XTRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTRequest.m; sourceTree = "<group>"; };
 		D75CC4381C2A95DE00E590E6 /* XTTickConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTTickConvert.h; sourceTree = "<group>"; };
@@ -901,6 +903,16 @@
 		D7CE29BD1DAA2A0600FF452C /* DtSuperCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DtSuperCell.xib; sourceTree = "<group>"; };
 		D7CE29C61DAA2A8D00FF452C /* XTlineSpaceLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTlineSpaceLabel.h; sourceTree = "<group>"; };
 		D7CE29C71DAA2A8D00FF452C /* XTlineSpaceLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTlineSpaceLabel.m; sourceTree = "<group>"; };
+		D7CE29F31DAF6DE800FF452C /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		D7CE29F41DAF6DE800FF452C /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		D7CE29F51DAF6DE800FF452C /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
+		D7CE29F61DAF6DE800FF452C /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		D7CE29F71DAF6DE800FF452C /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		D7CE29F81DAF6DE800FF452C /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		D7CE29F91DAF6DE800FF452C /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		D7CE29FA1DAF6DE800FF452C /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		D7CE29FB1DAF6DE800FF452C /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		D7CE29FC1DAF6DE800FF452C /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		D7E0F49D1D868FA600EA663B /* UIImageView+QNExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+QNExtention.h"; sourceTree = "<group>"; };
 		D7E0F49E1D868FA600EA663B /* UIImageView+QNExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+QNExtention.m"; sourceTree = "<group>"; };
 		D7E0F4A11D86AC9300EA663B /* AlertBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertBackgroundView.h; sourceTree = "<group>"; };
@@ -1120,6 +1132,7 @@
 		D75CC3F91C2A92B200E590E6 /* Help */ = {
 			isa = PBXGroup;
 			children = (
+				D7CE29F21DAF6DE800FF452C /* SVProgressHUD */,
 				D7CE29411DA9F13800FF452C /* THLabel */,
 				D7CE29281DA9EDF500FF452C /* AttibutedLabel */,
 				D7A812991D9D203E001084EB /* FDTemplateLayoutCell */,
@@ -1261,8 +1274,6 @@
 				D75CC4311C2A95DE00E590E6 /* XTAnimation.m */,
 				D75CC4321C2A95DE00E590E6 /* XTFileManager.h */,
 				D75CC4331C2A95DE00E590E6 /* XTFileManager.m */,
-				D75CC4341C2A95DE00E590E6 /* XTHudManager.h */,
-				D75CC4351C2A95DE00E590E6 /* XTHudManager.m */,
 				D75CC4361C2A95DE00E590E6 /* XTRequest.h */,
 				D75CC4371C2A95DE00E590E6 /* XTRequest.m */,
 				D75CC4381C2A95DE00E590E6 /* XTTickConvert.h */,
@@ -2252,6 +2263,23 @@
 			path = Find/MultiDetailCtrller;
 			sourceTree = "<group>";
 		};
+		D7CE29F21DAF6DE800FF452C /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				D7CE29F31DAF6DE800FF452C /* SVIndefiniteAnimatedView.h */,
+				D7CE29F41DAF6DE800FF452C /* SVIndefiniteAnimatedView.m */,
+				D7CE29F51DAF6DE800FF452C /* SVProgressAnimatedView.h */,
+				D7CE29F61DAF6DE800FF452C /* SVProgressAnimatedView.m */,
+				D7CE29F71DAF6DE800FF452C /* SVProgressHUD-Prefix.pch */,
+				D7CE29F81DAF6DE800FF452C /* SVProgressHUD.bundle */,
+				D7CE29F91DAF6DE800FF452C /* SVProgressHUD.h */,
+				D7CE29FA1DAF6DE800FF452C /* SVProgressHUD.m */,
+				D7CE29FB1DAF6DE800FF452C /* SVRadialGradientLayer.h */,
+				D7CE29FC1DAF6DE800FF452C /* SVRadialGradientLayer.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		D7E0F4A01D86AC9300EA663B /* ShareAlert */ = {
 			isa = PBXGroup;
 			children = (
@@ -2417,6 +2445,7 @@
 				D79BE4AD1D588A9C00964005 /* NormalContentCell.xib in Resources */,
 				D73990171D462C51003E633D /* README.txt in Resources */,
 				D75CC5DB1C2A965000E590E6 /* MJRefresh.bundle in Resources */,
+				D7CE29FF1DAF6DE800FF452C /* SVProgressHUD.bundle in Resources */,
 				D7CE29C11DAA2A0600FF452C /* DtOperationCell.xib in Resources */,
 				D7CE297B1DAA184B00FF452C /* UEHeadPicCell.xib in Resources */,
 				D7CE297D1DAA184B00FF452C /* UEKeyValCell.xib in Resources */,
@@ -2468,6 +2497,7 @@
 				D76E83771D6C2D7F0014FDEA /* DetailCtrller.m in Sources */,
 				D75CC5AD1C2A965000E590E6 /* ASIHTTPRequest.m in Sources */,
 				D75CC5DC1C2A965000E590E6 /* MJRefreshConst.m in Sources */,
+				D7CE2A011DAF6DE800FF452C /* SVRadialGradientLayer.m in Sources */,
 				D75CC5ED1C2A965000E590E6 /* QNFormUpload.m in Sources */,
 				D7886D4C1D8FBF59003D6D57 /* YzbListItem.m in Sources */,
 				D75CC5C21C2A965000E590E6 /* XHPathCover.m in Sources */,
@@ -2548,10 +2578,10 @@
 				D75CC5AB1C2A965000E590E6 /* ASIDownloadCache.m in Sources */,
 				D7CE299A1DAA22A700FF452C /* DetailAttributes.m in Sources */,
 				D7CE29A71DAA259200FF452C /* FlywordLabel.m in Sources */,
-				D75CC4521C2A95DE00E590E6 /* XTHudManager.m in Sources */,
 				D7A812981D9D0B28001084EB /* User.m in Sources */,
 				D75CC5E11C2A965000E590E6 /* GTM_Base64.m in Sources */,
 				D7CE29401DA9F0B600FF452C /* XTBarrageView.m in Sources */,
+				D7CE2A001DAF6DE800FF452C /* SVProgressHUD.m in Sources */,
 				D75CC5C51C2A965000E590E6 /* FMDatabasePool.m in Sources */,
 				D75CC5FE1C2A965000E590E6 /* UIImage+MultiFormat.m in Sources */,
 				D75CC4491C2A95DE00E590E6 /* PlaceHolderTextView.m in Sources */,
@@ -2662,6 +2692,8 @@
 				D7CE29721DAA184B00FF452C /* MyPraisedCell.m in Sources */,
 				D75CC4541C2A95DE00E590E6 /* XTTickConvert.m in Sources */,
 				D75CC5EF1C2A965000E590E6 /* QNUploadManager.m in Sources */,
+				D7CE29FD1DAF6DE800FF452C /* SVIndefiniteAnimatedView.m in Sources */,
+				D7CE29FE1DAF6DE800FF452C /* SVProgressAnimatedView.m in Sources */,
 				D76E84321D7697B50014FDEA /* KxMenu.m in Sources */,
 				D75CC5A21C2A965000E590E6 /* AFNetworkReachabilityManager.m in Sources */,
 				D75CC5D11C2A965000E590E6 /* MJRefreshHeader.m in Sources */,

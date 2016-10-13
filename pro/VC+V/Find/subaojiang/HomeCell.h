@@ -16,6 +16,7 @@
 
 @protocol HomeCellDelegate <NSObject>
 
+@optional
 - (void)goToLogin ;
 - (void)topicSelected:(ArticleTopic *)topic ;
 - (void)articleHasPraised:(BOOL)hasPraised articleID:(int)articleID ;

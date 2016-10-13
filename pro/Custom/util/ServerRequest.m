@@ -261,6 +261,7 @@
                                    AndWithCount:(int)count
 {
     NSMutableDictionary *paramer = [self getParameters] ;
+    [paramer setObject:@0 forKey:@"token"] ;
     [paramer setObject:[NSNumber numberWithInt:a_id]    forKey:@"a_id"] ;
     [paramer setObject:[NSNumber numberWithInt:sinceID] forKey:@"since_id"] ;
     [paramer setObject:[NSNumber numberWithInt:maxID]   forKey:@"max_id"] ;
@@ -311,6 +312,7 @@
                  AndWithCount:(int)count
 {
     NSMutableDictionary *paramer = [self getParameters] ;
+    [paramer setObject:@0 forKey:@"token"] ;
     [paramer setObject:[NSNumber numberWithInt:a_id]    forKey:@"a_id"] ;
     [paramer setObject:[NSNumber numberWithInt:sinceID] forKey:@"since_id"] ;
     [paramer setObject:[NSNumber numberWithInt:maxID]   forKey:@"max_id"] ;
@@ -331,6 +333,7 @@
                   fail:(void (^)())fail
 {
     NSMutableDictionary *paramer = [self getParameters] ;
+    [paramer setObject:@0 forKey:@"token"] ;
     [paramer setObject:[NSNumber numberWithInt:(int)modeReport]
                 forKey:@"r_type"] ;
     [paramer setObject:[NSNumber numberWithInt:aidOrUid]

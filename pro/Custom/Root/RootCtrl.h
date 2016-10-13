@@ -13,7 +13,7 @@
 #import "NSObject+MKBlockTimer.h"
 #import "ServerRequest.h"
 #import "YXSpritesLoadingView.h"
-#import "XTHudManager.h"
+#import "SVProgressHUD.h"
 #import "RootTableView.h"
 #import "XTNetReloader.h"
 #import "YYModel.h"
