@@ -14,8 +14,12 @@
 #import "Content.h"
 #import "DetailCtrller.h"
 
-@interface TagListCtrller () <UITableViewDelegate,UITableViewDataSource,RootTableViewDelegate>
+static const int kSize = 20 ;
 
+@interface TagListCtrller () <UITableViewDelegate,UITableViewDataSource,RootTableViewDelegate>
+{
+    int currentPage ;
+}
 @property (weak, nonatomic) IBOutlet RootTableView *table;
 @property (nonatomic,strong) NSArray *dataList ;
 
@@ -33,12 +37,11 @@
 }
 
 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    currentPage = 1 ;
     [_table registerNib:[UINib nibWithNibName:identifier_normalContentcell bundle:nil] forCellReuseIdentifier:identifier_normalContentcell] ;
     _table.separatorStyle = 0 ;
     _table.dataSource = self ;
@@ -63,31 +66,65 @@
 #pragma mark - RootTableViewDelegate
 - (void)loadNewData:(UITableView *)table
 {
-    [ServerRequest searchContentByTag:self.atag.name
-                              success:^(id json) {
-                                  
-                                  self.dataList = @[] ;
-                                  NSMutableArray *tmpList = [@[] mutableCopy] ;
-                                  ResultParsered *result = [ResultParsered yy_modelWithJSON:json] ;
-                                  if (result.errCode == 1001) {
-                                      NSArray *resultList = result.info[@"list"] ;
-                                      for (NSDictionary *tmpDic in resultList)
-                                      {
-                                          Content *acontent = [Content yy_modelWithJSON:tmpDic] ;
-                                          [tmpList addObject:acontent] ;
-                                      }
-                                      self.dataList = tmpList ;
-                                      [_table reloadData] ;
-                                  }
-                                  
-                              } fail:^{
-                                  
-                              }] ;
+    currentPage = 1 ;
+
+    [ServerRequest searchContentsByKeyword:self.atag.name
+                                     order:@""
+                                      sort:@"desc"
+                                  searchBy:@"tag"
+                                      page:currentPage
+                                      size:kSize
+                                   success:^(id json) {
+                                       self.dataList = @[] ;
+                                       NSMutableArray *tmpList = [@[] mutableCopy] ;
+                                       ResultParsered *result = [ResultParsered yy_modelWithJSON:json] ;
+                                       if (result.errCode == 1001) {
+                                           NSArray *resultList = result.info[@"list"] ;
+                                           for (NSDictionary *tmpDic in resultList)
+                                           {
+                                               Content *acontent = [Content yy_modelWithJSON:tmpDic] ;
+                                               [tmpList addObject:acontent] ;
+                                           }
+                                           self.dataList = tmpList ;
+                                           [_table reloadData] ;
+                                       }
+                                       
+                                       currentPage ++ ;
+                                       
+                                   } fail:^{
+                                       
+                                   }] ;
+
 }
 
 - (void)loadMoreData
 {
-    
+    [ServerRequest searchContentsByKeyword:self.atag.name
+                                     order:@""
+                                      sort:@"desc"
+                                  searchBy:@"tag"
+                                      page:currentPage
+                                      size:kSize
+                                   success:^(id json) {
+                                       self.dataList = @[] ;
+                                       NSMutableArray *tmpList = [self.dataList mutableCopy] ;
+                                       ResultParsered *result = [ResultParsered yy_modelWithJSON:json] ;
+                                       if (result.errCode == 1001) {
+                                           NSArray *resultList = result.info[@"list"] ;
+                                           for (NSDictionary *tmpDic in resultList)
+                                           {
+                                               Content *acontent = [Content yy_modelWithJSON:tmpDic] ;
+                                               [tmpList addObject:acontent] ;
+                                           }
+                                           self.dataList = tmpList ;
+                                           [_table reloadData] ;
+                                       }
+                                       
+                                       currentPage ++ ;
+                                       
+                                   } fail:^{
+                                       
+                                   }] ;
 }
 
 

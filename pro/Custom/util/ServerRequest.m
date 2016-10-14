@@ -146,15 +146,33 @@
 }
 
 
-#pragma mark - 按标题搜索 获取内容列表
-+ (void)searchContentsByTitle:(NSString *)title
-                      success:(void (^)(id json))success
-                         fail:(void (^)())fail
+#pragma mark - 搜索 获取内容列表
+//url	/content/search
+//param	keyword
+//param	order
+//param	sort	默认desc
+//param	searchBy	title,tag,kind
+//param	page	默认1
+//param	size	默认20
+//return	success 1001 	list
++ (void)searchContentsByKeyword:(NSString *)keyword
+                          order:(NSString *)order
+                           sort:(NSString *)sort
+                       searchBy:(NSString *)searchBy
+                           page:(int)page
+                           size:(int)size
+                        success:(void (^)(id json))success
+                           fail:(void (^)())fail
 {
     NSMutableDictionary *paramer = [self getParameters] ;
-    [paramer setObject:title forKey:@"keyword"] ;
+    [paramer setObject:keyword forKey:@"keyword"] ;
+    [paramer setObject:order forKey:@"order"] ;
+    [paramer setObject:sort forKey:@"sort"] ;
+    [paramer setObject:searchBy forKey:@"searchBy"] ;
+    [paramer setObject:@(page) forKey:@"page"] ;
+    [paramer setObject:@(size) forKey:@"size"] ;
     
-    [XTRequest GETWithUrl:[self getFinalUrl:URL_SEARCH_BY_TITLE]
+    [XTRequest GETWithUrl:[self getFinalUrl:URL_CONTENT_SEARCH]
                parameters:paramer
                   success:^(id json) {
                       if (success) success (json) ;
@@ -166,23 +184,6 @@
 }
 
 
-#pragma mark - 按标签搜索 获取内容列表          i/h
-+ (void)searchContentByTag:(NSString *)tag
-                   success:(void (^)(id json))success
-                      fail:(void (^)())fail
-{
-    NSMutableDictionary *paramer = [self getParameters] ;
-    [paramer setObject:tag forKey:@"keyword"] ;
-    
-    [XTRequest GETWithUrl:[self getFinalUrl:URL_SEARCH_BY_TAG]
-               parameters:paramer
-                  success:^(id json) {
-                      if (success) success (json) ;
-                  } fail:^{
-                      if (fail) fail() ;
-                  }] ;
-    
-}
 
 #pragma mark - 标签 模糊搜索  返回列表            h
 + (void)tagSearchByWord:(NSString *)word

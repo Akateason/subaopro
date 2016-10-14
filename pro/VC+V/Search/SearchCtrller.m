@@ -16,13 +16,16 @@
 #import "DetailCtrller.h"
 #import "UIImage+AddFunction.h"
 
-@interface SearchCtrller () <UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
+static const int  kSize  =  20  ;
+
+@interface SearchCtrller () <RootTableViewDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
 {
     BOOL    typeTitleOrTag ; // false - > title , true tag .
+    int     currentPage ;
 }
 @property (weak, nonatomic) IBOutlet UIView *topBar;
 @property (weak, nonatomic) IBOutlet UIButton *btSwith;
-@property (weak, nonatomic) IBOutlet UITableView *table;
+@property (weak, nonatomic) IBOutlet RootTableView *table;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIView *statusbar;
 //
@@ -49,6 +52,8 @@
     _table.dataSource = self ;
     _table.delegate = self ;
     _table.separatorStyle = 0 ;
+    _table.xt_Delegate = self ;
+    _table.automaticallyLoadNew = NO ;
 }
 
 - (void)configureUI
@@ -147,35 +152,71 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     NSLog(@"开始搜索") ;
+    
+    [self loadNewOrMore:YES] ;
+}
+
+
+- (void)loadNewOrMore:(BOOL)bNewOrMore
+{
+    if (bNewOrMore) {
+        currentPage = 1 ; //new
+    }
+    
     if (typeTitleOrTag == false)
     {
-        [ServerRequest searchContentsByTitle:self.searchBar.text
-                                     success:^(id json) {
-                                         [self dealResultJson:json] ;
-                                         [self.searchBar resignFirstResponder] ;
-                                     } fail:^{
-                                         [self.searchBar resignFirstResponder] ;
-                                     }] ;
+        [ServerRequest searchContentsByKeyword:self.searchBar.text
+                                         order:@""
+                                          sort:@"desc"
+                                      searchBy:@"title"
+                                          page:currentPage
+                                          size:kSize
+                                       success:^(id json) {
+                                           [self dealResultJson:json loadNewOrLoadMore:bNewOrMore] ;
+                                           [self.searchBar resignFirstResponder] ;
+                                           currentPage ++ ;
+                                       } fail:^{
+                                           [self.searchBar resignFirstResponder] ;
+                                       }] ;
     }
     else if (typeTitleOrTag == true)
     {
-        [ServerRequest searchContentByTag:self.searchBar.text
-                                  success:^(id json) {
-                                      [self dealResultJson:json] ;
-                                      [self.searchBar resignFirstResponder] ;
-                                  } fail:^{
-                                      [self.searchBar resignFirstResponder] ;
-                                  }] ;
+        [ServerRequest searchContentsByKeyword:self.searchBar.text
+                                         order:@""
+                                          sort:@"desc"
+                                      searchBy:@"tag"
+                                          page:currentPage
+                                          size:kSize
+                                       success:^(id json) {
+                                           [self dealResultJson:json loadNewOrLoadMore:bNewOrMore] ;
+                                           [self.searchBar resignFirstResponder] ;
+                                           currentPage ++ ;
+                                       } fail:^{
+                                           [self.searchBar resignFirstResponder] ;
+                                       }] ;
+        
     }
 }
 
-- (void)dealResultJson:(id)json
+
+
+
+// bNewOrMore - true New , false More
+- (void)dealResultJson:(id)json loadNewOrLoadMore:(BOOL)bNewOrMore
 {
     ResultParsered *result = [ResultParsered yy_modelWithJSON:json] ;
     if (result.errCode == 1001)
     {
         NSArray *resultList = result.info[@"list"] ;
-        NSMutableArray *tmpList = [@[] mutableCopy] ;
+        
+        NSMutableArray *tmpList = nil ;
+        if (bNewOrMore) {
+            tmpList = [@[] mutableCopy] ;
+        }
+        else {
+            tmpList = [self.dataList mutableCopy] ;
+        }
+        
         for (NSDictionary *dic in resultList) {
             Content *acontent = [Content yy_modelWithJSON:dic] ;
             [tmpList addObject:acontent] ;
@@ -186,6 +227,19 @@
     
 }
 
+
+
+#pragma mark - RootTableViewDelegate <NSObject>
+
+- (void)loadNewData:(UITableView *)table
+{
+    [self loadNewOrMore:YES] ;
+}
+
+- (void)loadMoreData
+{
+    [self loadNewOrMore:NO] ;
+}
 
 #pragma mark - UITableViewDataSource
 
