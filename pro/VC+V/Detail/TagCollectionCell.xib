@@ -8,15 +8,15 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TagCollectionCell">
-            <rect key="frame" x="0.0" y="0.0" width="30" height="25"/>
+            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="30" height="25"/>
+                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVL-7E-1iP">
-                        <rect key="frame" x="0.0" y="0.0" width="30" height="25"/>
+                        <rect key="frame" x="0.0" y="14" width="30" height="16"/>
                         <color key="backgroundColor" red="0.2941176593" green="0.7607843876" blue="0.24313727020000001" alpha="1" colorSpace="deviceRGB"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -24,14 +24,16 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstItem="XVL-7E-1iP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="HHz-xM-PMl"/>
+                <constraint firstItem="XVL-7E-1iP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="14" id="HHz-xM-PMl"/>
                 <constraint firstItem="XVL-7E-1iP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Ho3-FC-JAP"/>
                 <constraint firstAttribute="bottom" secondItem="XVL-7E-1iP" secondAttribute="bottom" id="cYt-7Z-22g"/>
                 <constraint firstAttribute="trailing" secondItem="XVL-7E-1iP" secondAttribute="trailing" id="iD7-Mv-4Bw"/>
             </constraints>
+            <size key="customSize" width="30" height="30"/>
             <connections>
                 <outlet property="labelTag" destination="XVL-7E-1iP" id="rP6-MK-6G2"/>
             </connections>
+            <point key="canvasLocation" x="302" y="280"/>
         </collectionViewCell>
     </objects>
 </document>

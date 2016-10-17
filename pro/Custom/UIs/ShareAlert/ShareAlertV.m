@@ -68,7 +68,9 @@
     [self cancel] ;
 
 //    NSLog(@"%d",index) ;
-    [self.aDelegate clickIndex:index] ;    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(clickIndex:)]) {
+        [self.aDelegate clickIndex:index] ;
+    }
 }
 
 

@@ -55,14 +55,14 @@
 {
     Tag *atag = (Tag *)(self.aContent.tags[indexPath.row]) ;
     UIFont *font = [UIFont systemFontOfSize:11.0f] ;
-    CGSize size = CGSizeMake(APP_WIDTH, 25.) ;
-    CGSize labelsize = [atag.name boundingRectWithSize:size
+    CGSize size = CGSizeMake(APP_WIDTH, 30.) ;
+    CGSize resultSize = [atag.name boundingRectWithSize:size
                                              options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
                                           attributes:@{NSFontAttributeName:font}
                                              context:nil].size ;
-    labelsize.width += 10. ;
-    
-    return labelsize ;
+    resultSize.width += 10. ;
+    resultSize.height = 30. ;
+    return resultSize ;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath

@@ -306,6 +306,7 @@
 		D7CE29FF1DAF6DE800FF452C /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D7CE29F81DAF6DE800FF452C /* SVProgressHUD.bundle */; };
 		D7CE2A001DAF6DE800FF452C /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CE29FA1DAF6DE800FF452C /* SVProgressHUD.m */; };
 		D7CE2A011DAF6DE800FF452C /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CE29FC1DAF6DE800FF452C /* SVRadialGradientLayer.m */; };
+		D7CE2A281DB4C09800FF452C /* XTSearchHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CE2A271DB4C09800FF452C /* XTSearchHandler.m */; };
 		D7E0F49F1D868FA600EA663B /* UIImageView+QNExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F49E1D868FA600EA663B /* UIImageView+QNExtention.m */; };
 		D7E0F4AB1D86AC9300EA663B /* AlertBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F4A21D86AC9300EA663B /* AlertBackgroundView.m */; };
 		D7E0F4AC1D86AC9300EA663B /* ShareAlertV.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F4A41D86AC9300EA663B /* ShareAlertV.m */; };
@@ -913,6 +914,8 @@
 		D7CE29FA1DAF6DE800FF452C /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		D7CE29FB1DAF6DE800FF452C /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		D7CE29FC1DAF6DE800FF452C /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		D7CE2A261DB4C09800FF452C /* XTSearchHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTSearchHandler.h; sourceTree = "<group>"; };
+		D7CE2A271DB4C09800FF452C /* XTSearchHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTSearchHandler.m; sourceTree = "<group>"; };
 		D7E0F49D1D868FA600EA663B /* UIImageView+QNExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+QNExtention.h"; sourceTree = "<group>"; };
 		D7E0F49E1D868FA600EA663B /* UIImageView+QNExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+QNExtention.m"; sourceTree = "<group>"; };
 		D7E0F4A11D86AC9300EA663B /* AlertBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertBackgroundView.h; sourceTree = "<group>"; };
@@ -1120,6 +1123,7 @@
 		D75CC3F81C2A92B200E590E6 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				D76E83A51D6EDAEC0014FDEA /* share */,
 				D76F75691D6320D000D522B6 /* color */,
 				D75CC6B51C2BEB0400E590E6 /* Root */,
 				D75CC4271C2A95DE00E590E6 /* util */,
@@ -1261,7 +1265,8 @@
 			children = (
 				D75CC42C1C2A95DE00E590E6 /* ServerRequest.h */,
 				D75CC42D1C2A95DE00E590E6 /* ServerRequest.m */,
-				D76E83A51D6EDAEC0014FDEA /* share */,
+				D7CE2A261DB4C09800FF452C /* XTSearchHandler.h */,
+				D7CE2A271DB4C09800FF452C /* XTSearchHandler.m */,
 				D76F75701D63217100D522B6 /* NSObject+Reflection.h */,
 				D76F75711D63217100D522B6 /* NSObject+Reflection.m */,
 				D76F756D1D63216700D522B6 /* XTJson.h */,
@@ -1844,7 +1849,8 @@
 				D76E83A81D6EDAEC0014FDEA /* WXMediaMessage+messageConstruct.h */,
 				D76E83A91D6EDAEC0014FDEA /* WXMediaMessage+messageConstruct.m */,
 			);
-			path = share;
+			name = share;
+			path = util/share;
 			sourceTree = "<group>";
 		};
 		D76E83C71D704A740014FDEA /* Kind */ = {
@@ -2533,6 +2539,7 @@
 				D76F756F1D63216700D522B6 /* XTJson.m in Sources */,
 				D7E0F4AD1D86AC9300EA663B /* ShareAlertView.m in Sources */,
 				D7CE29371DA9EDF500FF452C /* WPTappableLabel.m in Sources */,
+				D7CE2A281DB4C09800FF452C /* XTSearchHandler.m in Sources */,
 				D7CE29A21DAA22A700FF452C /* UserHeadCollectionCell.m in Sources */,
 				D76E83B11D6EE28B0014FDEA /* SendMessageToWXReq+requestWithTextOrMediaMessage.m in Sources */,
 				D75CC5F31C2A965000E590E6 /* MKAnnotationView+WebCache.m in Sources */,

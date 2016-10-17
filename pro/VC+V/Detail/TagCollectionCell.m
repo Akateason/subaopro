@@ -27,11 +27,14 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib] ;
+    
     // Initialization code
-    _labelTag.backgroundColor = [UIColor xt_mainColor] ;
-    _labelTag.textColor = [UIColor whiteColor] ;
+    _labelTag.backgroundColor = [UIColor whiteColor] ;
+    _labelTag.textColor = [UIColor xt_mainColor] ;
     _labelTag.layer.cornerRadius = 5. ;
     _labelTag.layer.masksToBounds = YES ;
+    _labelTag.layer.borderColor = [UIColor xt_mainColor].CGColor ;
+    _labelTag.layer.borderWidth = 1. ;
 }
 
 @end

@@ -10,6 +10,7 @@
 #import "DetailSubaoCtrllerHeader.h"
 #import "ResultSBJ.h"
 #import "User.h"
+#import "UrlRequestHeader.h"
 
 @interface DetailSubaoCtrller ()<UITableViewDataSource,UITableViewDelegate,FlywordInputViewDelegate,WordSendViewDelegate,RootTableViewDelegate,ReplyCellDelegate,ShareAlertVDelegate,DtOperationCellDelegate,DtSuperCellDelegate,DtSubCellDelegate,HomeUserTableHeaderViewDelegate>
 {
@@ -51,7 +52,65 @@
 
 @implementation DetailSubaoCtrller
 
-#pragma mark --
+#pragma mark - func
+- (UIImage *)thumbnail
+{
+    UIImage *originalImg = self.cacheImage ;
+    UIImage *thumbnail = [UIImage thumbnailWithImage:originalImg size:CGSizeMake(80, 80)] ;
+    return thumbnail ;
+}
+
+
+#pragma mark - ShareAlertVDelegate
+- (void)clickIndex:(NSInteger)index
+{
+//    // topicStr
+//    NSString *topicStr = (self.articleSuper.articleTopicList.count) ? ((ArticleTopic *)[self.articleSuper.articleTopicList firstObject]).t_content : nil ;
+    
+    // 要跳的链接
+    NSString *strUrl = [NSString stringWithFormat:SHARE_DETAIL_URL,self.articleSuper.a_id] ;
+
+    
+    // share call back
+    switch (index)
+    {
+        case 0:
+        {
+            //@"新浪微博" ;
+            [ShareUtils wb_sendTitleAndUrl:strUrl
+                                thumbImage:[self thumbnail]] ;
+        }
+            break;
+        case 1:
+        {
+            //@"微信" ;
+            [ShareUtils wx_sendLinkURL:strUrl
+                               TagName:nil
+                                 Title:self.articleSuper.a_content
+                           Description:nil
+                            ThumbImage:[self thumbnail]
+                               InScene:WXSceneSession] ;
+        }
+            break;
+        case 2:
+        {
+            //@"朋友圈" ;
+            [ShareUtils wx_sendLinkURL:strUrl
+                               TagName:nil
+                                 Title:self.articleSuper.a_content
+                           Description:nil
+                            ThumbImage:[self thumbnail]
+                               InScene:WXSceneTimeline] ;
+            
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+
+
 #pragma mark - Public
 - (void)startReverseAnmation
 {

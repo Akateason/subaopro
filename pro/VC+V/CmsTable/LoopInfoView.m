@@ -8,7 +8,6 @@
 
 #import "LoopInfoView.h"
 #import "Content.h"
-//#import "UIImageView+WebCache.h"
 #import "Tag.h"
 #import "UIImageView+QNExtention.h"
 
@@ -53,13 +52,13 @@
     
     [self.imgView photoFromQiNiu:aContent.cover] ;    
     
-    UIFont *font = [UIFont systemFontOfSize:10.0f] ;
+    UIFont *font = [UIFont systemFontOfSize:11.0f] ;
     CGSize size = CGSizeMake(200 ,18) ;
     CGSize labelsize = [aContent.kindName boundingRectWithSize:size
                                                        options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
                                                     attributes:@{NSFontAttributeName:font}
                                                        context:nil].size ;
-    _w_kind.constant = labelsize.width + 10. ;
+    _w_kind.constant = labelsize.width + 18. ;
 
     
 }

@@ -63,4 +63,7 @@ static NSString *const URL_DETAIL_PRAISE        = @"http://api3.subaojiang.com/i
 //举报
 #define URL_REPORT                                @"http://api3.subaojiang.com/index/report_article"
 
+#define SHARE_DETAIL_URL                          @"http://m.subaojiang.com/index/detail.html?id=%d"
+
+
 #endif

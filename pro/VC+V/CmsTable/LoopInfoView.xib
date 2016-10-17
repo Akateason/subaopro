@@ -29,13 +29,13 @@
                             <size key="shadowOffset" width="0.0" height="0.0"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时尚" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tu-fc-7kP">
-                            <rect key="frame" x="18" y="7" width="30" height="18"/>
+                            <rect key="frame" x="18" y="7" width="42" height="18"/>
                             <color key="backgroundColor" red="0.2941176593" green="0.7607843876" blue="0.24313727020000001" alpha="1" colorSpace="deviceRGB"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="30" id="DOg-EF-1Lo"/>
+                                <constraint firstAttribute="width" constant="42" id="DOg-EF-1Lo"/>
                                 <constraint firstAttribute="height" constant="18" id="bZf-Pp-YFt"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>

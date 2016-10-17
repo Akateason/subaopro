@@ -13,6 +13,7 @@
 #import "ResultParsered.h"
 #import "Content.h"
 #import "DetailCtrller.h"
+#import "XTSearchHandler.h"
 
 static const int kSize = 20 ;
 
@@ -22,12 +23,19 @@ static const int kSize = 20 ;
 }
 @property (weak, nonatomic) IBOutlet RootTableView *table;
 @property (nonatomic,strong) NSArray *dataList ;
+@property (nonatomic,strong) XTSearchHandler *searchHandler ;
 
 @end
 
 @implementation TagListCtrller
 
-
+- (XTSearchHandler *)searchHandler
+{
+    if (!_searchHandler) {
+        _searchHandler = [[XTSearchHandler alloc] init] ;
+    }
+    return _searchHandler ;
+}
 
 - (void)setAtag:(Tag *)atag
 {
@@ -67,64 +75,69 @@ static const int kSize = 20 ;
 - (void)loadNewData:(UITableView *)table
 {
     currentPage = 1 ;
+    
+    [self.searchHandler searchWithText:self.atag.name
+                                 order:@""
+                                  sort:@"desc"
+                              searchBy:@"tag"
+                                  page:currentPage
+                                  size:kSize
+                        searchComplete:^(NSURLSessionDataTask *task, id responseObject) {
+                            
+                            self.dataList = @[] ;
+                            NSMutableArray *tmpList = [@[] mutableCopy] ;
+                            ResultParsered *result = [ResultParsered yy_modelWithJSON:responseObject] ;
+                            if (result.errCode == 1001) {
+                                NSArray *resultList = result.info[@"list"] ;
+                                for (NSDictionary *tmpDic in resultList)
+                                {
+                                    Content *acontent = [Content yy_modelWithJSON:tmpDic] ;
+                                    [tmpList addObject:acontent] ;
+                                }
+                                self.dataList = tmpList ;
+                                [_table reloadData] ;
+                            }
+                            
+                            currentPage ++ ;
 
-    [ServerRequest searchContentsByKeyword:self.atag.name
-                                     order:@""
-                                      sort:@"desc"
-                                  searchBy:@"tag"
-                                      page:currentPage
-                                      size:kSize
-                                   success:^(id json) {
-                                       self.dataList = @[] ;
-                                       NSMutableArray *tmpList = [@[] mutableCopy] ;
-                                       ResultParsered *result = [ResultParsered yy_modelWithJSON:json] ;
-                                       if (result.errCode == 1001) {
-                                           NSArray *resultList = result.info[@"list"] ;
-                                           for (NSDictionary *tmpDic in resultList)
-                                           {
-                                               Content *acontent = [Content yy_modelWithJSON:tmpDic] ;
-                                               [tmpList addObject:acontent] ;
-                                           }
-                                           self.dataList = tmpList ;
-                                           [_table reloadData] ;
-                                       }
-                                       
-                                       currentPage ++ ;
-                                       
-                                   } fail:^{
-                                       
-                                   }] ;
-
+                            
+                        } fail:^(NSURLSessionDataTask *task, NSError *error) {
+                            
+                        }] ;
+    
 }
 
 - (void)loadMoreData
 {
-    [ServerRequest searchContentsByKeyword:self.atag.name
-                                     order:@""
-                                      sort:@"desc"
-                                  searchBy:@"tag"
-                                      page:currentPage
-                                      size:kSize
-                                   success:^(id json) {
-                                       self.dataList = @[] ;
-                                       NSMutableArray *tmpList = [self.dataList mutableCopy] ;
-                                       ResultParsered *result = [ResultParsered yy_modelWithJSON:json] ;
-                                       if (result.errCode == 1001) {
-                                           NSArray *resultList = result.info[@"list"] ;
-                                           for (NSDictionary *tmpDic in resultList)
-                                           {
-                                               Content *acontent = [Content yy_modelWithJSON:tmpDic] ;
-                                               [tmpList addObject:acontent] ;
-                                           }
-                                           self.dataList = tmpList ;
-                                           [_table reloadData] ;
-                                       }
-                                       
-                                       currentPage ++ ;
-                                       
-                                   } fail:^{
-                                       
-                                   }] ;
+    [self.searchHandler searchWithText:self.atag.name
+                                 order:@""
+                                  sort:@"desc"
+                              searchBy:@"tag"
+                                  page:currentPage
+                                  size:kSize
+                        searchComplete:^(NSURLSessionDataTask *task, id responseObject) {
+                            
+                            self.dataList = @[] ;
+                            NSMutableArray *tmpList = [self.dataList mutableCopy] ;
+                            ResultParsered *result = [ResultParsered yy_modelWithJSON:responseObject] ;
+                            if (result.errCode == 1001) {
+                                NSArray *resultList = result.info[@"list"] ;
+                                for (NSDictionary *tmpDic in resultList)
+                                {
+                                    Content *acontent = [Content yy_modelWithJSON:tmpDic] ;
+                                    [tmpList addObject:acontent] ;
+                                }
+                                self.dataList = tmpList ;
+                                [_table reloadData] ;
+                            }
+                            
+                            currentPage ++ ;
+
+                        }
+                                  fail:^(NSURLSessionDataTask *task, NSError *error) {
+                                      
+                                  }] ;
+    
 }
 
 

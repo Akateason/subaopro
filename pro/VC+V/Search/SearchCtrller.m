@@ -15,6 +15,7 @@
 #import "Content.h"
 #import "DetailCtrller.h"
 #import "UIImage+AddFunction.h"
+#import "XTSearchHandler.h"
 
 static const int  kSize  =  20  ;
 
@@ -28,9 +29,11 @@ static const int  kSize  =  20  ;
 @property (weak, nonatomic) IBOutlet RootTableView *table;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIView *statusbar;
+@property (weak, nonatomic) IBOutlet UIButton *btCancel;
 //
-@property (nonatomic,strong) NSArray *dataList ;
-@property (nonatomic,strong) NSArray *menuItems ;
+@property (nonatomic,strong) NSArray            *dataList ;
+@property (nonatomic,strong) NSArray            *menuItems ;
+@property (nonatomic,strong) XTSearchHandler    *searchHandler ;
 
 @end
 
@@ -43,11 +46,12 @@ static const int  kSize  =  20  ;
 {
     [super viewDidLoad] ;
     
-    
     [self configureUI] ;
-    
-    // Do any additional setup after loading the view.
-    _searchBar.delegate = self ;
+    [self tableConfigure] ;
+}
+
+- (void)tableConfigure
+{
     _table.backgroundColor = [UIColor xt_cellSeperate] ;
     _table.dataSource = self ;
     _table.delegate = self ;
@@ -58,6 +62,10 @@ static const int  kSize  =  20  ;
 
 - (void)configureUI
 {
+    _btCancel.backgroundColor = [UIColor xt_nav] ;
+ 
+    _searchBar.delegate = self ;
+
     _topBar.backgroundColor = [UIColor clearColor] ;
     _statusbar.backgroundColor = [UIColor xt_nav] ;
     _btSwith.backgroundColor = [UIColor xt_nav] ;
@@ -83,13 +91,14 @@ static const int  kSize  =  20  ;
 #pragma mark - action
 - (IBAction)btCancelOnClick:(id)sender
 {
-    [self dismissViewControllerAnimated:YES
-                             completion:^{
-        
-    }] ;
+    if ([self.searchBar isFirstResponder]) {
+        [self.searchBar resignFirstResponder] ;
+    }
+    else {
+        [self dismissViewControllerAnimated:YES
+                                 completion:^{}] ;
+    }
 }
-
-#pragma mark - prop
 
 - (IBAction)btSearchConditionOnClick:(UIButton *)sender
 {
@@ -99,6 +108,21 @@ static const int  kSize  =  20  ;
                   fromRect:rect
                  menuItems:self.menuItems] ;
 }
+
+
+
+
+#pragma mark - prop
+
+- (XTSearchHandler *)searchHandler
+{
+    if (!_searchHandler) {
+        _searchHandler = [[XTSearchHandler alloc] init] ;
+    }
+    return _searchHandler ;
+}
+
+
 
 - (NSArray *)menuItems
 {
@@ -116,7 +140,6 @@ static const int  kSize  =  20  ;
     }
     return _menuItems ;
 }
-
 - (void)toTitle:(KxMenuItem *)item
 {
     [self.btSwith setTitle:@"按标题" forState:0] ;
@@ -133,30 +156,26 @@ static const int  kSize  =  20  ;
 
 
 #pragma mark - UISearchBarDelegate
-
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    [self dismissViewControllerAnimated:YES
-                             completion:^{
-        
-    }] ;
+    [self loadNewOrMore:YES] ;
 }
 
 // return NO to not become first responder
-- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
-{
-    return YES ;
-}
+//- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+//{
+//    return YES ;
+//}
 
 // called when keyboard search button pressed
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     NSLog(@"开始搜索") ;
-    
-    [self loadNewOrMore:YES] ;
+    [self.searchBar resignFirstResponder] ;
 }
 
-
+#pragma mark -
+// load from server .
 - (void)loadNewOrMore:(BOOL)bNewOrMore
 {
     if (bNewOrMore) {
@@ -165,35 +184,45 @@ static const int  kSize  =  20  ;
     
     if (typeTitleOrTag == false)
     {
-        [ServerRequest searchContentsByKeyword:self.searchBar.text
-                                         order:@""
-                                          sort:@"desc"
-                                      searchBy:@"title"
-                                          page:currentPage
-                                          size:kSize
-                                       success:^(id json) {
-                                           [self dealResultJson:json loadNewOrLoadMore:bNewOrMore] ;
-                                           [self.searchBar resignFirstResponder] ;
-                                           currentPage ++ ;
-                                       } fail:^{
-                                           [self.searchBar resignFirstResponder] ;
-                                       }] ;
+        [self.searchHandler searchWithText:self.searchBar.text
+                                     order:@""
+                                      sort:@"desc"
+                                  searchBy:@"title"
+                                      page:currentPage
+                                      size:kSize
+                            searchComplete:^(NSURLSessionDataTask *task, id responseObject) {
+                               
+                                [self dealResultJson:responseObject loadNewOrLoadMore:bNewOrMore] ;
+//                                [self.searchBar resignFirstResponder] ;
+                                currentPage ++ ;
+
+                            }
+         fail:^(NSURLSessionDataTask *task, NSError *error) {
+             
+             [self.searchBar resignFirstResponder] ;
+
+         }] ;
     }
     else if (typeTitleOrTag == true)
     {
-        [ServerRequest searchContentsByKeyword:self.searchBar.text
-                                         order:@""
-                                          sort:@"desc"
-                                      searchBy:@"tag"
-                                          page:currentPage
-                                          size:kSize
-                                       success:^(id json) {
-                                           [self dealResultJson:json loadNewOrLoadMore:bNewOrMore] ;
-                                           [self.searchBar resignFirstResponder] ;
-                                           currentPage ++ ;
-                                       } fail:^{
-                                           [self.searchBar resignFirstResponder] ;
-                                       }] ;
+        [self.searchHandler searchWithText:self.searchBar.text
+                                     order:@""
+                                      sort:@"desc"
+                                  searchBy:@"tag"
+                                      page:currentPage
+                                      size:kSize
+                            searchComplete:^(NSURLSessionDataTask *task, id responseObject) {
+
+                                [self dealResultJson:responseObject loadNewOrLoadMore:bNewOrMore] ;
+//                                [self.searchBar resignFirstResponder] ;
+                                currentPage ++ ;
+
+                            } fail:^(NSURLSessionDataTask *task, NSError *error) {
+
+                                [self.searchBar resignFirstResponder] ;
+
+                            }] ;
+
         
     }
 }

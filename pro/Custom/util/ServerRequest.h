@@ -12,7 +12,7 @@
 #import "XTRequest.h"
 #import "ResultParsered.h"
 #import "PublicEnum.h"
-@class User ;
+@class User , AFHTTPSessionManager ;
 
 @interface ServerRequest : XTRequest
 
@@ -74,14 +74,15 @@
 //param	page	默认1
 //param	size	默认20
 //return	success 1001 	list
-+ (void)searchContentsByKeyword:(NSString *)keyword
-                          order:(NSString *)order
-                           sort:(NSString *)sort
-                       searchBy:(NSString *)searchBy
-                           page:(int)page
-                           size:(int)size
-                        success:(void (^)(id json))success
-                           fail:(void (^)())fail ;
++ (NSURLSessionDataTask *)searchContentsByKeyword:(NSString *)keyword
+                                            order:(NSString *)order
+                                             sort:(NSString *)sort
+                                         searchBy:(NSString *)searchBy
+                                             page:(int)page
+                                             size:(int)size
+                                          manager:(AFHTTPSessionManager *)manager
+                                          success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+                                             fail:(void (^)(NSURLSessionDataTask *task, NSError *error))fail ;
 
 
 

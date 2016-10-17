@@ -13,6 +13,7 @@
 #import "ASIFormDataRequest.h"
 #import "ASIHTTPRequest.h"
 #import "CommonFunc.h"
+#import "AFNetworking.h"
 
 @implementation ServerRequest
 
@@ -155,14 +156,16 @@
 //param	page	默认1
 //param	size	默认20
 //return	success 1001 	list
-+ (void)searchContentsByKeyword:(NSString *)keyword
++ (NSURLSessionDataTask *)searchContentsByKeyword:(NSString *)keyword
                           order:(NSString *)order
                            sort:(NSString *)sort
                        searchBy:(NSString *)searchBy
                            page:(int)page
                            size:(int)size
-                        success:(void (^)(id json))success
-                           fail:(void (^)())fail
+                        manager:(AFHTTPSessionManager *)manager
+                        success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+                           fail:(void (^)(NSURLSessionDataTask *task, NSError *error))fail
+
 {
     NSMutableDictionary *paramer = [self getParameters] ;
     [paramer setObject:keyword forKey:@"keyword"] ;
@@ -172,15 +175,14 @@
     [paramer setObject:@(page) forKey:@"page"] ;
     [paramer setObject:@(size) forKey:@"size"] ;
     
-    [XTRequest GETWithUrl:[self getFinalUrl:URL_CONTENT_SEARCH]
-               parameters:paramer
-                  success:^(id json) {
-                      if (success) success (json) ;
-
-                  } fail:^{
-                      if (fail) fail() ;
-
-                  }] ;
+    NSURLSessionDataTask *task = [manager GET:[self getFinalUrl:URL_CONTENT_SEARCH]
+                                   parameters:paramer
+                                      success:^(NSURLSessionDataTask *task, id responseObject) {
+                                          if (success) success(task,responseObject) ;
+                                      } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                          if (fail) fail(task,error) ;
+                                      }] ;
+    return task ;
 }
 
 
