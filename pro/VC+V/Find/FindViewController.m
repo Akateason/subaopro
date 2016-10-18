@@ -32,8 +32,6 @@ float const SIZE_OF_PAGE = 20 ;
 }
 @property (weak, nonatomic) IBOutlet UIView         *schbarbg;
 @property (weak, nonatomic) IBOutlet UIView         *schbarbg2;
-@property (weak, nonatomic) IBOutlet UIView         *navbar;
-@property (weak, nonatomic) IBOutlet UILabel        *labelFind;
 @property (weak, nonatomic) IBOutlet RootTableView  *table;
 
 @property (nonatomic,strong) dispatch_queue_t       myQueue ;
@@ -106,22 +104,25 @@ float const SIZE_OF_PAGE = 20 ;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self configureUIs] ;
+    [self configreTable] ;
+}
+
+- (void)configureUIs
+{
+    _schbarbg.backgroundColor = [UIColor xt_nav] ;
+    _schbarbg2.backgroundColor = [UIColor whiteColor] ;
+    _schbarbg2.layer.cornerRadius = 5. ;
+    _schbarbg2.layer.masksToBounds = true ;
+}
+
+- (void)configreTable
+{
     [_table registerNib:[UINib nibWithNibName:HomeCellID bundle:nil] forCellReuseIdentifier:HomeCellID] ;
     [_table registerNib:[UINib nibWithNibName:HeaderIdentifier bundle:nil] forHeaderFooterViewReuseIdentifier:HeaderIdentifier] ;
     _table.delegate = self ;
     _table.dataSource = self ;
     _table.separatorStyle = UITableViewCellSeparatorStyleNone ;
     _table.xt_Delegate = self ;
-}
-
-- (void)configureUIs
-{
-    _navbar.backgroundColor = [UIColor xt_nav] ;
-    _schbarbg.backgroundColor = [UIColor xt_nav] ;
-    _schbarbg2.backgroundColor = [UIColor whiteColor] ;
-    _schbarbg2.layer.cornerRadius = 5. ;
-    _schbarbg2.layer.masksToBounds = true ;
-    _labelFind.textColor = [UIColor whiteColor] ;
 }
 
 - (void)viewWillAppear:(BOOL)animated

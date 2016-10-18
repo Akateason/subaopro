@@ -21,6 +21,6 @@
 @property (nonatomic,strong)        UIImage            *imgArticleSend ;
 
 //@property (nonatomic,strong)        HomeController     *homeCtrller ;
-- (void)startReverseAnmation ;
+//- (void)startReverseAnmation ;
 
 @end

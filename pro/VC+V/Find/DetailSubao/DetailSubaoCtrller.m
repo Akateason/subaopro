@@ -112,10 +112,10 @@
 
 
 #pragma mark - Public
-- (void)startReverseAnmation
-{
-//    [self.homeCtrller reverseImageSendAnimationWithRect:self.toRect] ;
-}
+//- (void)startReverseAnmation
+//{
+////    [self.homeCtrller reverseImageSendAnimationWithRect:self.toRect] ;
+//}
 
 #pragma mark --
 #pragma mark - Initialization

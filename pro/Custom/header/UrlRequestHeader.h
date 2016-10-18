@@ -12,6 +12,9 @@
 //  服务器ip地址切换
 static NSString *const G_IP_SERVER              = @"http://cms.subaojiang.com/" ;
 
+//  通过ContentID访问文章h5页面
+#define URL_SHOW_CONTENT_WITHID(CID)            [NSString stringWithFormat:@"http://cms.subaojiang.com/content/showContentH?contentId=%d",CID]
+
 //  获取骑牛token
 static NSString *const URL_QINIU_TOKEN          = @"Index/get_qiniu_token" ;
 

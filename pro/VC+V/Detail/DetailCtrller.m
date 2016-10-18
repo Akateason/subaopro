@@ -14,6 +14,7 @@
 #import "TagListCtrller.h"
 #import "ShareAlertV.h"
 #import "UIImage+AddFunction.h"
+#import "UrlRequestHeader.h"
 
 @interface DetailCtrller () <UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,DetailParallaxHeaderDelegate,UIWebViewDelegate,ShareAlertVDelegate>
 {
@@ -181,11 +182,8 @@ static float klength_backbutton = 44. ;
     _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, APP_WIDTH, 1)] ;
     _webView.delegate = self ;
     _webView.scrollView.scrollEnabled = NO ;
-    NSString *strUrl = self.content.link ;
-    if (![strUrl hasPrefix:@"http"]) {
-        strUrl = [@"http://" stringByAppendingString:strUrl] ;
-    }
-    [_webView loadRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:strUrl]]] ;
+    
+    [_webView loadRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[self.content getFinalLink]]]] ;
 }
 
 - (void)viewWillAppear:(BOOL)animated

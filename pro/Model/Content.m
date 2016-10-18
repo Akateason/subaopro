@@ -9,6 +9,7 @@
 #import "Content.h"
 #import "Tag.h"
 #import "Images.h"
+#import "UrlRequestHeader.h"
 
 @implementation Content
 
@@ -26,6 +27,18 @@
              } ;
 }
 
-
+- (NSString *)getFinalLink
+{
+    NSString *strResult = self.link ;
+    // 如果有html, 拼出h5地址 . 如果没有, 直接调用link
+    if (self.html || self.html.length > 0) {
+        strResult = URL_SHOW_CONTENT_WITHID(self.contentId) ;
+    }
+    
+    if (![strResult hasPrefix:@"http"]) {
+        strResult = [@"http://" stringByAppendingString:strResult] ;
+    }
+    return strResult ;
+}
 
 @end

@@ -46,7 +46,7 @@
 //    }
     
     [detailCtrller setHidesBottomBarWhenPushed:YES] ;
-    [ctrller.navigationController pushViewController:detailCtrller animated:NO] ;
+    [ctrller.navigationController pushViewController:detailCtrller animated:YES] ;
 }
 
 

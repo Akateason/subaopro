@@ -8,7 +8,6 @@
 
 #import "NormalContentCell.h"
 #import "Content.h"
-//#import "UIImageView+WebCache.h"
 #import "UIImageView+QNExtention.h"
 
 @interface NormalContentCell ()
@@ -54,7 +53,7 @@
     _titleLabel.backgroundColor = [UIColor whiteColor] ;
     _titleLabel.textColor = [UIColor xt_w_cell_title] ;
     _kindLabel.backgroundColor = [UIColor clearColor] ;
-
+    
     _kindLabel.textColor = [UIColor xt_w_cell_desc] ;
     _readLabel.textColor = [UIColor xt_w_cell_desc] ;
     

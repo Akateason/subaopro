@@ -17,6 +17,7 @@
 @property (nonatomic)       int         kind ;
 @property (nonatomic,strong)NSArray     *tags ;
 @property (nonatomic,copy)  NSString    *link ;
+@property (nonatomic,copy)  NSString    *html ;
 @property (nonatomic,copy)  NSString    *cover ;
 @property (nonatomic,strong)NSArray     *imgs ;
 @property (nonatomic)       long long   createtime ;
@@ -29,5 +30,7 @@
 @property (nonatomic)       int         isSlide ;
 
 @property (nonatomic,copy)    NSString  *kindName ;
+
+- (NSString *)getFinalLink ;
 
 @end
