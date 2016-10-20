@@ -295,7 +295,7 @@ static SIAlertView *__si_alert_current_view;
 - (UIColor *)colorCancel
 {
     if (!_colorCancel) {
-        _colorCancel = [UIColor blueColor] ; //COLOR_FW_BLUE ;
+        _colorCancel = [UIColor groupTableViewBackgroundColor] ; //COLOR_FW_BLUE ;
     }
     return _colorCancel ;
 }
@@ -303,7 +303,7 @@ static SIAlertView *__si_alert_current_view;
 - (UIColor *)colorDefault
 {
     if (!_colorDefault) {
-        _colorDefault = [UIColor lightGrayColor] ; // COLOR_TABLE_SEP ;
+        _colorDefault = [UIColor groupTableViewBackgroundColor] ; // COLOR_TABLE_SEP ;
     }
     return _colorDefault ;
 }

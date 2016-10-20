@@ -11,6 +11,7 @@
 #import "ResultSBJ.h"
 #import "User.h"
 #import "UrlRequestHeader.h"
+#import "RootCtrl+ActionJumpToSubao.h"
 
 @interface DetailSubaoCtrller ()<UITableViewDataSource,UITableViewDelegate,FlywordInputViewDelegate,WordSendViewDelegate,RootTableViewDelegate,ReplyCellDelegate,ShareAlertVDelegate,DtOperationCellDelegate,DtSuperCellDelegate,DtSubCellDelegate,HomeUserTableHeaderViewDelegate>
 {
@@ -47,6 +48,7 @@
 // suspending buttons : like and share .
 //@property (nonatomic,strong)         UIButton           *bt_suspendLike  ;
 //@property (nonatomic,strong)         UIButton           *bt_suspendShare ;
+@property (weak, nonatomic) IBOutlet UIButton *btSendArticle;
 
 @end
 
@@ -245,6 +247,11 @@
 //    [XTHudManager showWordHudWithTitle:hudStr] ;
     
     [self.table reloadData] ;
+}
+
+- (IBAction)btSendArticleOnClick:(id)sender
+{
+    [self jump2subaoAction] ;
 }
 
 #pragma mark --
@@ -639,38 +646,44 @@
 #pragma mark - UIScrollViewDelegate Methods
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    if (self.isMultiType)
-    {
+    [self hidePostButton:self.btSendArticle] ;
+//    if (self.isMultiType)
+//    {
 //        [self controlBottomBarShowOrNot] ;
 //        [self suspendButtonRunAnimation:NO
 //                                 likeBt:_bt_suspendLike
 //                                shareBt:_bt_suspendShare] ;
 //        [self letSuspendBtOnOrOff] ;
-    }
+//    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    if (self.isMultiType)
-    {
+    [self showPostButton:self.btSendArticle] ;
+
+//    if (self.isMultiType)
+//    {
 //        [self controlBottomBarShowOrNot] ;
 //        [self suspendButtonRunAnimation:YES
 //                                 likeBt:_bt_suspendLike
 //                                shareBt:_bt_suspendShare] ;
-        [self letSuspendBtOnOrOff] ;
-    }
+//        [self letSuspendBtOnOrOff] ;
+//    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    if (self.isMultiType && !decelerate)
-    {
-//        [self controlBottomBarShowOrNot] ;
-//        [self suspendButtonRunAnimation:YES
-//                                 likeBt:_bt_suspendLike
-//                                shareBt:_bt_suspendShare] ;
-        [self letSuspendBtOnOrOff] ;
+    if (!decelerate) {
+        [self showPostButton:self.btSendArticle] ;
     }
+//    if (self.isMultiType && !decelerate)
+//    {
+////        [self controlBottomBarShowOrNot] ;
+////        [self suspendButtonRunAnimation:YES
+////                                 likeBt:_bt_suspendLike
+////                                shareBt:_bt_suspendShare] ;
+//        [self letSuspendBtOnOrOff] ;
+//    }
 }
 
 - (void)letSuspendBtOnOrOff
@@ -1389,6 +1402,10 @@ static NSString * const CellId_replyCell = @"ReplyCell" ;
     
 }
 */
+
+
+
+
 
 
 #pragma mark --

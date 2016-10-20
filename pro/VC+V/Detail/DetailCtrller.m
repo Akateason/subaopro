@@ -229,10 +229,14 @@ static float klength_backbutton = 44. ;
 
 
 #pragma mark - UIWebView Delegate Methods
--(void)webViewDidFinishLoad:(UIWebView *)webView
+static NSString *const kURL_YZB     = @"yizhibo.com" ;
+static NSString *const kURL_WEIBO   = @"weibo." ;
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    NSLog(@"") ;
-    if ([webView.request.URL.absoluteString containsString:@"http://www.yizhibo.com"]) {
+    NSLog(@"webView.request.URL.absoluteString : %@",webView.request.URL.absoluteString) ;
+    if ([webView.request.URL.absoluteString containsString:kURL_YZB] || [webView.request.URL.absoluteString containsString:kURL_WEIBO])
+    {
         _webView.frame = APPFRAME ;
         _webView.delegate = nil ;
         [_table reloadData] ;

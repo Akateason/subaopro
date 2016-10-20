@@ -21,6 +21,17 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mFY-xe-IZP">
+                                <rect key="frame" x="280" y="490" width="41" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="41" id="XqV-3m-kh0"/>
+                                    <constraint firstAttribute="height" constant="41" id="Y34-jq-3Ig"/>
+                                </constraints>
+                                <state key="normal" image="btSendArticle"/>
+                                <connections>
+                                    <action selector="btSendArticleOnClick:" destination="ahc-io-oUJ" eventType="touchUpInside" id="9fu-TC-KPl"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLx-qO-d5e">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                                 <subviews>
@@ -83,14 +94,17 @@
                             <constraint firstItem="BUv-S7-1iW" firstAttribute="top" secondItem="AVI-yo-qws" secondAttribute="bottom" id="Mji-FZ-VkG"/>
                             <constraint firstItem="lLx-qO-d5e" firstAttribute="leading" secondItem="VeR-dO-vjv" secondAttribute="leading" id="NWR-Uh-NML"/>
                             <constraint firstAttribute="trailing" secondItem="AVI-yo-qws" secondAttribute="trailing" id="RdI-oo-q4P"/>
+                            <constraint firstItem="mFY-xe-IZP" firstAttribute="centerX" secondItem="VeR-dO-vjv" secondAttribute="centerX" id="Rlh-9V-aUQ"/>
                             <constraint firstItem="lLx-qO-d5e" firstAttribute="top" secondItem="VeR-dO-vjv" secondAttribute="top" id="SbC-JO-EPJ"/>
                             <constraint firstAttribute="trailing" secondItem="lLx-qO-d5e" secondAttribute="trailing" id="YuK-7h-9LQ"/>
+                            <constraint firstItem="BUv-S7-1iW" firstAttribute="top" secondItem="mFY-xe-IZP" secondAttribute="bottom" constant="20" id="o5e-iQ-ghc"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="发现" id="LPe-mS-OS3"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="btSendArticle" destination="mFY-xe-IZP" id="xKN-B8-y4k"/>
                         <outlet property="schbarbg" destination="lLx-qO-d5e" id="f2G-hy-l1c"/>
                         <outlet property="schbarbg2" destination="o91-Dq-IQ7" id="xbe-fY-EoQ"/>
                         <outlet property="searchDisplayController" destination="CiR-9i-roe" id="nZI-Kw-Oex"/>
@@ -299,6 +313,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="btSendArticle" width="41" height="41"/>
         <image name="btn_find_search" width="21" height="21"/>
     </resources>
 </document>

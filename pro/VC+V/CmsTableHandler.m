@@ -242,11 +242,11 @@ static int const kPageSize = 20 ;
     }
     // top
     else if (section == 1) {
-        return (!self.topList) ? 0 : self.topList.count ;
+        return (!self.topList.count) ? 0 : self.topList.count ;
     }
     // content
     else if (section == 2) {
-        return (!self.dataList) ? 0 : self.dataList.count ;
+        return (!self.dataList.count) ? 0 : self.dataList.count ;
     }
     
     return 0 ;

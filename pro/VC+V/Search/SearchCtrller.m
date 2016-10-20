@@ -91,6 +91,12 @@ static const int  kSize  =  20  ;
 #pragma mark - action
 - (IBAction)btCancelOnClick:(id)sender
 {
+    if (self.searchBar.text.length == 0) {
+        [self dismissViewControllerAnimated:YES
+                                 completion:^{}] ;
+        return ;
+    }
+    
     if ([self.searchBar isFirstResponder]) {
         [self.searchBar resignFirstResponder] ;
     }

@@ -51,6 +51,7 @@
 		<string>sinaweibo</string>
 		<string>weibosdk</string>
 		<string>weibosdk2.5</string>
+		<string>subao</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

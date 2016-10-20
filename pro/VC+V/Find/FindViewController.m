@@ -20,6 +20,7 @@
 #import "UserCenterController.h"
 #import "DetailSubaoCtrller.h"
 #import "DetailSubaoCtrller+TaskModuleTransition.h"
+#import "RootCtrl+ActionJumpToSubao.h"
 
 
 float const SIZE_OF_PAGE = 20 ;
@@ -33,6 +34,7 @@ float const SIZE_OF_PAGE = 20 ;
 @property (weak, nonatomic) IBOutlet UIView         *schbarbg;
 @property (weak, nonatomic) IBOutlet UIView         *schbarbg2;
 @property (weak, nonatomic) IBOutlet RootTableView  *table;
+@property (weak, nonatomic) IBOutlet UIButton *btSendArticle;
 
 @property (nonatomic,strong) dispatch_queue_t       myQueue ;
 @property (nonatomic,strong)  NSArray               *articleList ;
@@ -51,6 +53,10 @@ float const SIZE_OF_PAGE = 20 ;
 }
 
 #pragma mark - action
+- (IBAction)btSendArticleOnClick:(id)sender
+{
+    [self jump2subaoAction] ;
+}
 
 - (IBAction)schbarOnClick:(id)sender
 {
@@ -228,13 +234,10 @@ float const SIZE_OF_PAGE = 20 ;
                                AndWithCommentID:0
                                        FromRect:CGRectZero
                                         imgSend:nil] ;
-    //self.fromRect
-    //self.imgTempWillSend
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSInteger section = indexPath.section ;
     return [tableView fd_heightForCellWithIdentifier:HomeCellID
                                     cacheByIndexPath:indexPath
                                        configuration:^(HomeCell *cell) {
@@ -270,6 +273,28 @@ static NSString *const kFooterIdentifer = @"kFooterIdentifer" ;
 {
     return 0. ;
 }
+
+#pragma mark --
+#pragma mark - UIScrollViewDelegate Methods
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self hidePostButton:self.btSendArticle] ;
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self showPostButton:self.btSendArticle] ;
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
+                  willDecelerate:(BOOL)decelerate
+{
+    if (!decelerate) {
+        [self showPostButton:self.btSendArticle] ;
+    }
+}
+
+
 
 
 

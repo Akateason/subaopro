@@ -155,7 +155,7 @@ color_pageControl = _color_pageControl ;
     if (context == &self->_kindID)
     {
         assert([NSThread isMainThread]);
-        NSLog(@"chage : %@",change) ;
+//        NSLog(@"chage : %@",change) ;
         
         id old = change[@"old"] ;
         id new = change[@"new"] ;

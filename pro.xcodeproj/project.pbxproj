@@ -307,6 +307,7 @@
 		D7CE2A001DAF6DE800FF452C /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CE29FA1DAF6DE800FF452C /* SVProgressHUD.m */; };
 		D7CE2A011DAF6DE800FF452C /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CE29FC1DAF6DE800FF452C /* SVRadialGradientLayer.m */; };
 		D7CE2A281DB4C09800FF452C /* XTSearchHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CE2A271DB4C09800FF452C /* XTSearchHandler.m */; };
+		D7CE2A4A1DB8989200FF452C /* RootCtrl+ActionJumpToSubao.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CE2A491DB8989200FF452C /* RootCtrl+ActionJumpToSubao.m */; };
 		D7E0F49F1D868FA600EA663B /* UIImageView+QNExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F49E1D868FA600EA663B /* UIImageView+QNExtention.m */; };
 		D7E0F4AB1D86AC9300EA663B /* AlertBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F4A21D86AC9300EA663B /* AlertBackgroundView.m */; };
 		D7E0F4AC1D86AC9300EA663B /* ShareAlertV.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F4A41D86AC9300EA663B /* ShareAlertV.m */; };
@@ -916,6 +917,8 @@
 		D7CE29FC1DAF6DE800FF452C /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		D7CE2A261DB4C09800FF452C /* XTSearchHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTSearchHandler.h; sourceTree = "<group>"; };
 		D7CE2A271DB4C09800FF452C /* XTSearchHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTSearchHandler.m; sourceTree = "<group>"; };
+		D7CE2A481DB8989200FF452C /* RootCtrl+ActionJumpToSubao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RootCtrl+ActionJumpToSubao.h"; path = "Find/RootCtrl+ActionJumpToSubao.h"; sourceTree = "<group>"; };
+		D7CE2A491DB8989200FF452C /* RootCtrl+ActionJumpToSubao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RootCtrl+ActionJumpToSubao.m"; path = "Find/RootCtrl+ActionJumpToSubao.m"; sourceTree = "<group>"; };
 		D7E0F49D1D868FA600EA663B /* UIImageView+QNExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+QNExtention.h"; sourceTree = "<group>"; };
 		D7E0F49E1D868FA600EA663B /* UIImageView+QNExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+QNExtention.m"; sourceTree = "<group>"; };
 		D7E0F4A11D86AC9300EA663B /* AlertBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertBackgroundView.h; sourceTree = "<group>"; };
@@ -1894,6 +1897,8 @@
 			children = (
 				D76E83E71D73E8B90014FDEA /* FindViewController.h */,
 				D76E83E81D73E8B90014FDEA /* FindViewController.m */,
+				D7CE2A481DB8989200FF452C /* RootCtrl+ActionJumpToSubao.h */,
+				D7CE2A491DB8989200FF452C /* RootCtrl+ActionJumpToSubao.m */,
 				D7CE29B11DAA2A0600FF452C /* MultiDetailCtrller */,
 				D7CE29A81DAA26EB00FF452C /* Praised */,
 				D7CE29851DAA22A700FF452C /* DetailSubao */,
@@ -2646,6 +2651,7 @@
 				D7E0F4AB1D86AC9300EA663B /* AlertBackgroundView.m in Sources */,
 				D75CC5A51C2A965000E590E6 /* AFURLRequestSerialization.m in Sources */,
 				D79CE5941D585C6E0023E1AA /* NSTimer+Addition.m in Sources */,
+				D7CE2A4A1DB8989200FF452C /* RootCtrl+ActionJumpToSubao.m in Sources */,
 				D75CC6041C2A965000E590E6 /* UICollectionViewLeftAlignedLayout.m in Sources */,
 				D73990831D4883C0003E633D /* ShopNavCtrller.m in Sources */,
 				D75CC6021C2A965000E590E6 /* UIView+WebCacheOperation.m in Sources */,
