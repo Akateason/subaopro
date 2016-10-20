@@ -253,8 +253,7 @@
 // Ask The "User Head Picture" has cached or not . if not , download it .
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        UIImage *headImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:self.theUser.u_headpic
-                                                                        withCacheWidth:APPFRAME.size.width] ;
+        UIImage *headImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:self.theUser.u_headpic] ;
         if (!headImage)
         {
             [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:self.theUser.u_headpic]

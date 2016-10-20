@@ -422,8 +422,7 @@
 {
     if (!_cacheImage)
     {
-        _cacheImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:self.articleSuper.img
-                                                                 withCacheWidth:APPFRAME.size.width] ;
+        _cacheImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:self.articleSuper.img] ;
     }
     return _cacheImage ;
 }
@@ -1079,7 +1078,7 @@ static NSString * const CellId_replyCell = @"ReplyCell" ;
     [alertView addButtonWithTitle:WD_CORRECT
                              type:SIAlertViewButtonTypeDestructive
                           handler:^(SIAlertView *alertView) {
-                              UIImage *picWillSave = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:article.img withCacheWidth:APPFRAME.size.width] ;
+                              UIImage *picWillSave = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:article.img] ;
                               [CommonFunc saveImageToLibrary:picWillSave] ;
                           }] ;
     [alertView addButtonWithTitle:WD_CANCEL

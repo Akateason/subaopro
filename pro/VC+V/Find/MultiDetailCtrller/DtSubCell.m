@@ -160,8 +160,7 @@
     
     if (subArticle.isUploaded)
     {
-        UIImage *cacheImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:subArticle.img
-                                                                         withCacheWidth:APPFRAME.size.width] ;
+        UIImage *cacheImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:subArticle.img] ;
         CGFloat cacheImgWidth = !cacheImage.size.width ? APPFRAME.size.width : cacheImage.size.width ;
         imgHeight = (!cacheImage) ? imgHeight : APPFRAME.size.width * cacheImage.size.height / cacheImgWidth ;
     }

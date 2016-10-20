@@ -10,7 +10,6 @@
 #import "SDWebImageDecoder.h"
 #import "UIImage+MultiFormat.h"
 #import <CommonCrypto/CommonDigest.h>
-#import "CommonFunc.h"
 
 // See https://github.com/rs/SDWebImage/pull/1141 for discussion
 @interface AutoPurgeCache : NSCache
@@ -263,13 +262,6 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
     return [self.memCache objectForKey:key];
 }
 
-
-- (UIImage *)imageFromDiskCacheForKey:(NSString *)key withCacheWidth:(CGFloat)widthForImgView
-{
-    key = [CommonFunc dealQiNiuUrl:key
-                       imgViewSize:CGSizeMake(widthForImgView, 0)] ;
-    return [self imageFromDiskCacheForKey:key] ;
-}
 
 - (UIImage *)imageFromDiskCacheForKey:(NSString *)key {
     // First check the in-memory cache...

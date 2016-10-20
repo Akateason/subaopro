@@ -2913,6 +2913,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.subao.pro;
 				PRODUCT_NAME = pro;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -2946,6 +2947,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.subao.pro;
 				PRODUCT_NAME = pro;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

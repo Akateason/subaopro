@@ -388,11 +388,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pro/VC+V/Find/UserCtrller/UserCenterController.m"
-            timestampString = "497697724.743388"
+            timestampString = "498653623.645038"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "362"
-            endingLineNumber = "362"
+            startingLineNumber = "361"
+            endingLineNumber = "361"
             landmarkName = "-runSubao:With:"
             landmarkType = "5">
          </BreakpointContent>

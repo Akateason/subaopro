@@ -13,8 +13,8 @@
 
 - (void)photoFromQiNiu:(NSString *)imgUrl
 {
-    NSString *formatString = [NSString stringWithFormat:@"?imageView/2/w/%d/h/%d",(int)APP_WIDTH,(int)APP_HEIGHT] ;
-    imgUrl = [imgUrl stringByAppendingString:formatString] ;
+//    NSString *formatString = [NSString stringWithFormat:@"?imageView/2/w/%d/h/%d",(int)APP_WIDTH,(int)APP_HEIGHT] ;
+//    imgUrl = [imgUrl stringByAppendingString:formatString] ;
     [self sd_setImageWithURL:[NSURL URLWithString:imgUrl]] ;
 }
 
