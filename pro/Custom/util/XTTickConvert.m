@@ -28,8 +28,8 @@
     NSDate *date111 = [NSDate dateWithTimeIntervalSince1970:timeInterval];
     //    NSLog(@"date:%@",date111);
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateStyle:NSDateFormatterMediumStyle];
-    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateStyle:NSDateFormatterFullStyle];
+    [formatter setTimeStyle:NSDateFormatterFullStyle];
     [formatter setDateFormat:formatStr];//@"yyyy年MM月dd日 HH:mm:ss"
     [formatter setLocale:[NSLocale currentLocale]];
     NSString* confromTimespStr = [formatter stringFromDate:date111];

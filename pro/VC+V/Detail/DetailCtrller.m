@@ -8,30 +8,68 @@
 
 #import "DetailCtrller.h"
 #import "ShareUtils.h"
-#import "ParallaxHeaderView.h"
-#import "DetailParallaxHeader.h"
 #import "Content.h"
 #import "TagListCtrller.h"
 #import "ShareAlertV.h"
 #import "UIImage+AddFunction.h"
 #import "UrlRequestHeader.h"
+#import "TagCollectionCell.h"
+#import "Tag.h"
+#import "UIImageView+WebCache.h"
+#import "ZQWebViewHeader.h"
 
-@interface DetailCtrller () <UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,DetailParallaxHeaderDelegate,UIWebViewDelegate,ShareAlertVDelegate>
-{
-    UIWebView *_webView ;
-}
+
+@interface DetailCtrller () <UIScrollViewDelegate,UIWebViewDelegate,ShareAlertVDelegate,UICollectionViewDataSource,UICollectionViewDelegate,ZQWebViewHeaderDelegate>
+
 @property (nonatomic,strong) UIButton *backButton ;
 @property (nonatomic,strong) UIButton *shareButton ;
-@property (weak, nonatomic) IBOutlet UITableView *table;
-@property (nonatomic,strong) ParallaxHeaderView *paralaxHeader ;
-@property (nonatomic,strong) DetailParallaxHeader *detaiHeader ;
+
+@property (nonatomic,strong)ZQWebViewHeader *webView;
+
+@property (nonatomic,strong) UIImageView *navImageView ;
+@property (nonatomic,strong) UILabel     *titleLabel ;
+@property (strong, nonatomic) UICollectionView *collectionView;
 
 @end
 
 @implementation DetailCtrller
 
-#pragma mark - DetailParallaxHeaderDelegate
+#pragma mark - ZQWebViewHeaderDelegate
+- (void)displayNavigationBar:(BOOL)bShow
+{
+    if (bShow && self.navImageView.superview == nil) {
+        
+        self.navImageView.transform = CGAffineTransformTranslate(self.navImageView.transform, 0, -68) ;
+        
+        [UIView transitionWithView:self.view
+                          duration:0.5
+                           options:UIViewAnimationOptionCurveLinear
+                        animations:^{
+                            self.navImageView.transform = CGAffineTransformIdentity ;
+                            
+                            [self.view addSubview:self.navImageView] ;
+                        } completion:^(BOOL finished) {
+                            
+                        }] ;
+        
+        
+        [self.view bringSubviewToFront:self.backButton] ;
+    }
+    else if (!bShow && self.navImageView.superview != nil) {
+        
+        [UIView transitionWithView:self.view
+                          duration:0.5
+                           options:UIViewAnimationOptionCurveLinear
+                        animations:^{
+                            self.navImageView.transform = CGAffineTransformTranslate(self.navImageView.transform, 0, -68) ;
+                        } completion:^(BOOL finished) {
+                            [self.navImageView removeFromSuperview] ;
+                        }] ;
+        
+    }
+}
 
+#pragma mark - DetailParallaxHeaderDelegate
 - (void)tagSelected:(Tag *)atag
 {
     [self performSegueWithIdentifier:@"detail2taglist" sender:atag] ; //  send tag .
@@ -39,12 +77,36 @@
 
 
 #pragma mark - prop
+- (UILabel *)titleLabel
+{
+    if (!_titleLabel) {
+        float flex = 60. ;
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(flex,
+                                                                17,
+                                                                APP_WIDTH - 2 * flex,
+                                                                48)] ;
+        _titleLabel.textColor = [UIColor whiteColor] ;
+        _titleLabel.font = [UIFont systemFontOfSize:15.] ;
+        _titleLabel.numberOfLines = 1 ;
+        _titleLabel.text = self.content.title ;
+        _titleLabel.textAlignment = NSTextAlignmentCenter ;
+    }
+    return _titleLabel ;
+}
+
+- (UIImageView *)navImageView
+{
+    if (!_navImageView) {
+        _navImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, APP_WIDTH, 68)] ;
+        _navImageView.image = [UIImage imageNamed:@"HomepageNavBar"] ;
+        [_navImageView addSubview:self.titleLabel] ;
+    }
+    return  _navImageView ;
+}
 
 - (void)setContent:(Content *)content
 {
     _content = content ;
-    
-    self.detaiHeader.aContent = content ;
     
     [ServerRequest addReadWithContentID:content.contentId
                                 success:nil
@@ -56,18 +118,6 @@
     return CGSizeMake(APP_WIDTH, APP_WIDTH * 3. / 4.) ;
 }
 
-- (DetailParallaxHeader *)detaiHeader
-{
-    if (!_detaiHeader) {
-        CGRect rect = CGRectZero ;
-        rect.size = [[self class] getHeaderSize] ;
-        _detaiHeader = [[[NSBundle mainBundle] loadNibNamed:@"DetailParallaxHeader" owner:self options:nil] lastObject] ;
-        _detaiHeader.frame = rect ;
-        _detaiHeader.delegate = self ;
-    }
-    return _detaiHeader ;
-}
-
 static float kflex_backbutton = 30. ;
 static float klength_backbutton = 44. ;
 
@@ -75,7 +125,7 @@ static float klength_backbutton = 44. ;
 {
     if (!_backButton) {
         _backButton = [[UIButton alloc] init] ;
-        CGRect rect = CGRectMake(kflex_backbutton - 10., kflex_backbutton, klength_backbutton, klength_backbutton) ;
+        CGRect rect = CGRectMake(10., 20., klength_backbutton, klength_backbutton) ;
         _backButton.frame = rect ;
         [_backButton setImage:[UIImage imageNamed:@"btback"] forState:0] ;
         [_backButton addTarget:self action:@selector(backButtonOnclick) forControlEvents:UIControlEventTouchUpInside] ;
@@ -110,7 +160,7 @@ static float klength_backbutton = 44. ;
 #pragma mark - func
 - (UIImage *)thumbnail
 {
-    UIImage *originalImg = self.detaiHeader.imageView.image ;
+    UIImage *originalImg = self.webView.headerImageView.image ;
     UIImage *thumbnail = [UIImage thumbnailWithImage:originalImg size:CGSizeMake(80, 80)] ;
     return thumbnail ;
 }
@@ -158,98 +208,78 @@ static float klength_backbutton = 44. ;
 }
 
 
+#define kHeaderHeight           (float)(APP_WIDTH * 3.0 / 4.0)
 
 #pragma mark - life
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.paralaxHeader = ({
-        ParallaxHeaderView *header = [ParallaxHeaderView parallaxHeaderViewWithSubView:self.detaiHeader] ;
-        header ;
-    }) ;
+
     
-    _table.delegate = self ;
-    _table.dataSource = self ;
-    _table.separatorStyle = 0 ;
-    _table.tableHeaderView = self.paralaxHeader ;
+    _webView = [[ZQWebViewHeader alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width ,self.view.frame.size.height)];
+    _webView.xtDelegate = self ;
+    [self.view addSubview:_webView];
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[self.content getFinalLink]]]];
+
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO] ;
     [self.view addSubview:self.backButton] ;
     [self.view addSubview:self.shareButton] ;
     
     
-    _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, APP_WIDTH, 1)] ;
-    _webView.delegate = self ;
-    _webView.scrollView.scrollEnabled = NO ;
-    
-    [_webView loadRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[self.content getFinalLink]]]] ;
-}
+    // collectionView
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init] ;
+    flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal ;
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(8, kHeaderHeight - 38, APP_WIDTH - 16, 30) collectionViewLayout:flowLayout] ;
+    self.collectionView.backgroundColor = [UIColor clearColor] ;
+    [self.webView.scrollView addSubview:self.collectionView] ;
+    self.collectionView.delegate = self ;
+    self.collectionView.dataSource = self ;
+    [self.collectionView registerNib:[UINib nibWithNibName:identifier_TagCollectionCell bundle:nil] forCellWithReuseIdentifier:identifier_TagCollectionCell] ;
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated] ;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [(ParallaxHeaderView *)self.table.tableHeaderView refreshBlurViewForNewImage] ;
     [super viewDidAppear:animated] ;
+    
+    self.webView.content = self.content ;
 }
 
-
-#pragma mark - UITableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+#pragma mark - collectionViewDelegate
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 1 ;
+    return self.content.tags.count ;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifier = @"cell" ;
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier] ;
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] ;
-        [cell.contentView addSubview:_webView] ;
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone] ;
-    }
+    TagCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier_TagCollectionCell forIndexPath:indexPath] ;
+    cell.aTag = (Tag *)(self.content.tags[indexPath.row]) ;
     return cell ;
 }
 
-#pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout*)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return _webView.frame.size.height;
+    Tag *atag = (Tag *)(self.content.tags[indexPath.row]) ;
+    UIFont *font = [UIFont systemFontOfSize:11.0f] ;
+    CGSize size = CGSizeMake(APP_WIDTH, 30.) ;
+    CGSize resultSize = [atag.name boundingRectWithSize:size
+                                                options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                             attributes:@{NSFontAttributeName:font}
+                                                context:nil].size ;
+    resultSize.width += 10. ;
+    resultSize.height = 30. ;
+    return resultSize ;
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.paralaxHeader layoutHeaderViewForScrollViewOffset:scrollView.contentOffset] ;
+    Tag *atag = (Tag *)(self.content.tags[indexPath.row]) ;
+    [self tagSelected:atag] ;
 }
-
-
-#pragma mark - UIWebView Delegate Methods
-static NSString *const kURL_YZB     = @"yizhibo.com" ;
-static NSString *const kURL_WEIBO   = @"weibo." ;
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    NSLog(@"webView.request.URL.absoluteString : %@",webView.request.URL.absoluteString) ;
-    if ([webView.request.URL.absoluteString containsString:kURL_YZB] || [webView.request.URL.absoluteString containsString:kURL_WEIBO])
-    {
-        _webView.frame = APPFRAME ;
-        _webView.delegate = nil ;
-        [_table reloadData] ;
-        return ;
-    }
-    
-    CGFloat height = _webView.scrollView.contentSize.height ;
-    height += 20. ;
-    _webView.frame = CGRectMake(_webView.frame.origin.x,_webView.frame.origin.y, APP_WIDTH, height) ;
-    [_table reloadData] ;
-}
-
-
 
 
 - (void)didReceiveMemoryWarning {

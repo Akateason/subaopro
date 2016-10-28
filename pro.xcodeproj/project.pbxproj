@@ -308,6 +308,7 @@
 		D7CE2A011DAF6DE800FF452C /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CE29FC1DAF6DE800FF452C /* SVRadialGradientLayer.m */; };
 		D7CE2A281DB4C09800FF452C /* XTSearchHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CE2A271DB4C09800FF452C /* XTSearchHandler.m */; };
 		D7CE2A4A1DB8989200FF452C /* RootCtrl+ActionJumpToSubao.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CE2A491DB8989200FF452C /* RootCtrl+ActionJumpToSubao.m */; };
+		D7D2A7F31DC2F5490042EB92 /* ZQWebViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D2A7F21DC2F5490042EB92 /* ZQWebViewHeader.m */; };
 		D7E0F49F1D868FA600EA663B /* UIImageView+QNExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F49E1D868FA600EA663B /* UIImageView+QNExtention.m */; };
 		D7E0F4AB1D86AC9300EA663B /* AlertBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F4A21D86AC9300EA663B /* AlertBackgroundView.m */; };
 		D7E0F4AC1D86AC9300EA663B /* ShareAlertV.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F4A41D86AC9300EA663B /* ShareAlertV.m */; };
@@ -919,6 +920,8 @@
 		D7CE2A271DB4C09800FF452C /* XTSearchHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTSearchHandler.m; sourceTree = "<group>"; };
 		D7CE2A481DB8989200FF452C /* RootCtrl+ActionJumpToSubao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RootCtrl+ActionJumpToSubao.h"; path = "Find/RootCtrl+ActionJumpToSubao.h"; sourceTree = "<group>"; };
 		D7CE2A491DB8989200FF452C /* RootCtrl+ActionJumpToSubao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RootCtrl+ActionJumpToSubao.m"; path = "Find/RootCtrl+ActionJumpToSubao.m"; sourceTree = "<group>"; };
+		D7D2A7F11DC2F5490042EB92 /* ZQWebViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQWebViewHeader.h; sourceTree = "<group>"; };
+		D7D2A7F21DC2F5490042EB92 /* ZQWebViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQWebViewHeader.m; sourceTree = "<group>"; };
 		D7E0F49D1D868FA600EA663B /* UIImageView+QNExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+QNExtention.h"; sourceTree = "<group>"; };
 		D7E0F49E1D868FA600EA663B /* UIImageView+QNExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+QNExtention.m"; sourceTree = "<group>"; };
 		D7E0F4A11D86AC9300EA663B /* AlertBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertBackgroundView.h; sourceTree = "<group>"; };
@@ -1935,6 +1938,7 @@
 		D76F758A1D65564A00D522B6 /* DetailCtrller */ = {
 			isa = PBXGroup;
 			children = (
+				D7D2A7F01DC2F5490042EB92 /* WebviewHeader */,
 				D76E83751D6C2D7F0014FDEA /* DetailCtrller.h */,
 				D76E83761D6C2D7F0014FDEA /* DetailCtrller.m */,
 				D76E83D31D705DE20014FDEA /* DetailParallaxHeader.h */,
@@ -2289,6 +2293,16 @@
 				D7CE29FC1DAF6DE800FF452C /* SVRadialGradientLayer.m */,
 			);
 			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		D7D2A7F01DC2F5490042EB92 /* WebviewHeader */ = {
+			isa = PBXGroup;
+			children = (
+				D7D2A7F11DC2F5490042EB92 /* ZQWebViewHeader.h */,
+				D7D2A7F21DC2F5490042EB92 /* ZQWebViewHeader.m */,
+			);
+			name = WebviewHeader;
+			path = Detail/WebviewHeader;
 			sourceTree = "<group>";
 		};
 		D7E0F4A01D86AC9300EA663B /* ShareAlert */ = {
@@ -2681,6 +2695,7 @@
 				D75CC5D81C2A965000E590E6 /* MJRefreshGifHeader.m in Sources */,
 				D75CC5EC1C2A965000E590E6 /* QNConfiguration.m in Sources */,
 				D75CC5A31C2A965000E590E6 /* AFSecurityPolicy.m in Sources */,
+				D7D2A7F31DC2F5490042EB92 /* ZQWebViewHeader.m in Sources */,
 				D75CC5EA1C2A965000E590E6 /* QNUserAgent.m in Sources */,
 				D75CC44E1C2A95DE00E590E6 /* ServerRequest.m in Sources */,
 				D7A812941D9D0B28001084EB /* ArticleTopic.m in Sources */,
