@@ -10,20 +10,14 @@
 @class Content ;
 
 @protocol ZQWebViewHeaderDelegate <NSObject>
-
 - (void)displayNavigationBar:(BOOL)bShow ;
-
 @end
 
 @interface ZQWebViewHeader : UIWebView
 
 @property (nonatomic,strong) Content *content ;
-
 @property (nonatomic,weak) id <ZQWebViewHeaderDelegate> xtDelegate ;
 
 @property (strong, nonatomic) UIImageView *headerImageView;
-//webview头
 @property (nonatomic,strong)UIView *header;
-//调整头区高度
-- (void)setHeaderHight:(CGFloat)hight animate:(BOOL)animate;
 @end

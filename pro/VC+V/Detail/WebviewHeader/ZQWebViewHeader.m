@@ -15,13 +15,6 @@
 
 
 CG_INLINE CGRect
-CGRectSetX(CGRect rect, CGFloat x)
-{
-    rect.origin.x = x;
-    return rect;
-}
-
-CG_INLINE CGRect
 CGRectSetY(CGRect rect, CGFloat y)
 {
     rect.origin.y = y;
@@ -50,7 +43,10 @@ CGRectSetH(CGRect rect, CGFloat h)
     if (self) {
         _zqBrowserView = [self.scrollView.subviews lastObject];
         self.header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, APP_WIDTH, (float)(APP_WIDTH * 3.0 / 4.0))];
-        [self.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
+        [self.scrollView addObserver:self
+                          forKeyPath:@"contentOffset"
+                             options:NSKeyValueObservingOptionNew
+                             context:nil];
     }
     return self;
 }
@@ -87,22 +83,15 @@ CGRectSetH(CGRect rect, CGFloat h)
 
 }
 
-- (void)setHeaderHight:(CGFloat)hight animate:(BOOL)animate {
-    
-    [UIView animateWithDuration:animate ? 0.3 : 0
-                     animations:^{
-        _header.frame = CGRectSetH(_header.frame, hight);
-        _zqBrowserView.frame = CGRectSetY(_zqBrowserView.frame, hight);
-    } completion:^(BOOL finished) {
-//        [self reloadFooterFrame];
-    }];
-}
-
 
 - (void)prepareForBlurImages
 {
     [self.blurImages addObject:self.headerImageView.image];
-    [self.blurImages addObject:[self.headerImageView.image boxblurImageWithBlur:0.5]];
+    for (int i = 1; i <= 9; i++)
+    {
+        float rate = i * 0.1 ;
+        [self.blurImages addObject:[self.headerImageView.image boxblurImageWithBlur:rate]];
+    }
 }
 
 
@@ -128,23 +117,27 @@ CGRectSetH(CGRect rect, CGFloat h)
     [self.scrollView removeObserver:self forKeyPath:@"contentOffset"];
 }
 
-
-//UIScrollViewDelegate
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
 {
-    CGFloat offset = scrollView.contentOffset.y;
-    [self animationForScroll:offset];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    CGFloat offset = self.scrollView.contentOffset.y;
-    [self animationForScroll:offset];
+    if ([keyPath isEqualToString:@"contentOffset"]) {
+        CGFloat offset = self.scrollView.contentOffset.y;
+        [self animationForScroll:offset];
+    }
+    else {
+        [super observeValueForKeyPath:keyPath
+                             ofObject:object
+                               change:change
+                              context:context];
+    }
 }
 
 
 - (void)animationForScroll:(CGFloat) offset
 {
-    NSLog(@"offsety %@",@(offset)) ;
+//    NSLog(@"offsety %@",@(offset)) ;
     
     CATransform3D headerTransform = CATransform3DIdentity;
     // DOWN -----------------
