@@ -301,6 +301,7 @@
                             <constraint firstAttribute="trailing" secondItem="FRQ-Vt-DXU" secondAttribute="trailing" id="x8b-0S-vOB"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="aJs-j7-YsO"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>

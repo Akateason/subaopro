@@ -21,7 +21,6 @@ static int IMAGEVIEW_COUNT = 3 ;
 @property (nonatomic,strong) UITableView        *rightTable ;
 
 @property (nonatomic)        int         allCount ;
-@property (nonatomic,strong) NSArray     *list_handlers ; // Class `XTTableDataDelegate` objects list.
 
 @end
 
@@ -95,10 +94,10 @@ static int IMAGEVIEW_COUNT = 3 ;
         [(XTTableViewRootHandler *)_list_handlers[1] handleTableDatasourceAndDelegate:_rightTable] ;
         
         if ([_list_handlers[self.allCount - 1] isKindOfClass:[CmsTableHandler class]]) {
-            [((CmsTableHandler *)_list_handlers[self.allCount - 1]) table:_leftTable IsFromCenter:false] ;
+            [((CmsTableHandler *)_list_handlers[self.allCount - 1]) tableIsFromCenter:false] ;
         }
         if ([_list_handlers[1] isKindOfClass:[CmsTableHandler class]]) {
-            [((CmsTableHandler *)_list_handlers[1]) table:_rightTable IsFromCenter:false] ;
+            [((CmsTableHandler *)_list_handlers[1]) tableIsFromCenter:false] ;
         }
     }
     
@@ -218,11 +217,11 @@ static int IMAGEVIEW_COUNT = 3 ;
 - (void)resetOffsetYOfEveryTable
 {
     // reset tableview offset Y.
-    [((XTTableViewRootHandler *)_list_handlers[_currentIndex]) refreshOffsetYWithTable:_centerTable] ;
+    [((XTTableViewRootHandler *)_list_handlers[_currentIndex]) refreshOffsetY] ;
     int leftIndex   = (_currentIndex + self.allCount - 1) % self.allCount ;
     int rightIndex  = (_currentIndex + 1) % self.allCount ;
-    [(XTTableViewRootHandler *)_list_handlers[leftIndex] refreshOffsetYWithTable:_leftTable] ;
-    [(XTTableViewRootHandler *)_list_handlers[rightIndex] refreshOffsetYWithTable:_rightTable] ;
+    [(XTTableViewRootHandler *)_list_handlers[leftIndex] refreshOffsetY] ;
+    [(XTTableViewRootHandler *)_list_handlers[rightIndex] refreshOffsetY] ;
     
     // reset center table banner cell 's loop timer to origin .
     [self resetLoopTimer] ;
@@ -237,14 +236,14 @@ static int IMAGEVIEW_COUNT = 3 ;
     int leftIndex   = (_currentIndex + self.allCount - 1) % self.allCount ;
     int rightIndex  = (_currentIndex + 1) % self.allCount ;
     if ([_list_handlers[leftIndex] isKindOfClass:[CmsTableHandler class]]) {
-        [((CmsTableHandler *)_list_handlers[leftIndex]) table:_leftTable IsFromCenter:false] ;
+        [((CmsTableHandler *)_list_handlers[leftIndex]) tableIsFromCenter:false] ;
     }
     if ([_list_handlers[rightIndex] isKindOfClass:[CmsTableHandler class]]) {
-        [((CmsTableHandler *)_list_handlers[rightIndex]) table:_rightTable IsFromCenter:false] ;
+        [((CmsTableHandler *)_list_handlers[rightIndex]) tableIsFromCenter:false] ;
     }
     
     if ([_list_handlers[_currentIndex] isKindOfClass:[CmsTableHandler class]]) {
-        [((CmsTableHandler *)_list_handlers[_currentIndex]) table:_centerTable IsFromCenter:true] ;
+        [((CmsTableHandler *)_list_handlers[_currentIndex]) tableIsFromCenter:true] ;
     }
 }
 

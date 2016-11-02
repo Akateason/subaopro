@@ -7,13 +7,11 @@
 //
 
 #import "BannerCell.h"
-#import "TopLoopView.h"
 #import "CenterTableView.h"
 #import "Content.h"
 
 @interface BannerCell () <TopLoopViewDelegate>
 
-@property (nonatomic, strong) TopLoopView *loopScroll ;
 
 @end
 
@@ -84,21 +82,23 @@
 
 - (void)layoutHeaderViewForScrollViewOffset:(CGPoint)offset scrollView:(UIScrollView *)scrollView
 {
+    NSLog(@"offset.y : %@",@(offset.y)) ;
     if (offset.y >= 0)
     {
         // 上拉 , 显示loop中间的图片
-        if ([scrollView isKindOfClass:[CenterTableView class]]) {
+//        if ([scrollView isKindOfClass:[CenterTableView class]]) {
             CenterTableView *table = (CenterTableView *)scrollView ;
-            
+        
             if (![table.mj_header isRefreshing]) {
                 dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC);
                 dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) ;
                 dispatch_after(time, concurrentQueue, ^(void) {
-                    [self.loopScroll makeCenterImageHide:FALSE] ;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.loopScroll makeCenterImageHide:FALSE] ;
+                    }) ;
                 });
             }
-            
-        }
+//        }
         
     }
     else

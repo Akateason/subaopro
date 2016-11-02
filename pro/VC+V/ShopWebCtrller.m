@@ -8,6 +8,8 @@
 
 #import "ShopWebCtrller.h"
 
+#define kURL_wemart  @"http://www.wemart.cn/mobile/?chanId=&shelfNo=1889&sellerId=126&a=shelf&m=index&isHome=true"
+
 @interface ShopWebCtrller ()
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
@@ -25,7 +27,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.wemart.cn/mobile/?chanId=&shelfNo=1889&sellerId=126&a=shelf&m=index"]] ;
+    NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:kURL_wemart]] ;
     [self.webView loadRequest:request] ;
 }
 

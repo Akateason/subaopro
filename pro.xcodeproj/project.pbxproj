@@ -326,14 +326,14 @@
 			containerPortal = D75CC3B91C2A926100E590E6 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D75CC3C01C2A926100E590E6;
-			remoteInfo = GroupBuying;
+			remoteInfo = pro;
 		};
 		D75CC3E61C2A926200E590E6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D75CC3B91C2A926100E590E6 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D75CC3C01C2A926100E590E6;
-			remoteInfo = GroupBuying;
+			remoteInfo = pro;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -682,7 +682,6 @@
 		D75CC64C1C2A985500E590E6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D75CC64E1C2A986000E590E6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D75CC6501C2A986600E590E6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		D75CC6531C2A9D7200E590E6 /* pro */ = {isa = PBXFileReference; lastKnownFileType = folder; name = pro; path = /Volumes/Data/tutu/Documents/pro/pro; sourceTree = "<absolute>"; };
 		D75CC6541C2AA17700E590E6 /* ResultParsered.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultParsered.h; sourceTree = "<group>"; };
 		D75CC6551C2AA17700E590E6 /* ResultParsered.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultParsered.m; sourceTree = "<group>"; };
 		D75CC6571C2B9A1700E590E6 /* AppDelegateInitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegateInitial.h; sourceTree = "<group>"; };
@@ -1042,7 +1041,6 @@
 		D75CC3B81C2A926100E590E6 = {
 			isa = PBXGroup;
 			children = (
-				D75CC6531C2A9D7200E590E6 /* pro */,
 				D75CC40C1C2A95DD00E590E6 /* Prefix */,
 				D74266F51D49A629004D769B /* PrefixHeader.pch */,
 				D75CC3C31C2A926100E590E6 /* pro */,
@@ -1232,7 +1230,6 @@
 				D7E0F4A01D86AC9300EA663B /* ShareAlert */,
 				D76F75951D66F1D700D522B6 /* ParallaxHeaderView */,
 				D79CE58E1D585C340023E1AA /* XTLoopScroll */,
-				D79CE5781D5829E70023E1AA /* XTMultipleTables */,
 				D79CE57B1D5829E70023E1AA /* XTStretchSegment */,
 				D75CC4221C2A95DD00E590E6 /* XTNetReloader */,
 				D75CC4161C2A95DD00E590E6 /* MySearchBar.h */,
@@ -1988,7 +1985,7 @@
 				D79CE57A1D5829E70023E1AA /* XTMultipleTables.m */,
 			);
 			name = XTMultipleTables;
-			path = ../XTMultipleTables;
+			path = ../Custom/XTMultipleTables;
 			sourceTree = "<group>";
 		};
 		D79CE57B1D5829E70023E1AA /* XTStretchSegment */ = {
@@ -2013,6 +2010,7 @@
 		D79CE5841D582BAD0023E1AA /* IndexCtrller */ = {
 			isa = PBXGroup;
 			children = (
+				D79CE5781D5829E70023E1AA /* XTMultipleTables */,
 				D73990241D470A77003E633D /* IndexViewController.h */,
 				D73990251D470A77003E633D /* IndexViewController.m */,
 				D79CE5861D582FD60023E1AA /* CmsTableHandler.h */,
@@ -2347,7 +2345,7 @@
 			dependencies = (
 			);
 			name = pro;
-			productName = GroupBuying;
+			productName = pro;
 			productReference = D75CC3C11C2A926100E590E6 /* pro.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -2365,7 +2363,7 @@
 				D75CC3DC1C2A926200E590E6 /* PBXTargetDependency */,
 			);
 			name = proTests;
-			productName = GroupBuyingTests;
+			productName = proTests;
 			productReference = D75CC3DA1C2A926200E590E6 /* pro.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -2383,7 +2381,7 @@
 				D75CC3E71C2A926200E590E6 /* PBXTargetDependency */,
 			);
 			name = proUITests;
-			productName = GroupBuyingUITests;
+			productName = proUITests;
 			productReference = D75CC3E51C2A926200E590E6 /* pro.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
@@ -2970,9 +2968,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = GroupBuyingTests/Info.plist;
+				INFOPLIST_FILE = proTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.teason.GroupBuyingTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.teason.proTests;
 				PRODUCT_NAME = pro;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pro.app/pro";
 			};
@@ -2982,9 +2980,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = GroupBuyingTests/Info.plist;
+				INFOPLIST_FILE = proTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.teason.GroupBuyingTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.teason.proTests;
 				PRODUCT_NAME = pro;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pro.app/pro";
 			};
@@ -2993,11 +2991,11 @@
 		D75CC3F51C2A926200E590E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = GroupBuyingUITests/Info.plist;
+				INFOPLIST_FILE = proUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.teason.GroupBuyingUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.teason.proUITests;
 				PRODUCT_NAME = pro;
-				TEST_TARGET_NAME = GroupBuying;
+				TEST_TARGET_NAME = pro;
 				USES_XCTRUNNER = YES;
 			};
 			name = Debug;
@@ -3005,11 +3003,11 @@
 		D75CC3F61C2A926200E590E6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = GroupBuyingUITests/Info.plist;
+				INFOPLIST_FILE = proUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.teason.GroupBuyingUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.teason.proUITests;
 				PRODUCT_NAME = pro;
-				TEST_TARGET_NAME = GroupBuying;
+				TEST_TARGET_NAME = pro;
 				USES_XCTRUNNER = YES;
 			};
 			name = Release;

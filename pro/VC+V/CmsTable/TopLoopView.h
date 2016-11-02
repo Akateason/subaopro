@@ -29,6 +29,7 @@
 
 - (void)startLoop ;
 - (void)stopLoop ;
+- (void)resumeTimerWithDelay ; // 暂停loop
 
 - (void)makeCenterImageHide:(BOOL)hidden ;
 // 返回image或str . 待议

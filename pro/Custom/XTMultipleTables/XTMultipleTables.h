@@ -18,6 +18,8 @@
 
 @interface XTMultipleTables : UIScrollView
 
+@property (nonatomic,strong) NSArray     *list_handlers ; // Class `XTTableDataDelegate` objects list.
+
 @property (nonatomic, weak) id <XTMultipleTablesDelegate> xtDelegate ;
 @property (nonatomic,readonly) int currentIndex ;
 

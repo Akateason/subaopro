@@ -22,6 +22,7 @@
     self = [super init];
     if (self) {
 //        self.dataList = datalist ;
+        self.table = table ;
         [self handleTableDatasourceAndDelegate:table] ;
     }
     return self;
@@ -41,21 +42,21 @@
 - (void)handleTableDatasourceAndDelegate:(UITableView *)table
 {
 // set datasource and delegate .
+    self.table = table ;
     table.dataSource = self ;
     table.delegate = self ;
 // needs layout
     [table setNeedsLayout] ;
-//    [table setNeedsDisplay] ;
 }
 
-- (void)refreshOffsetYWithTable:(UITableView *)table
+- (void)refreshOffsetY
 {
-    CGPoint offset = table.contentOffset ;
+    CGPoint offset = self.table.contentOffset ;
     offset.y = self.offsetY ;
-    table.contentOffset = offset ;
+    self.table.contentOffset = offset ;
 }
 
-- (void)table:(UITableView *)table IsFromCenter:(BOOL)isFromCenter
+- (void)tableIsFromCenter:(BOOL)isFromCenter
 {
     //1. do sth . only center table will do .
     
@@ -80,36 +81,25 @@
     
 }
 
-/*
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.dataList.count ;
+    return 0 ;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *tempIdentifier = @"cell" ;
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tempIdentifier] ;
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:tempIdentifier];
-    }
-    cell.textLabel.text = [NSString stringWithFormat:@"temp : %@",@(indexPath.row)] ;
-
-    UIColor *color1 = [UIColor magentaColor] ;
-    UIColor *color2 = [UIColor whiteColor] ;
-    
-    cell.backgroundColor = indexPath.row % 2 ? color1 : color2 ;
-    return cell ;
+    return nil ;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44.0f ;
+    return 0. ;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
 }
-*/
+
 @end

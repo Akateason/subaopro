@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TopLoopView.h"
 
 static NSString *identifier_bannercell = @"BannerCell" ;
 
@@ -38,5 +39,7 @@ static NSString *identifier_bannercell = @"BannerCell" ;
 // start and stop the loop .
 - (void)start ;
 - (void)stop ;
+
+@property (nonatomic, strong) TopLoopView *loopScroll ;
 
 @end

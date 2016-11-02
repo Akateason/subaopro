@@ -22,12 +22,8 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self)
-    {
-        self.backgroundView = self.backView ;
-        self.separatorStyle = 0 ;
-        self.backgroundColor = [UIColor clearColor] ;
-        [self setBgViewHidden:NO] ;
+    if (self) {
+        [self setup] ;
     }
     return self;
 }
@@ -36,14 +32,56 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-        self.backgroundView = self.backView ;
-        self.separatorStyle = 0 ;
-        self.backgroundColor = [UIColor clearColor] ;
-        [self setBgViewHidden:NO] ;
+        [self setup] ;
     }
     return self;
 }
 
+- (void)setup
+{
+    self.backgroundView = self.backView ;
+    self.separatorStyle = 0 ;
+    self.backgroundColor = [UIColor clearColor] ;
+    [self setBgViewHidden:NO] ;
+    [self addObserver:self
+           forKeyPath:@"contentOffset"
+              options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew
+              context:nil] ;
+}
+
+- (void)dealloc
+{
+    [self removeObserver:self
+              forKeyPath:@"contentOffset"
+                 context:nil] ;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary<NSString *,id> *)change
+                       context:(void *)context
+{
+    if ([keyPath isEqualToString:@"contentOffset"] && object == self) {
+        NSLog(@"change %@",change) ;
+        id old = change[NSKeyValueChangeOldKey] ;
+        id new = change[NSKeyValueChangeNewKey] ;
+//        if (![old isKindOfClass:[NSNull class]]) {
+////            CGPoint 
+//            if (<#condition#>) {
+//                <#statements#>
+//            }
+//            return ;
+//        }
+        
+        CGFloat contentOffsetY = self.contentOffset.y ;
+        if (self.offsetYHasChangedValue) {
+            self.offsetYHasChangedValue(contentOffsetY) ;
+        }
+    }
+    else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context] ;
+    }
+}
 
 - (UIView *)backView
 {
@@ -105,6 +143,12 @@
     // sd web .
     [self.bgImgView sd_setImageWithURL:[NSURL URLWithString:imgStr]] ;
 }
+
+- (void)clearImage
+{
+    self.bgImgView.image = nil ;
+}
+
 
 #pragma mark - public
 + (float)getHeight

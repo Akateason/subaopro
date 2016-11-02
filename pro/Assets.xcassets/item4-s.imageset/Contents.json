@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "速小店.png",
+      "filename" : "item4-s.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "速小店@2x.png",
+      "filename" : "item4-s@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "速小店@3x.png",
+      "filename" : "item4-s@3x.png",
       "scale" : "3x"
     }
   ],

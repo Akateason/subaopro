@@ -41,8 +41,6 @@ static const float kCriticalPoint = 5. ;
 @implementation IndexViewController
 
 
-
-
 #pragma mark - Life
 
 - (void)viewDidLoad
@@ -50,6 +48,11 @@ static const float kCriticalPoint = 5. ;
     // Do any additional setup after loading the view.
     [super viewDidLoad] ;
     
+    [self showTheScence] ;
+}
+
+- (void)showTheScence
+{
     // 1. XTMultipleTables
     NSMutableArray *tableHandlersList = [@[] mutableCopy] ;
     for (Kind *akind in self.kindList) {
@@ -62,7 +65,6 @@ static const float kCriticalPoint = 5. ;
     self.xtMultipleTables.xtDelegate = self ;
     [self.view addSubview:self.xtMultipleTables] ;
     
-    
     // 2. XTStretchSegment
     [self navBgImageView] ;
     [self xtStretchSegment] ;
@@ -71,14 +73,31 @@ static const float kCriticalPoint = 5. ;
     [self.view bringSubviewToFront:_xtStretchSegment] ;
 }
 
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated] ;
     
 //    [[UIApplication sharedApplication] setStatusBarHidden:self.navBgImageView.alpha == 0] ;
     [[UIApplication sharedApplication] setStatusBarHidden:self.bNavbarBlackOrRed == false] ;
-
     [self.navigationController setNavigationBarHidden:YES] ;
+    
+    // 1. XTMultipleTables
+    if (self.kindList.count <= 1)
+    {
+        self.kindList = nil ;
+        [self kindList] ;
+        
+        if (self.kindList.count <= 1) return ;
+        [self.xtMultipleTables removeFromSuperview] ;
+        [self.xtStretchSegment removeFromSuperview] ;
+        [self.navBgImageView removeFromSuperview] ;
+        self.xtMultipleTables = nil ;
+        self.xtStretchSegment = nil ;
+        self.navBgImageView = nil ;
+        
+        [self showTheScence] ;
+    }
 }
 
 
@@ -178,7 +197,6 @@ static const float kCriticalPoint = 5. ;
                                  self.xtStretchSegment.frame = TopRect ;
                                  self.navBgImageView.frame = TopRect ;
                                  self.bNavbarBlackOrRed = false ;
-//                                 self.navBgImageView.alpha = 0. ;
                              }] ;
             [[UIApplication sharedApplication] setStatusBarHidden:YES] ;
             
@@ -186,14 +204,12 @@ static const float kCriticalPoint = 5. ;
     else if (offsetY > kCriticalPoint && offsetY <= overLength)
     {
         // 显示 全部 seg + nav
-//        if (self.navBgImageView.alpha != 1.) {
         if (self.bNavbarBlackOrRed == false) {
             [UIView animateWithDuration:0.5
                              animations:^{
                                  self.xtStretchSegment.frame = TopAndNavRect ;
                                  self.navBgImageView.frame = TopNavgationRect ;
                                  self.bNavbarBlackOrRed = true ;
-//                                 self.navBgImageView.alpha = 1. ;
                              }] ;
             [[UIApplication sharedApplication] setStatusBarHidden:NO] ;
         }
@@ -208,20 +224,17 @@ static const float kCriticalPoint = 5. ;
     if (offsetY > overLength) {
         //  NSLog(@"vel y %@",NSStringFromCGPoint(velocity)) ;
         
-//        if (velocity.y < 0 && self.navBgImageView.alpha != 1.) {
         if (velocity.y < 0 && self.bNavbarBlackOrRed == false) {
             // 显示 全部 seg + nav
             [UIView animateWithDuration:0.5
                              animations:^{
                                  self.xtStretchSegment.frame = TopAndNavRect ;
                                  self.navBgImageView.frame = TopNavgationRect ;
-//                                 self.navBgImageView.alpha = 1. ;
                                  self.bNavbarBlackOrRed = true ;
                              }] ;
             [[UIApplication sharedApplication] setStatusBarHidden:NO] ;
             
         }
-//        else if (velocity.y > 0 && self.navBgImageView.alpha != 0.) {
         else if (velocity.y > 0 && self.bNavbarBlackOrRed == true) {
             // 隐藏全部
             [self hideAll] ;
@@ -241,7 +254,6 @@ static const float kCriticalPoint = 5. ;
     [UIView animateWithDuration:0.5
                      animations:^{
                          self.bNavbarBlackOrRed = false ;
-//                         self.navBgImageView.alpha = 0. ;
                      }] ;
     [[UIApplication sharedApplication] setStatusBarHidden:YES] ;
 }
@@ -307,9 +319,6 @@ static const float kCriticalPoint = 5. ;
     [self.xtMultipleTables xtMultipleTableMoveToTheIndex:(int)index] ;
 }
 
-
-
-
 #pragma mark - XTMultipleTablesDelegate
 - (void)moveToIndexCallBack:(int)index
 {
@@ -322,10 +331,16 @@ static const float kCriticalPoint = 5. ;
 
 
 
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+
 
 
 /*

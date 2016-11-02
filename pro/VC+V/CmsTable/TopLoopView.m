@@ -154,9 +154,6 @@ color_pageControl = _color_pageControl ;
 {
     if (context == &self->_kindID)
     {
-        assert([NSThread isMainThread]);
-//        NSLog(@"chage : %@",change) ;
-        
         id old = change[@"old"] ;
         id new = change[@"new"] ;
         if (![old isKindOfClass:[NSNull class]] && [old intValue] == [new intValue]) {
@@ -210,7 +207,6 @@ color_pageControl = _color_pageControl ;
 
 - (void)makeCenterImageHide:(BOOL)hidden
 {
-//    self.backgroundColor = [UIColor clearColor] ;
     [_centerView makeImageHidden:hidden] ;
 }
 
@@ -281,7 +277,6 @@ color_pageControl = _color_pageControl ;
     _scrollView.bounces = false ;
     _scrollView.delegate = self;
     _scrollView.contentSize = CGSizeMake(IMAGEVIEW_COUNT * _scrollView.frame.size.width, _scrollView.frame.size.height) ;
-    //设置当前显示的位置为中间图片
     [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width, 0) animated:NO];
     
     _scrollView.pagingEnabled = YES;
@@ -306,27 +301,25 @@ color_pageControl = _color_pageControl ;
 {
     _leftView = [[[NSBundle mainBundle] loadNibNamed:@"LoopInfoView" owner:self options:nil] lastObject] ;
     _leftView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) ;
-//    _leftView = [[LoopInfoView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)] ;
     _leftView.contentMode = UIViewContentModeScaleAspectFill;
     _leftView.layer.masksToBounds = YES ;
     [_scrollView addSubview:_leftView] ;
     
     _centerView = [[[NSBundle mainBundle] loadNibNamed:@"LoopInfoView" owner:self options:nil] lastObject] ;
     _centerView.frame = CGRectMake(self.frame.size.width, 0, self.frame.size.width, self.frame.size.height) ;
-//    _centerView = [[LoopInfoView alloc] initWithFrame:CGRectMake(self.frame.size.width, 0, self.frame.size.width, self.frame.size.height)] ;
     _centerView.contentMode = UIViewContentModeScaleAspectFill;
     _centerView.layer.masksToBounds = YES ;
     [_scrollView addSubview:_centerView] ;
     
     _rightView = [[[NSBundle mainBundle] loadNibNamed:@"LoopInfoView" owner:self options:nil] lastObject] ;
     _rightView.frame = CGRectMake(2 * self.frame.size.width, 0, self.frame.size.width, self.frame.size.height) ;
-//    _rightView = [[LoopInfoView alloc] initWithFrame:CGRectMake(2 * self.frame.size.width, 0, self.frame.size.width, self.frame.size.height)] ;
     _rightView.contentMode = UIViewContentModeScaleAspectFill;
     _rightView.layer.masksToBounds = YES ;
     [_scrollView addSubview:_rightView] ;
 }
 
 #pragma mark 设置默认显示图片
+
 - (void)setDefaultImage
 {
     if (!_datalist || !_datalist.count) {
@@ -346,13 +339,14 @@ color_pageControl = _color_pageControl ;
 }
 
 #pragma mark 滚动停止事件
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     //重新加载图片
     [self reloadImage];
     //移动到中间
     _scrollView.contentOffset = CGPointMake(_scrollView.frame.size.width, 0) ;
-//    [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width, 0) animated:NO];
+
     //设置分页
     self.pageControl.currentPage = _currentImageIndex;
 }
@@ -363,12 +357,13 @@ color_pageControl = _color_pageControl ;
     [self reloadImage];
     //移动到中间
     _scrollView.contentOffset = CGPointMake(_scrollView.frame.size.width, 0) ;
-//    [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width, 0) animated:NO];
+
     //设置分页
     self.pageControl.currentPage = _currentImageIndex;
 }
 
 #pragma mark 重新加载图片
+
 - (void)reloadImage
 {
     if (_imageCount == 0) {

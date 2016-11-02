@@ -8,8 +8,12 @@
 
 #import "RootTableView.h"
 
+
+
 @interface CenterTableView : RootTableView
 
+@property (nonatomic,copy) void(^offsetYHasChangedValue)(CGFloat offsetY) ;
 - (void)refreshImage:(NSString *)imgStr ;
+- (void)clearImage ;
 
 @end
