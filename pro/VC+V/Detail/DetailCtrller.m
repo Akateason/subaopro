@@ -43,7 +43,7 @@
         
         [UIView transitionWithView:self.view
                           duration:0.5
-                           options:UIViewAnimationOptionCurveLinear
+                           options:UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionShowHideTransitionViews
                         animations:^{
                             self.navImageView.transform = CGAffineTransformIdentity ;
                             
@@ -52,8 +52,17 @@
                             
                         }] ;
         
-        
         [self.view bringSubviewToFront:self.backButton] ;
+        
+        [UIView transitionWithView:self.backButton
+                          duration:0.5
+                           options:UIViewAnimationOptionCurveLinear
+                        animations:^{
+                            [self.backButton setImage:[UIImage imageNamed:@"CustomNavBack"] forState:0] ;
+                        } completion:^(BOOL finished) {
+                            
+                        }] ;
+        
     }
     else if (!bShow && self.navImageView.superview != nil) {
         
@@ -64,6 +73,15 @@
                             self.navImageView.transform = CGAffineTransformTranslate(self.navImageView.transform, 0, -68) ;
                         } completion:^(BOOL finished) {
                             [self.navImageView removeFromSuperview] ;
+                        }] ;
+        
+        [UIView transitionWithView:self.backButton
+                          duration:0.5
+                           options:UIViewAnimationOptionCurveLinear
+                        animations:^{
+                            [self.backButton setImage:[UIImage imageNamed:@"btback"] forState:0] ;
+                        } completion:^(BOOL finished) {
+                            
                         }] ;
         
     }
@@ -214,18 +232,14 @@ static float klength_backbutton = 44. ;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     
     _webView = [[ZQWebViewHeader alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width ,self.view.frame.size.height)];
     _webView.xtDelegate = self ;
     [self.view addSubview:_webView];
     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[self.content getFinalLink]]]];
 
-    
-    [[UIApplication sharedApplication] setStatusBarHidden:NO] ;
     [self.view addSubview:self.backButton] ;
     [self.view addSubview:self.shareButton] ;
-    
     
     // collectionView
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init] ;
@@ -239,10 +253,16 @@ static float klength_backbutton = 44. ;
 
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated] ;
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated] ;
-    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO] ;
+
     self.webView.content = self.content ;
 }
 
