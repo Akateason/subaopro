@@ -141,7 +141,10 @@
 
 - (void)loadNewDataSelector
 {
-    [self.xt_Delegate loadNewData:self] ;
+    if (self.xt_Delegate && [self.xt_Delegate respondsToSelector:@selector(loadNewData)]) {
+        [self.xt_Delegate loadNewData] ;
+    }
+    
     [self headerEnding] ;
 }
 
@@ -159,7 +162,9 @@
     {
         dispatch_queue_t queue = dispatch_queue_create("refreshAutoFooter", NULL) ;
         dispatch_async(queue, ^{
-            [self.xt_Delegate loadMoreData] ;
+            if (self.xt_Delegate && [self.xt_Delegate respondsToSelector:@selector(loadMoreData)]) {
+                [self.xt_Delegate loadMoreData] ;
+            }
             [self footerEnding] ;
         }) ;
         
@@ -167,7 +172,9 @@
     }
     else
     {
-        [self.xt_Delegate loadMoreData] ;
+        if (self.xt_Delegate && [self.xt_Delegate respondsToSelector:@selector(loadMoreData)]) {
+            [self.xt_Delegate loadMoreData] ;
+        }
     }
     
     [self footerEnding] ;

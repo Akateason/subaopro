@@ -266,7 +266,7 @@ static const int  kSize  =  20  ;
 
 #pragma mark - RootTableViewDelegate <NSObject>
 
-- (void)loadNewData:(UITableView *)table
+- (void)loadNewData
 {
     [self loadNewOrMore:YES] ;
 }

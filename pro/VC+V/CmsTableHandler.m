@@ -22,9 +22,7 @@
 static int const kPageSize = 20 ;
 
 @interface CmsTableHandler () <RootTableViewDelegate,BannerCellDelegate>
-{
-    UITableView *m_table ;
-}
+
 @property (nonatomic,strong) NSMutableArray     *dataList ;
 @property (nonatomic,strong) NSMutableArray     *topList ;
 @property (nonatomic,strong) NSMutableArray     *slideList ;
@@ -94,7 +92,7 @@ static int const kPageSize = 20 ;
     dispatch_barrier_async(self.myQueue, ^{
         _dataList = dataList ;
         dispatch_async(dispatch_get_main_queue(), ^{
-            [m_table reloadData] ;
+            [self.table reloadData] ;
         }) ;
     }) ;
 }
@@ -118,7 +116,7 @@ static int const kPageSize = 20 ;
     dispatch_barrier_async(self.myQueue, ^{
         _topList = topList ;
         dispatch_async(dispatch_get_main_queue(), ^{
-            [m_table reloadData] ;
+            [self.table reloadData] ;
         }) ;
     }) ;
 }
@@ -142,17 +140,15 @@ static int const kPageSize = 20 ;
     dispatch_barrier_async(self.myQueue, ^{
         _slideList = slideList ;
         dispatch_async(dispatch_get_main_queue(), ^{
-            [m_table reloadData] ;
+            [self.table reloadData] ;
         }) ;
     }) ;
 }
 
 
 #pragma mark - RootTableViewDelegate
-- (void)loadNewData:(UITableView *)table
+- (void)loadNewData
 {
-    m_table = table ;
-    
     NSMutableArray*tmpList_data = [@[] mutableCopy] ;
     NSMutableArray*tmpList_slide = [@[] mutableCopy] ;
     NSMutableArray*tmpList_top = [@[] mutableCopy] ;
@@ -378,9 +374,9 @@ static int const kPageSize = 20 ;
         __weak CenterTableView *tableCenter = (CenterTableView *)table ;
         tableCenter.offsetYHasChangedValue = ^(CGFloat offsetY) {
             
-            //            if (tableCenter.mj_header.isRefreshing) {
-            //                return ;
-            //            }
+//            if (tableCenter.mj_header.isRefreshing) {
+//                return ;
+//            }
             BannerCell *cell = [tableCenter cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] ;
             // banner loop pause .
             [cell.loopScroll resumeTimerWithDelay] ;
@@ -401,18 +397,18 @@ static int const kPageSize = 20 ;
     [super handleTableDatasourceAndDelegate:table] ;
 }
 
-- (void)centerHandlerRefreshing:(UITableView *)table
+- (void)centerHandlerRefreshing
 {
-    if ([table isKindOfClass:[CenterTableView class]]) {
-        [(CenterTableView *)table clearImage] ;
+    if ([self.table isKindOfClass:[CenterTableView class]]) {
+        [(CenterTableView *)self.table clearImage] ;
     }
     [self.handlerDelegate handlerRefreshing:self] ;
 }
 
-- (void)table:(UITableView *)table IsFromCenter:(BOOL)isFromCenter
+- (void)tableIsFromCenter:(BOOL)isFromCenter
 {
     // get banner cell
-    BannerCell *bannerCell = (BannerCell *)[table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] ;
+    BannerCell *bannerCell = (BannerCell *)[self.table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] ;
     // deal with loop timer .
     if (isFromCenter)
         [bannerCell start] ;

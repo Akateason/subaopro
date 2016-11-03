@@ -15,29 +15,6 @@
 @implementation XTTableViewRootHandler
 
 #pragma mark --
-#pragma mark - Initialization
-- (instancetype)initWithDataList:(NSArray *)datalist
-                           table:(UITableView *)table
-{
-    self = [super init];
-    if (self) {
-//        self.dataList = datalist ;
-        self.table = table ;
-        [self handleTableDatasourceAndDelegate:table] ;
-    }
-    return self;
-}
-
-- (instancetype)initWithDataList:(NSArray *)datalist
-{
-    self = [super init];
-    if (self) {
-//        self.dataList = datalist ;
-    }
-    return self;
-}
-
-#pragma mark --
 #pragma mark - Public
 - (void)handleTableDatasourceAndDelegate:(UITableView *)table
 {

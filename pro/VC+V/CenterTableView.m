@@ -23,7 +23,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setup] ;
+        [self configureUIs] ;
     }
     return self;
 }
@@ -32,12 +32,12 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-        [self setup] ;
+        [self configureUIs] ;
     }
     return self;
 }
 
-- (void)setup
+- (void)configureUIs
 {
     self.backgroundView = self.backView ;
     self.separatorStyle = 0 ;
@@ -65,17 +65,11 @@
         NSLog(@"change %@",change) ;
         id old = change[NSKeyValueChangeOldKey] ;
         id new = change[NSKeyValueChangeNewKey] ;
-//        if (![old isKindOfClass:[NSNull class]]) {
-////            CGPoint 
-//            if (<#condition#>) {
-//                <#statements#>
-//            }
-//            return ;
-//        }
-        
-        CGFloat contentOffsetY = self.contentOffset.y ;
-        if (self.offsetYHasChangedValue) {
-            self.offsetYHasChangedValue(contentOffsetY) ;
+        if (![old isKindOfClass:[NSNull class]] && old != new) {
+            CGFloat contentOffsetY = self.contentOffset.y ;
+            if (self.offsetYHasChangedValue) {
+                self.offsetYHasChangedValue(contentOffsetY) ;
+            }
         }
     }
     else {

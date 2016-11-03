@@ -72,7 +72,7 @@ static const int kSize = 20 ;
 
 
 #pragma mark - RootTableViewDelegate
-- (void)loadNewData:(UITableView *)table
+- (void)loadNewData
 {
     currentPage = 1 ;
     

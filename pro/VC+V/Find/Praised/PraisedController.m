@@ -178,7 +178,7 @@
 }
 
 #pragma mark -- RootTableViewDelegate
-- (void)loadNewData:(UITableView *)table
+- (void)loadNewData
 {
     [self getPraiseInfoWithPullUpOrDown:YES] ;
 }

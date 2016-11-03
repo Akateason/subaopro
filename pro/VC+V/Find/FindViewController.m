@@ -180,7 +180,7 @@ float const SIZE_OF_PAGE = 20 ;
 
 #pragma mark --
 #pragma mark -- RootTableViewDelegate
-- (void)loadNewData:(UITableView *)table
+- (void)loadNewData
 {
     [self getHomeInfoFromServerWithPullUpDown:YES] ;
 }

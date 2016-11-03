@@ -15,7 +15,7 @@
 @protocol RootTableViewDelegate <NSObject>
 
 @optional
-- (void)loadNewData:(UITableView *)table ;
+- (void)loadNewData ;
 - (void)loadMoreData ;
 
 @end

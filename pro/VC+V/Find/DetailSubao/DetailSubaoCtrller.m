@@ -624,12 +624,12 @@
 }
 
 #pragma mark -- RootTableViewDelegate
-- (void)loadNewData:(UITableView *)table
+- (void)loadNewData
 {
     BOOL bHas = [self getFromServer]  ;
     if (!bHas) {
         [self showNetReloaderWithReloadButtonClickBlock:^{
-            [self loadNewData:table] ;
+            [self loadNewData] ;
         }] ;
     } else {
         [self dismissNetReloader] ;

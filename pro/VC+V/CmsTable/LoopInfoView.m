@@ -26,8 +26,21 @@
 
 - (void)makeImageHidden:(BOOL)hidden
 {
-    if (self.imgView.hidden != hidden) {
-        self.imgView.hidden = hidden ;
+    if (self.imgView.hidden == hidden) return ;
+    // .
+    if (hidden == false) {
+        dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC);
+        dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) ;
+        dispatch_after(time, concurrentQueue, ^(void) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.imgView.hidden = hidden ;
+            }) ;
+        });
+    }
+    else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.imgView.hidden = hidden ;
+        }) ;
     }
 }
 
