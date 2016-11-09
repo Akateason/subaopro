@@ -63,7 +63,7 @@
     self.labelTitle.text = aContent.title ;
     self.lb_Kind.text =  aContent.kindName ;
     
-    [self.imgView photoFromQiNiu:aContent.cover] ;    
+    [self.imgView photoFromQiNiu:aContent.cover] ;
     
     UIFont *font = [UIFont systemFontOfSize:11.0f] ;
     CGSize size = CGSizeMake(200 ,18) ;

@@ -326,13 +326,14 @@ color_pageControl = _color_pageControl ;
         return ;
     }
     
+    // set Images
     _centerView.info = _datalist[0] ;
-    
     if (_imageCount > 1)
     {
         _leftView.info = _datalist[_imageCount - 1] ;
         _rightView.info = _datalist[1] ;
     }
+    
     // current index
     _currentImageIndex = 0 ;
     _pageControl.currentPage = 0 ;

@@ -19,15 +19,14 @@
 
 @implementation BannerCell
 
-
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(nullable NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier] ;
     if (self) {
+        self.backgroundColor = [UIColor clearColor] ;
         self.selectionStyle = UITableViewCellSelectionStyleNone ;
         self.frame = CGRectMake(0, 0, APP_WIDTH, [[self class] getHeight]) ;
         [self addSubview:self.loopScroll] ;
-        self.backgroundColor = [UIColor clearColor] ;
     }
     return self;
 }
@@ -84,14 +83,15 @@
 {
     if (![scrollView isKindOfClass:[CenterTableView class]]) return ;
 
+    CenterTableView *table = (CenterTableView *)scrollView ;
+    if ([table.mj_header isRefreshing]) return ;
+    
     NSLog(@"offset.y : %@",@(offset.y)) ;
     if (offset.y >= 0)
     {
         // 上拉 , 显示loop中间的图片
-        CenterTableView *table = (CenterTableView *)scrollView ;
-        if (![table.mj_header isRefreshing]) {
-            [self.loopScroll makeCenterImageHide:FALSE] ;
-        }
+        if ([table isDragging]) return ; // debug . flash .
+        [self.loopScroll makeCenterImageHide:FALSE] ;
     }
     else
     {

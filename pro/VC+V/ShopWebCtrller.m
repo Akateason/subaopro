@@ -27,6 +27,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.webView.scrollView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0) ;
     NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:kURL_wemart]] ;
     [self.webView loadRequest:request] ;
 }

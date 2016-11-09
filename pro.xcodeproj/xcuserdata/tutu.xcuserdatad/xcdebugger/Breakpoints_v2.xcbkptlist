@@ -288,16 +288,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "pro/VC+V/Live/LiveViewController.m"
-            timestampString = "499838370.518036"
+            filePath = "pro/VC+V/CmsTable/TopLoopView.m"
+            timestampString = "500372377.649345"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
+            landmarkName = "-makeCenterImageHide:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "pro/VC+V/CmsTable/LoopInfoView.m"
+            timestampString = "500372403.904473"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "-makeImageHidden:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

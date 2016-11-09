@@ -178,9 +178,9 @@ static int const kPageSize = 20 ;
                                                 [tmpList_top addObject:aContent] ;
                                             }
                                             
-                                            self.dataList = tmpList_data ;
-                                            self.topList = tmpList_top ;
                                             self.slideList = tmpList_slide ;
+                                            self.topList = tmpList_top ;
+                                            self.dataList = tmpList_data ;
                                         }
                                         
                                     } fail:^{
@@ -324,6 +324,8 @@ static int const kPageSize = 20 ;
     return nil ;
 }
 
+
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
@@ -374,9 +376,8 @@ static int const kPageSize = 20 ;
         __weak CenterTableView *tableCenter = (CenterTableView *)table ;
         tableCenter.offsetYHasChangedValue = ^(CGFloat offsetY) {
             
-//            if (tableCenter.mj_header.isRefreshing) {
-//                return ;
-//            }
+            if (tableCenter.mj_header.isRefreshing) return ;
+            
             BannerCell *cell = [tableCenter cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] ;
             // banner loop pause .
             [cell.loopScroll resumeTimerWithDelay] ;
@@ -418,31 +419,6 @@ static int const kPageSize = 20 ;
 
 #pragma mark - scrollView delegate
 
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-//{
-//    CenterTableView *table = (CenterTableView *)scrollView ;
-//
-//    if (table.mj_header.isRefreshing) {
-//        return ;
-//    }
-//    
-//    float offsetY = scrollView.contentOffset.y ;
-//    
-//    BannerCell *cell = [(UITableView *)scrollView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] ;
-//    [cell layoutHeaderViewForScrollViewOffset:scrollView.contentOffset scrollView:scrollView] ;
-//    
-//    if ([scrollView isKindOfClass:[CenterTableView class]])
-//    {
-//        NSString *imgStr = [cell fetchCenterImageStr] ;
-//        [(CenterTableView *)scrollView refreshImage:imgStr] ;
-//    }
-//    
-//    if (self.handlerDelegate != nil && [self.handlerDelegate respondsToSelector:@selector(tableDidScrollWithOffsetY:)])
-//    {
-//        [self.handlerDelegate tableDidScrollWithOffsetY:offsetY] ;
-//    }
-//}
-
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView
                      withVelocity:(CGPoint)velocity
               targetContentOffset:(inout CGPoint *)targetContentOffset
@@ -464,9 +440,6 @@ static int const kPageSize = 20 ;
             targetContentOffset -> y = [BannerCell getHeight] - 40. - 20. ;
         }
     }
-    //    else {
-    //        // 下拉 加速
-    //    }
 }
 
 
