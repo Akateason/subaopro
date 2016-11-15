@@ -45,7 +45,7 @@ static const int  kSize  =  10 ;
 - (void)viewDidLoad
 {
     [super viewDidLoad] ;
-    
+    self.myTitle = @"搜索" ;
     [self configureUI] ;
     [self tableConfigure] ;
 }

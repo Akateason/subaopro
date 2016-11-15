@@ -513,7 +513,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title   = @"速报详情" ;
-    self.myTitle = @"速报详情页" ;
+    self.myTitle = @"速报(专业版)详情页" ;
     
     isFirstTime = YES ;
     self.table.hidden = YES ;

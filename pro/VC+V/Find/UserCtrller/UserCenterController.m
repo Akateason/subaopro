@@ -218,7 +218,7 @@
 
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
-    self.myTitle = @"用户个人主页" ;
+    self.myTitle = @"速报(专业版)个人主页" ;
     
     [self setup] ;
     

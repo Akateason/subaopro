@@ -11,8 +11,9 @@
 #import "DigitInformation.h"
 #import "WXApi.h"
 #import "WeiboSDK.h"
+#import "UMMobClick/MobClick.h"
 
-//NSString *const UM_APPKEY       = @"565681dc67e58e4d0e00014d" ;
+NSString *const UM_APPKEY       = @"582ac38dc62dca40fc000d1f" ;
 
 NSString *const WX_APPKEY       = @"wxcfc0cac5ea95bff5" ;
 //NSString *const WX_APPSECRET    = @"d4624c36b6795d1d99dcf0547af5443d" ;
@@ -51,19 +52,17 @@ NSString *const APPSTORE_APPID  = @"999705868" ;
 
 - (void)setup
 {
-    //  Setting My Style
-    [self setMyStyleWithWindow:self.window] ;
+    [self configureStyle] ;
     
-    //  wx register
-    [WXApi registerApp:WX_APPKEY] ;
+    [self configureWeixin] ;
     
-    //  wb
-    [WeiboSDK enableDebugMode:YES] ;
-    [WeiboSDK registerApp:WB_APPKEY] ;
+    [self configureWeibo] ;
+    
+    [self configureUmeng] ;
 }
 
 
-- (void)setMyStyleWithWindow:(UIWindow *)window
+- (void)configureStyle
 {
     //1 status bar .
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent] ;
@@ -75,6 +74,28 @@ NSString *const APPSTORE_APPID  = @"999705868" ;
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}] ;
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]] ;
     [[UINavigationBar appearance] setBackgroundColor:[UIColor xt_mainColor]] ;
+}
+
+- (void)configureWeixin
+{
+    //  wx register
+    [WXApi registerApp:WX_APPKEY] ;
+}
+
+- (void)configureWeibo
+{
+    //  wb
+    [WeiboSDK enableDebugMode:YES] ;
+    [WeiboSDK registerApp:WB_APPKEY] ;
+}
+
+- (void)configureUmeng
+{
+    // umeng stat
+    UMConfigInstance.appKey = UM_APPKEY ;
+    [MobClick startWithConfigure:UMConfigInstance];
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] ;
+    [MobClick setAppVersion:version] ;
 }
 
 

@@ -8,7 +8,7 @@
 
 #import "RootCtrl.h"
 #import "SDImageCache.h"
-//#import "MobClick.h"‘
+#import "UMMobClick/MobClick.h"
 
 @interface RootCtrl ()
 {
@@ -52,7 +52,7 @@
     [super viewWillAppear:animated] ;
     
     self.navigationController.navigationBar.translucent = NO ;
-//    [MobClick beginLogPageView:self.myTitle] ;
+    [MobClick beginLogPageView:self.myTitle] ;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -67,7 +67,7 @@
     }
     
     [super viewWillDisappear:animated] ;
-//    [MobClick endLogPageView:self.myTitle];
+    [MobClick endLogPageView:self.myTitle];
 }
 
 - (void)iClickedBackButton

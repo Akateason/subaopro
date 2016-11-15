@@ -52,7 +52,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-//    [_table registerNib:[UINib nibWithNibName:identifier_BigImgContentCell bundle:nil] forCellReuseIdentifier:identifier_BigImgContentCell] ;
+    self.myTitle = @"直播列表页" ;
+
     _table.separatorStyle = UITableViewCellSeparatorStyleNone ;
     
     Kind *kind = [[Kind alloc] init] ;

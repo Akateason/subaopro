@@ -49,6 +49,8 @@ static const int kSize = 20 ;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.myTitle = @"标签列表页" ;
+    
     currentPage = 1 ;
     [_table registerNib:[UINib nibWithNibName:identifier_normalContentcell bundle:nil] forCellReuseIdentifier:identifier_normalContentcell] ;
     _table.separatorStyle = 0 ;

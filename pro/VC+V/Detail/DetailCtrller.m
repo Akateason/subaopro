@@ -235,6 +235,7 @@ static float klength_backbutton = 44. ;
 {
     [super viewDidLoad];
     
+    self.myTitle = @"详情" ;
     _webView = [[ZQWebViewHeader alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width ,self.view.frame.size.height)];
     _webView.xtDelegate = self ;
     [self.view addSubview:_webView];

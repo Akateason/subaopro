@@ -13,6 +13,7 @@
 #import "BannerCell.h"
 #import "DetailCtrller.h"
 #import "Kind.h"
+#import "UMMobClick/MobClick.h"
 
 #define TopRect             CGRectMake(0, 0, APPFRAME.size.width, 40)
 #define MainRect            CGRectMake(0, 0, APPFRAME.size.width, APP_HEIGHT - 49.)
@@ -46,6 +47,7 @@ static const float kCriticalPoint = 5. ;
     // Do any additional setup after loading the view.
     [super viewDidLoad] ;
     
+    self.myTitle = @"首页" ;
     [self showTheScence] ;
 }
 
@@ -238,6 +240,9 @@ static const float kCriticalPoint = 5. ;
     NSLog(@"moveToIndexCallBack %@",@(index)) ;
     self.xtStretchSegment.currentIndex = index ;
     [self.xtMultipleTables pulldownCenterTableIfNeeded] ;
+    
+    Kind *aKind = self.kindList[index] ;
+    [MobClick event:@"homePageKind" label:aKind.name] ;
 }
 
 

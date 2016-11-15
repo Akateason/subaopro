@@ -310,6 +310,7 @@
 		D7CE2A4A1DB8989200FF452C /* RootCtrl+ActionJumpToSubao.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CE2A491DB8989200FF452C /* RootCtrl+ActionJumpToSubao.m */; };
 		D7D2A7F31DC2F5490042EB92 /* ZQWebViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D2A7F21DC2F5490042EB92 /* ZQWebViewHeader.m */; };
 		D7D79FAD1DD9D10A004E52FC /* APNSObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D79FAC1DD9D10A004E52FC /* APNSObj.m */; };
+		D7D79FCC1DDB0092004E52FC /* UMMobClick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7D79FCB1DDB0092004E52FC /* UMMobClick.framework */; };
 		D7E0F49F1D868FA600EA663B /* UIImageView+QNExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F49E1D868FA600EA663B /* UIImageView+QNExtention.m */; };
 		D7E0F4AB1D86AC9300EA663B /* AlertBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F4A21D86AC9300EA663B /* AlertBackgroundView.m */; };
 		D7E0F4AC1D86AC9300EA663B /* ShareAlertV.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F4A41D86AC9300EA663B /* ShareAlertV.m */; };
@@ -924,6 +925,7 @@
 		D7D2A7F21DC2F5490042EB92 /* ZQWebViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQWebViewHeader.m; sourceTree = "<group>"; };
 		D7D79FAB1DD9D10A004E52FC /* APNSObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSObj.h; sourceTree = "<group>"; };
 		D7D79FAC1DD9D10A004E52FC /* APNSObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSObj.m; sourceTree = "<group>"; };
+		D7D79FCB1DDB0092004E52FC /* UMMobClick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMMobClick.framework; sourceTree = "<group>"; };
 		D7E0F49D1D868FA600EA663B /* UIImageView+QNExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+QNExtention.h"; sourceTree = "<group>"; };
 		D7E0F49E1D868FA600EA663B /* UIImageView+QNExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+QNExtention.m"; sourceTree = "<group>"; };
 		D7E0F4A11D86AC9300EA663B /* AlertBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertBackgroundView.h; sourceTree = "<group>"; };
@@ -974,6 +976,7 @@
 				D75CC6251C2A972000E590E6 /* CoreMedia.framework in Frameworks */,
 				D75CC6231C2A970C00E590E6 /* CoreData.framework in Frameworks */,
 				D75CC6211C2A970400E590E6 /* CoreImage.framework in Frameworks */,
+				D7D79FCC1DDB0092004E52FC /* UMMobClick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1776,6 +1779,7 @@
 		D75CC6521C2A987600E590E6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D7D79FCB1DDB0092004E52FC /* UMMobClick.framework */,
 				D7398FF91D460B55003E633D /* libc++.tbd */,
 				D75CC65A1C2B9DA100E590E6 /* libsqlite3.0.tbd */,
 				D75CC6501C2A986600E590E6 /* Foundation.framework */,

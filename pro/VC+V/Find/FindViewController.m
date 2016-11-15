@@ -109,6 +109,7 @@ float const SIZE_OF_PAGE = 20 ;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.myTitle = @"发现" ;
     m_lastUpdateTime = 0 ;
     [self configureUIs] ;
     [self configreTable] ;
