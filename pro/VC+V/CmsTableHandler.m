@@ -33,6 +33,7 @@ static int const kPageSize = 20 ;
 @end
 
 @implementation CmsTableHandler
+
 @synthesize dataList = _dataList ,
             topList = _topList ,
             slideList = _slideList ;

@@ -154,6 +154,8 @@ static float klength_backbutton = 44. ;
 - (void)backButtonOnclick
 {
     [self.navigationController popViewControllerAnimated:YES] ;
+//    [self dismissViewControllerAnimated:YES completion:^{
+//    }] ;
 }
 
 - (UIButton *)shareButton

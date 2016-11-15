@@ -10,6 +10,9 @@
 #import "AppDelegateInitial.h"
 #import "ServerRequest.h"
 #import "ShareUtils.h"
+#import "SIAlertView.h"
+#import "APNSObj.h"
+#import "YYModel.h"
 
 @interface AppDelegate () <WXApiDelegate>
 @property (nonatomic,strong) ShareUtils *shareutils ;
@@ -27,9 +30,24 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    AppDelegateInitial *ai = [[AppDelegateInitial alloc] initWithApplication:application
+    AppDelegateInitial *ap = [[AppDelegateInitial alloc] initWithApplication:application
                                                                      options:launchOptions
                                                                       window:self.window] ;
+    
+    //判断是否由远程消息通知触发应用程序启动
+    if ([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey] != nil) {
+        //获取应用程序消息通知标记数（即小红圈中的数字）
+        int badge = (int)[UIApplication sharedApplication].applicationIconBadgeNumber ;
+        if (badge > 0) {
+            //如果应用程序消息通知标记数（即小红圈中的数字）大于0，清除标记。
+            [UIApplication sharedApplication].applicationIconBadgeNumber = 0 ;
+        }
+    }
+    
+    // iOS 8 Notifications
+    [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+    [application registerForRemoteNotifications];
+    
     return YES ;
 }
 
@@ -38,12 +56,69 @@
     return [self.shareutils handleOpenUrl:url] ;
 }
 
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    //获取终端设备标识，这个标识需要通过接口发送到服务器端，服务器端推送消息到APNS时需要知道终端的标识，APNS通过注册的终端标识找到终端设备。
+    NSString *token = [[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""]
+                        stringByReplacingOccurrencesOfString: @">" withString: @""]
+                       stringByReplacingOccurrencesOfString: @" " withString: @""] ;
+    NSLog(@"deviceToken: %@",token) ;
+    
+    [ServerRequest registerDeviceToken:token
+                               success:^(id json) {
+                                   NSLog(@"json : %@",json) ;
+                               } fail:^{
+                                   
+                               }] ;
+}
 
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSString *error_str = [NSString stringWithFormat: @"%@", error];
+    NSLog(@"Failed to get token, error:%@", error_str);
+}
 
+//处理收到的消息推送
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    //在此处理接收到的消息。
+    int badge = (int)[UIApplication sharedApplication].applicationIconBadgeNumber ;
+    if (badge > 0) {
+        //如果应用程序消息通知标记数（即小红圈中的数字）大于0，清除标记。
+        [UIApplication sharedApplication].applicationIconBadgeNumber = 0 ;
+    }
+    
+    if (userInfo) {
+        // 有推送的消息，处理推送的消息
+        NSLog(@"userInfo : %@",userInfo) ;
+        APNSObj *aps = [APNSObj yy_modelWithJSON:userInfo[@"aps"]] ;
+        if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive)
+        {
+            // 只有app在前台 . 才做显示alert.
+            SIAlertView *alert = [[SIAlertView alloc] initWithTitle:nil andMessage:aps.alert] ;
+            [alert addButtonWithTitle:@"好的,我知道了"
+                                 type:SIAlertViewButtonTypeDestructive
+                              handler:^(SIAlertView *alertView) {}] ;
+            [alert addButtonWithTitle:@"取消"
+                                 type:SIAlertViewButtonTypeCancel
+                              handler:nil] ;
+            [alert show] ;
+        }
+    }
+}
 
-
-
-
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(nullable NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void(^)())completionHandler
+{
+    // 在此方法中一定要调用completionHandler这个回调，告诉系统是否处理成功
+    //    UIBackgroundFetchResultNewData, // 成功接收到数据
+    //    UIBackgroundFetchResultNoData,  // 没有接收到数据
+    //    UIBackgroundFetchResultFailed   // 接受失败
+    if (userInfo) {
+        completionHandler(UIBackgroundFetchResultNewData);
+    } else {
+        completionHandler(UIBackgroundFetchResultNoData);
+    }
+}
 
 
 

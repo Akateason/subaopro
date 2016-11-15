@@ -51,7 +51,7 @@
     self.lb_Kind.textColor          = [UIColor whiteColor] ;
     self.lb_Kind.layer.cornerRadius = 5. ;
     self.lb_Kind.layer.masksToBounds = YES ;
-    self.imgView.backgroundColor    = [UIColor blackColor] ;
+    self.imgView.backgroundColor    = [UIColor whiteColor] ; // [UIColor blackColor] ;
     self.backgroundWord.backgroundColor = [UIColor colorWithWhite:0.4 alpha:0.2] ;
 }
 

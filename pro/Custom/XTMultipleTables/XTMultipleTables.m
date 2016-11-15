@@ -111,6 +111,7 @@ static int IMAGEVIEW_COUNT = 3 ;
         CGRect rectLeft = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) ;
         _leftTable = [[UITableView alloc] initWithFrame:rectLeft style:UITableViewStylePlain] ;
         _leftTable.separatorStyle = 0 ;
+        _leftTable.backgroundColor = [UIColor xt_cellSeperate] ;
 //        _leftTable.contentInset = UIEdgeInsetsMake(0, 0, 10, 0) ;
         if (![_leftTable superview]) {
             [self addSubview:_leftTable] ;
@@ -140,6 +141,7 @@ static int IMAGEVIEW_COUNT = 3 ;
         rectRight.origin.x += (rectRight.size.width * 2) ;
         _rightTable = [[UITableView alloc] initWithFrame:rectRight style:UITableViewStylePlain] ;
         _rightTable.separatorStyle = 0 ;
+        _rightTable.backgroundColor = [UIColor xt_cellSeperate] ;
 //        _rightTable.contentInset = UIEdgeInsetsMake(0, 0, 10, 0) ;
         if (![_rightTable superview]) {
             [self addSubview:_rightTable] ;

@@ -14,25 +14,23 @@
 #import "DetailCtrller.h"
 #import "Kind.h"
 
-
 #define TopRect             CGRectMake(0, 0, APPFRAME.size.width, 40)
 #define MainRect            CGRectMake(0, 0, APPFRAME.size.width, APP_HEIGHT - 49.)
 #define TopImageRect        CGRectMake(0, 0, APP_WIDTH, [BannerCell getHeight])
 #define TopNavgationRect    CGRectMake(0, 0, APPFRAME.size.width, 40. + 20.)
 #define TopAndNavRect       CGRectMake(0, 20, APPFRAME.size.width, 40. + 20.)
 #define OverLength          ([BannerCell getHeight] - 40. - 20.)
-
 static const float kCriticalPoint = 5. ;
 
 
-@interface IndexViewController () <XTStretchSegmentDelegate, XTMultipleTablesDelegate, CmsTableHandlerDelegate>
+@interface IndexViewController () <XTStretchSegmentDelegate, XTMultipleTablesDelegate, CmsTableHandlerDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic,strong) NSArray          *kindList ;
 @property (nonatomic,strong) XTStretchSegment *xtStretchSegment ;
 @property (nonatomic,strong) XTMultipleTables *xtMultipleTables ;
 @property (nonatomic,strong) UIImageView      *navBgImageView ;
 
-@property (nonatomic) BOOL  bNavbarBlackOrRed ;
+@property (nonatomic)        BOOL             bNavbarBlackOrRed ;
 
 @end
 
@@ -78,7 +76,7 @@ static const float kCriticalPoint = 5. ;
 {
     [super viewWillAppear:animated] ;
     
-//    [[UIApplication sharedApplication] setStatusBarHidden:self.navBgImageView.alpha == 0] ;
+
     [[UIApplication sharedApplication] setStatusBarHidden:self.bNavbarBlackOrRed == false] ;
     [self.navigationController setNavigationBarHidden:YES] ;
     
@@ -99,11 +97,6 @@ static const float kCriticalPoint = 5. ;
         [self showTheScence] ;
     }
 }
-
-
-
-
-
 
 
 #pragma mark - Prop
@@ -167,7 +160,6 @@ static const float kCriticalPoint = 5. ;
     if (!_navBgImageView) {
         CGRect rect = self.xtStretchSegment.frame ;
         _navBgImageView = [[UIImageView alloc] initWithFrame:rect] ;
-//        _navBgImageView.alpha = 0. ;
         _navBgImageView.image = [UIImage imageNamed:@"gradient_b2w"] ;
         if (!_navBgImageView.superview) {
             [self.view insertSubview:_navBgImageView belowSubview:self.xtStretchSegment] ;
@@ -183,6 +175,79 @@ static const float kCriticalPoint = 5. ;
 
 
 
+
+#pragma mark - CmsTableHandlerDelegate
+- (void)bannerSelected:(Content *)content
+{
+    [self jump2DetailVC:content] ;
+}
+
+- (void)didSelectRowWithContent:(Content *)content
+{
+    [self jump2DetailVC:content] ;
+}
+
+- (void)jump2DetailVC:(Content *)content
+{
+    DetailCtrller *detailVC = (DetailCtrller *)[[self class] getCtrllerFromStory:@"Index" controllerIdentifier:@"DetailCtrller"] ;
+    detailVC.content = content ;
+    [detailVC setHidesBottomBarWhenPushed:YES] ;
+    [self.navigationController pushViewController:detailVC animated:YES] ;
+}
+
+
+// callback in did scroll and
+- (void)tableDidScrollWithOffsetY:(float)offsetY
+{
+    [self makeNavBarDisplayWithOffsetY:offsetY] ;
+}
+
+// callback in will end dragging .
+- (void)tablelWillEndDragWithOffsetY:(float)offsetY WithVelocity:(CGPoint)velocity
+{
+//    NSLog(@"offsetY : %lf",offsetY) ;
+    [self makeNavigationbarDisplayWithOffsetY:offsetY Velocity:velocity] ;
+}
+
+- (void)handlerRefreshing:(id)handler
+{
+    float offsetY = ((CmsTableHandler *)handler).offsetY ;
+    float overLength = OverLength ;
+    
+//    NSLog(@"offsetY : %lf",offsetY) ;
+    if (offsetY > overLength) {
+        [self makeNavigationbarDisplayWithOffsetY:offsetY Velocity:CGPointZero] ;
+    }
+    else {
+        [self makeNavBarDisplayWithOffsetY:offsetY] ;
+    }
+}
+
+
+#pragma mark - XTStretchSegmentDelegate
+- (void)xtStretchSegmentMoveToTheIndex:(NSInteger)index
+                              dataItem:(id)item
+{
+    NSLog(@"xtStretchSegmentMoveToTheIndex %@",@(index)) ;
+    [self.xtMultipleTables xtMultipleTableMoveToTheIndex:(int)index] ;
+}
+
+#pragma mark - XTMultipleTablesDelegate
+- (void)moveToIndexCallBack:(int)index
+{
+    NSLog(@"moveToIndexCallBack %@",@(index)) ;
+    self.xtStretchSegment.currentIndex = index ;
+    [self.xtMultipleTables pulldownCenterTableIfNeeded] ;
+}
+
+
+
+
+
+
+
+
+#pragma mark --
 #pragma mark - func nav & seg
 - (void)makeNavBarDisplayWithOffsetY:(float)offsetY
 {
@@ -192,14 +257,14 @@ static const float kCriticalPoint = 5. ;
     if (offsetY <= kCriticalPoint)
     {
         // 隐藏nav 显示seg
-            [UIView animateWithDuration:0.5
-                             animations:^{
-                                 self.xtStretchSegment.frame = TopRect ;
-                                 self.navBgImageView.frame = TopRect ;
-                                 self.bNavbarBlackOrRed = false ;
-                             }] ;
-            [[UIApplication sharedApplication] setStatusBarHidden:YES] ;
-            
+        [UIView animateWithDuration:0.5
+                         animations:^{
+                             self.xtStretchSegment.frame = TopRect ;
+                             self.navBgImageView.frame = TopRect ;
+                             self.bNavbarBlackOrRed = false ;
+                         }] ;
+        [[UIApplication sharedApplication] setStatusBarHidden:YES] ;
+        
     }
     else if (offsetY > kCriticalPoint && offsetY <= overLength)
     {
@@ -214,7 +279,7 @@ static const float kCriticalPoint = 5. ;
             [[UIApplication sharedApplication] setStatusBarHidden:NO] ;
         }
     }
-
+    
 }
 
 - (void)makeNavigationbarDisplayWithOffsetY:(float)offsetY Velocity:(CGPoint)velocity
@@ -263,69 +328,9 @@ static const float kCriticalPoint = 5. ;
 
 
 
-#pragma mark - CmsTableHandlerDelegate
-- (void)bannerSelected:(Content *)content
-{
-    DetailCtrller *detailVC = (DetailCtrller *)[[self class] getCtrllerFromStory:@"Index" controllerIdentifier:@"DetailCtrller"] ;
-    detailVC.content = content ;
-    [detailVC setHidesBottomBarWhenPushed:YES] ;
-    [self.navigationController pushViewController:detailVC animated:YES] ;
-}
-
-- (void)didSelectRowWithContent:(Content *)content
-{
-    DetailCtrller *detailVC = (DetailCtrller *)[[self class] getCtrllerFromStory:@"Index" controllerIdentifier:@"DetailCtrller"] ;
-    detailVC.content = content ;
-    [detailVC setHidesBottomBarWhenPushed:YES] ;
-    [self.navigationController pushViewController:detailVC animated:YES] ;
-}
-
-// callback in did scroll and
-- (void)tableDidScrollWithOffsetY:(float)offsetY
-{
-    [self makeNavBarDisplayWithOffsetY:offsetY] ;
-}
-
-// callback in will end dragging .
-- (void)tablelWillEndDragWithOffsetY:(float)offsetY WithVelocity:(CGPoint)velocity
-{
-//    NSLog(@"offsetY : %lf",offsetY) ;
-    [self makeNavigationbarDisplayWithOffsetY:offsetY Velocity:velocity] ;
-}
-
-- (void)handlerRefreshing:(id)handler
-{
-    float offsetY = ((CmsTableHandler *)handler).offsetY ;
-    float overLength = OverLength ;
-    
-//    NSLog(@"offsetY : %lf",offsetY) ;
-    if (offsetY > overLength) {
-        [self makeNavigationbarDisplayWithOffsetY:offsetY Velocity:CGPointZero] ;
-    }
-    else {
-        [self makeNavBarDisplayWithOffsetY:offsetY] ;
-    }
-}
 
 
 
-
-
-#pragma mark - XTStretchSegmentDelegate
-- (void)xtStretchSegmentMoveToTheIndex:(NSInteger)index
-                              dataItem:(id)item
-{
-    NSLog(@"xtStretchSegmentMoveToTheIndex %@",@(index)) ;
-    [self.xtMultipleTables xtMultipleTableMoveToTheIndex:(int)index] ;
-}
-
-#pragma mark - XTMultipleTablesDelegate
-- (void)moveToIndexCallBack:(int)index
-{
-    NSLog(@"moveToIndexCallBack %@",@(index)) ;
-    self.xtStretchSegment.currentIndex = index ;
-    [self.xtMultipleTables pulldownCenterTableIfNeeded] ;
-}
 
 
 

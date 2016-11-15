@@ -19,6 +19,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="6Iz-R9-qsb"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <segue destination="Y61-mb-rbi" kind="push" identifier="detail2taglist" id="xNP-eD-4sE"/>
@@ -26,7 +27,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tST-xD-OUr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-67" y="236"/>
+            <point key="canvasLocation" x="745" y="236"/>
         </scene>
         <!--Tag List Ctrller-->
         <scene sceneID="1fA-od-tQh">
@@ -60,7 +61,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bhh-Eb-gNH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="633" y="236"/>
+            <point key="canvasLocation" x="1445" y="236"/>
         </scene>
     </scenes>
 </document>

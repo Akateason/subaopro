@@ -62,7 +62,7 @@
                        context:(void *)context
 {
     if ([keyPath isEqualToString:@"contentOffset"] && object == self) {
-        NSLog(@"change %@",change) ;
+//        NSLog(@"change %@",change) ;
         id old = change[NSKeyValueChangeOldKey] ;
         id new = change[NSKeyValueChangeNewKey] ;
         if (![old isKindOfClass:[NSNull class]] && old != new) {

@@ -148,6 +148,11 @@
                success:(void (^)(id json))success
                   fail:(void (^)())fail ;
 
+
+#pragma mark - 注册device token
++ (void)registerDeviceToken:(NSString *)deviceToken
+                    success:(void (^)(id json))success
+                       fail:(void (^)())fail ;
 @end
 
 

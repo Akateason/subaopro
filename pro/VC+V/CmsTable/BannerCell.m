@@ -86,7 +86,7 @@
     CenterTableView *table = (CenterTableView *)scrollView ;
     if ([table.mj_header isRefreshing]) return ;
     
-    NSLog(@"offset.y : %@",@(offset.y)) ;
+//    NSLog(@"offset.y : %@",@(offset.y)) ;
     if (offset.y >= 0)
     {
         // 上拉 , 显示loop中间的图片

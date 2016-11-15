@@ -309,6 +309,7 @@
 		D7CE2A281DB4C09800FF452C /* XTSearchHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CE2A271DB4C09800FF452C /* XTSearchHandler.m */; };
 		D7CE2A4A1DB8989200FF452C /* RootCtrl+ActionJumpToSubao.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CE2A491DB8989200FF452C /* RootCtrl+ActionJumpToSubao.m */; };
 		D7D2A7F31DC2F5490042EB92 /* ZQWebViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D2A7F21DC2F5490042EB92 /* ZQWebViewHeader.m */; };
+		D7D79FAD1DD9D10A004E52FC /* APNSObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D79FAC1DD9D10A004E52FC /* APNSObj.m */; };
 		D7E0F49F1D868FA600EA663B /* UIImageView+QNExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F49E1D868FA600EA663B /* UIImageView+QNExtention.m */; };
 		D7E0F4AB1D86AC9300EA663B /* AlertBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F4A21D86AC9300EA663B /* AlertBackgroundView.m */; };
 		D7E0F4AC1D86AC9300EA663B /* ShareAlertV.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F4A41D86AC9300EA663B /* ShareAlertV.m */; };
@@ -921,6 +922,8 @@
 		D7CE2A491DB8989200FF452C /* RootCtrl+ActionJumpToSubao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RootCtrl+ActionJumpToSubao.m"; path = "Find/RootCtrl+ActionJumpToSubao.m"; sourceTree = "<group>"; };
 		D7D2A7F11DC2F5490042EB92 /* ZQWebViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQWebViewHeader.h; sourceTree = "<group>"; };
 		D7D2A7F21DC2F5490042EB92 /* ZQWebViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQWebViewHeader.m; sourceTree = "<group>"; };
+		D7D79FAB1DD9D10A004E52FC /* APNSObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSObj.h; sourceTree = "<group>"; };
+		D7D79FAC1DD9D10A004E52FC /* APNSObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSObj.m; sourceTree = "<group>"; };
 		D7E0F49D1D868FA600EA663B /* UIImageView+QNExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+QNExtention.h"; sourceTree = "<group>"; };
 		D7E0F49E1D868FA600EA663B /* UIImageView+QNExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+QNExtention.m"; sourceTree = "<group>"; };
 		D7E0F4A11D86AC9300EA663B /* AlertBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertBackgroundView.h; sourceTree = "<group>"; };
@@ -1174,6 +1177,8 @@
 			children = (
 				D75CC6541C2AA17700E590E6 /* ResultParsered.h */,
 				D75CC6551C2AA17700E590E6 /* ResultParsered.m */,
+				D7D79FAB1DD9D10A004E52FC /* APNSObj.h */,
+				D7D79FAC1DD9D10A004E52FC /* APNSObj.m */,
 				D7A8127D1D9D0B28001084EB /* sbj */,
 				D7886D491D8FBAD0003D6D57 /* YZB */,
 				D76E83A11D6EC4AA0014FDEA /* Content */,
@@ -2398,8 +2403,14 @@
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = S9H98D8VCR;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Maps.iOS = {
 								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
 							};
 						};
 					};
@@ -2598,6 +2609,7 @@
 				D75CC5D01C2A965000E590E6 /* MJRefreshFooter.m in Sources */,
 				D76E83D21D70513D0014FDEA /* Images.m in Sources */,
 				D75CC5B61C2A965000E590E6 /* ASICloudFilesRequest.m in Sources */,
+				D7D79FAD1DD9D10A004E52FC /* APNSObj.m in Sources */,
 				D79CE57F1D5829E70023E1AA /* XTStretchSegment.m in Sources */,
 				D75CC5AB1C2A965000E590E6 /* ASIDownloadCache.m in Sources */,
 				D7CE299A1DAA22A700FF452C /* DetailAttributes.m in Sources */,
@@ -2935,8 +2947,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

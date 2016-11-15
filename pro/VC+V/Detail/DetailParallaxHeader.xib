@@ -13,6 +13,7 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="Xfr-ts-Ns5">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
+                    <color key="backgroundColor" red="0.89715514520202022" green="0.89715514520202022" blue="0.89715514520202022" alpha="0.0" colorSpace="calibratedRGB"/>
                 </imageView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="NJE-6T-CXw">
                     <rect key="frame" x="8" y="362" width="584" height="30"/>

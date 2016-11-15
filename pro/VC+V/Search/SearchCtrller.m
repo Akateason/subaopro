@@ -17,7 +17,7 @@
 #import "UIImage+AddFunction.h"
 #import "XTSearchHandler.h"
 
-static const int  kSize  =  20  ;
+static const int  kSize  =  10 ;
 
 @interface SearchCtrller () <RootTableViewDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
 {

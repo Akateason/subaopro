@@ -23,7 +23,7 @@ static NSString *const kSTR_TITLE    = @"想要发布我的速报" ;
     if ([[UIApplication sharedApplication] canOpenURL:url]) {
         SIAlertView *alert = [[SIAlertView alloc] initWithTitle:nil andMessage:kSTR_TITLE] ;
         alert.positionStyle = SIALertViewPositionBottom ;
-        [alert addButtonWithTitle:@"前往速报酱APP发布"
+        [alert addButtonWithTitle:@"前往速报酱(专业版)发布"
                              type:SIAlertViewButtonTypeDestructive
                           handler:^(SIAlertView *alertView) {
                               [[UIApplication sharedApplication] openURL:url] ;

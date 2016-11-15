@@ -69,4 +69,7 @@ static NSString *const URL_DETAIL_PRAISE        = @"http://api3.subaojiang.com/i
 #define SHARE_DETAIL_URL                          @"http://m.subaojiang.com/index/detail.html?id=%d"
 
 
+//APNS register devicetoken to your server
+static NSString *const URL_RESTER_DEVICE_TOKEN  = @"apns/add" ;
+
 #endif

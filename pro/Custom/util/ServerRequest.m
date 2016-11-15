@@ -349,6 +349,25 @@
     }] ;
 }
 
+#pragma mark - 注册device token
++ (void)registerDeviceToken:(NSString *)deviceToken
+                    success:(void (^)(id json))success
+                       fail:(void (^)())fail
+{
+    NSMutableDictionary *paramer = [self getParameters] ;
+    [paramer setObject:deviceToken forKey:@"deviceToken"] ;
+    
+    [XTRequest GETWithUrl:[self getFinalUrl:URL_RESTER_DEVICE_TOKEN]
+               parameters:paramer
+                  success:^(id json) {
+                      if (success) success(json);
+                  } fail:^{
+                      if (fail) fail();
+                  }] ;
+}
+
+
+
 
 #pragma mark - PRIVATE
 + (NSString *)getFinalUrl:(NSString *)urlstr
