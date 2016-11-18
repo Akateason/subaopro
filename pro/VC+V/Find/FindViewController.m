@@ -133,10 +133,9 @@ float const SIZE_OF_PAGE = 20 ;
     _table.xt_Delegate = self ;
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated] ;
-    
+    [super viewDidAppear:animated] ;
     [[UIApplication sharedApplication] setStatusBarHidden:NO] ;
     [self.navigationController setNavigationBarHidden:YES] ;
 }

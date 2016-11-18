@@ -311,6 +311,11 @@
 		D7D2A7F31DC2F5490042EB92 /* ZQWebViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D2A7F21DC2F5490042EB92 /* ZQWebViewHeader.m */; };
 		D7D79FAD1DD9D10A004E52FC /* APNSObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D79FAC1DD9D10A004E52FC /* APNSObj.m */; };
 		D7D79FCC1DDB0092004E52FC /* UMMobClick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7D79FCB1DDB0092004E52FC /* UMMobClick.framework */; };
+		D7D79FCF1DDE9E1B004E52FC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7D79FCD1DDE9E1B004E52FC /* Login.storyboard */; };
+		D7D79FD31DDE9E4C004E52FC /* LoginCtrller.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D79FD21DDE9E4C004E52FC /* LoginCtrller.m */; };
+		D7D79FD61DDEA6C1004E52FC /* LoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D79FD51DDEA6C1004E52FC /* LoginManager.m */; };
+		D7D79FD91DDED560004E52FC /* UIButton+Countdown.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D79FD81DDED560004E52FC /* UIButton+Countdown.m */; };
+		D7D79FDC1DDEE4C4004E52FC /* UserPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D79FDB1DDEE4C4004E52FC /* UserPhone.m */; };
 		D7E0F49F1D868FA600EA663B /* UIImageView+QNExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F49E1D868FA600EA663B /* UIImageView+QNExtention.m */; };
 		D7E0F4AB1D86AC9300EA663B /* AlertBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F4A21D86AC9300EA663B /* AlertBackgroundView.m */; };
 		D7E0F4AC1D86AC9300EA663B /* ShareAlertV.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0F4A41D86AC9300EA663B /* ShareAlertV.m */; };
@@ -926,6 +931,15 @@
 		D7D79FAB1DD9D10A004E52FC /* APNSObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSObj.h; sourceTree = "<group>"; };
 		D7D79FAC1DD9D10A004E52FC /* APNSObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSObj.m; sourceTree = "<group>"; };
 		D7D79FCB1DDB0092004E52FC /* UMMobClick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMMobClick.framework; sourceTree = "<group>"; };
+		D7D79FCE1DDE9E1B004E52FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		D7D79FD11DDE9E4C004E52FC /* LoginCtrller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginCtrller.h; path = Login/LoginCtrller.h; sourceTree = "<group>"; };
+		D7D79FD21DDE9E4C004E52FC /* LoginCtrller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginCtrller.m; path = Login/LoginCtrller.m; sourceTree = "<group>"; };
+		D7D79FD41DDEA6C1004E52FC /* LoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginManager.h; sourceTree = "<group>"; };
+		D7D79FD51DDEA6C1004E52FC /* LoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginManager.m; sourceTree = "<group>"; };
+		D7D79FD71DDED560004E52FC /* UIButton+Countdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Countdown.h"; sourceTree = "<group>"; };
+		D7D79FD81DDED560004E52FC /* UIButton+Countdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Countdown.m"; sourceTree = "<group>"; };
+		D7D79FDA1DDEE4C4004E52FC /* UserPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPhone.h; sourceTree = "<group>"; };
+		D7D79FDB1DDEE4C4004E52FC /* UserPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPhone.m; sourceTree = "<group>"; };
 		D7E0F49D1D868FA600EA663B /* UIImageView+QNExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+QNExtention.h"; sourceTree = "<group>"; };
 		D7E0F49E1D868FA600EA663B /* UIImageView+QNExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+QNExtention.m"; sourceTree = "<group>"; };
 		D7E0F4A11D86AC9300EA663B /* AlertBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertBackgroundView.h; sourceTree = "<group>"; };
@@ -1073,6 +1087,7 @@
 				D75CC3C81C2A926100E590E6 /* AppDelegate.m */,
 				D75CC6571C2B9A1700E590E6 /* AppDelegateInitial.h */,
 				D75CC6581C2B9A1700E590E6 /* AppDelegateInitial.m */,
+				D7D79FCD1DDE9E1B004E52FC /* Login.storyboard */,
 				D75CC3CD1C2A926100E590E6 /* Main.storyboard */,
 				D73990211D4704FD003E633D /* Index.storyboard */,
 				D7E994FA1D9A812900EACDFB /* Find.storyboard */,
@@ -1118,6 +1133,7 @@
 		D75CC3F71C2A92B200E590E6 /* VC+V */ = {
 			isa = PBXGroup;
 			children = (
+				D7D79FD01DDE9E27004E52FC /* LoginCtrller */,
 				D79CE5841D582BAD0023E1AA /* IndexCtrller */,
 				D76E83E61D73E8A10014FDEA /* Find */,
 				D7E994FD1D9A849A00EACDFB /* SearchCtrl */,
@@ -1182,6 +1198,8 @@
 				D75CC6551C2AA17700E590E6 /* ResultParsered.m */,
 				D7D79FAB1DD9D10A004E52FC /* APNSObj.h */,
 				D7D79FAC1DD9D10A004E52FC /* APNSObj.m */,
+				D7D79FDA1DDEE4C4004E52FC /* UserPhone.h */,
+				D7D79FDB1DDEE4C4004E52FC /* UserPhone.m */,
 				D7A8127D1D9D0B28001084EB /* sbj */,
 				D7886D491D8FBAD0003D6D57 /* YZB */,
 				D76E83A11D6EC4AA0014FDEA /* Content */,
@@ -1195,6 +1213,8 @@
 		D75CC3FB1C2A95DD00E590E6 /* category */ = {
 			isa = PBXGroup;
 			children = (
+				D7D79FD71DDED560004E52FC /* UIButton+Countdown.h */,
+				D7D79FD81DDED560004E52FC /* UIButton+Countdown.m */,
 				D75CC3FC1C2A95DD00E590E6 /* ALAssetsLibrary+CustomPhotoAlbum.h */,
 				D75CC3FD1C2A95DD00E590E6 /* ALAssetsLibrary+CustomPhotoAlbum.m */,
 				D75CC3FE1C2A95DD00E590E6 /* NSDate+Addition.h */,
@@ -2312,6 +2332,17 @@
 			path = Detail/WebviewHeader;
 			sourceTree = "<group>";
 		};
+		D7D79FD01DDE9E27004E52FC /* LoginCtrller */ = {
+			isa = PBXGroup;
+			children = (
+				D7D79FD11DDE9E4C004E52FC /* LoginCtrller.h */,
+				D7D79FD21DDE9E4C004E52FC /* LoginCtrller.m */,
+				D7D79FD41DDEA6C1004E52FC /* LoginManager.h */,
+				D7D79FD51DDEA6C1004E52FC /* LoginManager.m */,
+			);
+			name = LoginCtrller;
+			sourceTree = "<group>";
+		};
 		D7E0F4A01D86AC9300EA663B /* ShareAlert */ = {
 			isa = PBXGroup;
 			children = (
@@ -2492,6 +2523,7 @@
 				D75CC5CB1C2A965000E590E6 /* WeiboSDK.bundle in Resources */,
 				D7CE29A11DAA22A700FF452C /* ReplyCell.xib in Resources */,
 				D7E994FC1D9A812900EACDFB /* Find.storyboard in Resources */,
+				D7D79FCF1DDE9E1B004E52FC /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2573,6 +2605,7 @@
 				D7CE29371DA9EDF500FF452C /* WPTappableLabel.m in Sources */,
 				D7CE2A281DB4C09800FF452C /* XTSearchHandler.m in Sources */,
 				D7CE29A21DAA22A700FF452C /* UserHeadCollectionCell.m in Sources */,
+				D7D79FD61DDEA6C1004E52FC /* LoginManager.m in Sources */,
 				D76E83B11D6EE28B0014FDEA /* SendMessageToWXReq+requestWithTextOrMediaMessage.m in Sources */,
 				D75CC5F31C2A965000E590E6 /* MKAnnotationView+WebCache.m in Sources */,
 				D7CE296E1DAA184B00FF452C /* MyCmtCell.m in Sources */,
@@ -2599,6 +2632,7 @@
 				D79CE57E1D5829E70023E1AA /* XTMultipleTables.m in Sources */,
 				D75CC5DA1C2A965000E590E6 /* MJRefreshStateHeader.m in Sources */,
 				D75CC5E41C2A965000E590E6 /* QNEtag.m in Sources */,
+				D7D79FD91DDED560004E52FC /* UIButton+Countdown.m in Sources */,
 				D75CC5D61C2A965000E590E6 /* MJRefreshBackNormalFooter.m in Sources */,
 				D7428EF31D8E899700E64D65 /* GradientBGView.m in Sources */,
 				D75CC5B21C2A965000E590E6 /* ASICloudFilesContainerRequest.m in Sources */,
@@ -2713,6 +2747,7 @@
 				D75CC5EA1C2A965000E590E6 /* QNUserAgent.m in Sources */,
 				D75CC44E1C2A95DE00E590E6 /* ServerRequest.m in Sources */,
 				D7A812941D9D0B28001084EB /* ArticleTopic.m in Sources */,
+				D7D79FD31DDE9E4C004E52FC /* LoginCtrller.m in Sources */,
 				D73990261D470A77003E633D /* IndexViewController.m in Sources */,
 				D75CC5AA1C2A965000E590E6 /* ASIDataDecompressor.m in Sources */,
 				D7CE299C1DAA22A700FF452C /* DetailSubaoCtrller+TaskModuleTransition.m in Sources */,
@@ -2736,6 +2771,7 @@
 				D75CC5EF1C2A965000E590E6 /* QNUploadManager.m in Sources */,
 				D7CE29FD1DAF6DE800FF452C /* SVIndefiniteAnimatedView.m in Sources */,
 				D7CE29FE1DAF6DE800FF452C /* SVProgressAnimatedView.m in Sources */,
+				D7D79FDC1DDEE4C4004E52FC /* UserPhone.m in Sources */,
 				D76E84321D7697B50014FDEA /* KxMenu.m in Sources */,
 				D75CC5A21C2A965000E590E6 /* AFNetworkReachabilityManager.m in Sources */,
 				D75CC5D11C2A965000E590E6 /* MJRefreshHeader.m in Sources */,
@@ -2817,6 +2853,14 @@
 				D75CC3D31C2A926100E590E6 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D7D79FCD1DDE9E1B004E52FC /* Login.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D7D79FCE1DDE9E1B004E52FC /* Base */,
+			);
+			name = Login.storyboard;
 			sourceTree = "<group>";
 		};
 		D7E994FA1D9A812900EACDFB /* Find.storyboard */ = {

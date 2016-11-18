@@ -17,6 +17,18 @@
 @interface ServerRequest : XTRequest
 
 
+#pragma mark - 登陆
+// 发送验证码
++ (void)sendCMSCheckCode:(NSString *)phone
+                 success:(void (^)(id json))success
+                    fail:(void (^)())fail ;
+
+// 登陆
++ (void)loginWithPhone:(NSString *)phone
+               success:(void (^)(id json))success
+                  fail:(void (^)())fail ;
+
+
 #pragma mark - SBJ 获取首页
 /** 获取首页
  since_id	选填参数	若指定此参数，则返回ID比since_id大的评论（即比since_id时间晚的评论），默认为0

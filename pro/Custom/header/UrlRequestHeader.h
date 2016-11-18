@@ -12,6 +12,12 @@
 //  服务器ip地址切换
 static NSString *const G_IP_SERVER              = @"http://cms.subaojiang.com/" ;
 
+//  发送短信验证码
+static NSString *const URL_SEND_SMS_CHECKCODE   = @"sms/sendCheckCode" ;
+
+//  登陆
+static NSString *const URL_LOGIN                = @"login/getId" ;
+
 //  通过ContentID访问文章h5页面
 #define URL_SHOW_CONTENT_WITHID(CID)            [NSString stringWithFormat:@"http://cms.subaojiang.com/content/showContentH?contentId=%d",CID]
 

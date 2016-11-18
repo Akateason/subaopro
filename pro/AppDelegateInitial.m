@@ -45,12 +45,11 @@ NSString *const APPSTORE_APPID  = @"999705868" ;
         self.application = application ;
         self.launchOptions = launchOptions ;
         self.window = window ;
-        [self setup] ;
     }
     return self;
 }
 
-- (void)setup
+- (void)doConfigures
 {
     [self configureStyle] ;
     
@@ -59,14 +58,31 @@ NSString *const APPSTORE_APPID  = @"999705868" ;
     [self configureWeibo] ;
     
     [self configureUmeng] ;
+    
+    [self configureAPNS] ;
 }
 
+- (void)configureAPNS
+{
+    //判断是否由远程消息通知触发应用程序启动
+    if ([self.launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey] != nil) {
+        //获取应用程序消息通知标记数（即小红圈中的数字）
+        int badge = (int)[UIApplication sharedApplication].applicationIconBadgeNumber ;
+        if (badge > 0) {
+            //如果应用程序消息通知标记数（即小红圈中的数字）大于0，清除标记。
+            [UIApplication sharedApplication].applicationIconBadgeNumber = 0 ;
+        }
+    }
+    
+    // iOS 8 Notifications
+    [self.application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+    [self.application registerForRemoteNotifications];
+}
 
 - (void)configureStyle
 {
     //1 status bar .
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent] ;
-
     [[UIApplication sharedApplication] keyWindow].tintColor = [UIColor xt_mainColor] ;
     
     //2 nav style .

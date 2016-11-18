@@ -76,5 +76,6 @@
 + (UIColor *)xt_fw_green ;
 + (UIColor *)xt_fw_blue ;
 + (UIColor *)xt_fw_purple ;
++ (UIColor *)xt_mainhalf ;
 
 @end

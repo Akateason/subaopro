@@ -33,20 +33,7 @@
     AppDelegateInitial *ap = [[AppDelegateInitial alloc] initWithApplication:application
                                                                      options:launchOptions
                                                                       window:self.window] ;
-    
-    //判断是否由远程消息通知触发应用程序启动
-    if ([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey] != nil) {
-        //获取应用程序消息通知标记数（即小红圈中的数字）
-        int badge = (int)[UIApplication sharedApplication].applicationIconBadgeNumber ;
-        if (badge > 0) {
-            //如果应用程序消息通知标记数（即小红圈中的数字）大于0，清除标记。
-            [UIApplication sharedApplication].applicationIconBadgeNumber = 0 ;
-        }
-    }
-    
-    // iOS 8 Notifications
-    [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
-    [application registerForRemoteNotifications];
+    [ap doConfigures] ;
     
     return YES ;
 }
@@ -63,10 +50,9 @@
                         stringByReplacingOccurrencesOfString: @">" withString: @""]
                        stringByReplacingOccurrencesOfString: @" " withString: @""] ;
     NSLog(@"deviceToken: %@",token) ;
-    
     [ServerRequest registerDeviceToken:token
                                success:^(id json) {
-                                   NSLog(@"json : %@",json) ;
+                                   
                                } fail:^{
                                    
                                }] ;

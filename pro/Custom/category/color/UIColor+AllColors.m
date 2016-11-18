@@ -61,5 +61,10 @@
     return [[XTColorFetcher class] xt_colorWithKey:@"fw_purple"] ;
 }
 
++ (UIColor *)xt_mainhalf
+{
+    return [[XTColorFetcher class] xt_colorWithKey:@"mainhalf"] ;
+}
+
 
 @end

@@ -4,6 +4,8 @@
 <dict>
 	<key>main</key>
 	<string>fa4c60</string>
+	<key>mainhalf</key>
+	<string>f3456d</string>
 	<key>nav</key>
 	<string>fa4c60,0.8</string>
 	<key>cellSeperate</key>

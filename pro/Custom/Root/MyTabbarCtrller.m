@@ -9,6 +9,7 @@
 #import "MyTabbarCtrller.h"
 #import "AppDelegate.h"
 #import "ShopNavCtrller.h"
+#import "LoginManager.h"
 
 @interface MyTabbarCtrller ()
 
@@ -50,11 +51,10 @@
 #pragma mark - tabbar controller delegate
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
 {
-//    if ([viewController isMemberOfClass:[ShopNavCtrller class]])
-//    {
-//        [(ShopNavCtrller *)viewController pushShopCtllerFromSelectedCtrller:self.selectedViewController] ;
-//        return NO ;
-//    }
+    if ([viewController isMemberOfClass:[ShopNavCtrller class]])
+    {
+        return [LoginManager goLogin:self.selectedViewController] ;
+    }
     
     /*
     if ([tabBarController.selectedViewController isEqual:viewController])

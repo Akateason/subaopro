@@ -17,6 +17,44 @@
 
 @implementation ServerRequest
 
+#pragma mark - 登陆
+// 发送验证码
++ (void)sendCMSCheckCode:(NSString *)phone
+                 success:(void (^)(id json))success
+                    fail:(void (^)())fail
+{
+    NSMutableDictionary *paramer = [self getParameters] ;
+    [paramer setObject:phone forKey:@"phone"] ;
+    [XTRequest GETWithUrl:[self getFinalUrl:URL_SEND_SMS_CHECKCODE]
+               parameters:paramer
+                  success:^(id json) {
+                      if (success) success (json) ;
+                  }
+                     fail:^{
+                         if (fail) fail() ;
+                     }] ;
+}
+
+// 登陆
++ (void)loginWithPhone:(NSString *)phone
+               success:(void (^)(id json))success
+                  fail:(void (^)())fail
+{
+    NSMutableDictionary *paramer = [self getParameters] ;
+    [paramer setObject:phone forKey:@"phone"] ;
+    [XTRequest GETWithUrl:[self getFinalUrl:URL_LOGIN]
+               parameters:paramer
+                  success:^(id json) {
+                      if (success) success (json) ;
+                  } fail:^{
+                      if (fail) fail() ;
+                  }] ;
+}
+
+
+
+
+
 /** 获取首页
  since_id	选填参数	若指定此参数，则返回ID比since_id大的评论（即比since_id时间晚的评论），默认为0
  max_id     选填参数	若指定此参数，则返回ID小于或等于max_id的评论，默认为0。
