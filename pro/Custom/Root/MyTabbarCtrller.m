@@ -44,6 +44,9 @@
         UITabBarItem *item = self.tabBar.items[i] ;        
         item.selectedImage = [[UIImage imageNamed:[NSString stringWithFormat:@"item%d-s",i+1]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];;
         item.image = [[UIImage imageNamed:[NSString stringWithFormat:@"item%d",i+1]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        if (i == 2) {
+            item.badgeValue = @"热" ;
+        }
     }
 }
 

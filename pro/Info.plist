@@ -42,6 +42,16 @@
 				<string>wb1131948119</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>wemart</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>Wemart</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0.32</string>
@@ -52,6 +62,7 @@
 		<string>weibosdk</string>
 		<string>weibosdk2.5</string>
 		<string>subao</string>
+		<string>alipay</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

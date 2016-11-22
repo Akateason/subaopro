@@ -10,10 +10,24 @@
 
 @interface NSString (Extend)
 
+
+// 去除收尾空格
+- (NSString *)strMinusSpaceInPrefixAndTail ;
+
 // 去除空格.
 - (NSString *)minusSpaceStr ;
 
 // \n
 - (NSString *)minusReturnStr ;
+
+
+// 算label大小
+- (CGSize)calculateWithOverSize:(CGSize)overSize
+                 systemFontSize:(CGFloat)fontNumber ;
+
+
++(NSString*)encodeString:(NSString*)unencodedString ;
+-(NSString*)decodeString:(NSString*)encodedString ;
+
 
 @end

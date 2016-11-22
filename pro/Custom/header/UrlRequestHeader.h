@@ -12,6 +12,10 @@
 //  服务器ip地址切换
 static NSString *const G_IP_SERVER              = @"http://cms.subaojiang.com/" ;
 
+
+//  微猫签名
+static NSString *const URL_SIGN_RSA             = @"sign/rsa" ;
+
 //  发送短信验证码
 static NSString *const URL_SEND_SMS_CHECKCODE   = @"sms/sendCheckCode" ;
 

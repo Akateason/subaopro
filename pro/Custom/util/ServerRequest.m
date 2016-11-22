@@ -15,7 +15,22 @@
 #import "CommonFunc.h"
 #import "AFNetworking.h"
 
+
 @implementation ServerRequest
+
+
+#pragma mark - 微猫签名
++ (id)getRSASha1SignWithhOriginalString:(NSString *)orgStr
+{
+    NSMutableDictionary *paramer = [self getParameters] ;
+    [paramer setObject:orgStr forKey:@"string"] ;
+    
+    return
+    [XTRequest getJsonObjWithURLstr:[self getFinalUrl:URL_SIGN_RSA]
+                     AndWithParamer:paramer
+                        AndWithMode:GET_MODE] ;
+}
+
 
 #pragma mark - 登陆
 // 发送验证码

@@ -16,6 +16,8 @@
 
 @interface ServerRequest : XTRequest
 
+#pragma mark - 微猫签名
++ (id)getRSASha1SignWithhOriginalString:(NSString *)orgStr ;
 
 #pragma mark - 登陆
 // 发送验证码

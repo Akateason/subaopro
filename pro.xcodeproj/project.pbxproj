@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D724EECA1D59C65C00D893D5 /* ShopWebCtrller.m in Sources */ = {isa = PBXBuildFile; fileRef = D724EEC91D59C65C00D893D5 /* ShopWebCtrller.m */; };
 		D724EED01D5C628E00D893D5 /* TopLoopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D724EECF1D5C628E00D893D5 /* TopLoopView.m */; };
 		D724EED31D5C6F9A00D893D5 /* LoopInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = D724EED21D5C6F9A00D893D5 /* LoopInfoView.m */; };
 		D724EED51D5C7AD900D893D5 /* LoopInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D724EED41D5C7AD900D893D5 /* LoopInfoView.xib */; };
@@ -17,7 +16,6 @@
 		D73990171D462C51003E633D /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = D73990121D462C51003E633D /* README.txt */; };
 		D73990231D4704FD003E633D /* Index.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D73990211D4704FD003E633D /* Index.storyboard */; };
 		D73990261D470A77003E633D /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D73990251D470A77003E633D /* IndexViewController.m */; };
-		D73990831D4883C0003E633D /* ShopNavCtrller.m in Sources */ = {isa = PBXBuildFile; fileRef = D73990821D4883C0003E633D /* ShopNavCtrller.m */; };
 		D7428EF31D8E899700E64D65 /* GradientBGView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7428EF21D8E899700E64D65 /* GradientBGView.m */; };
 		D75CC3C61C2A926100E590E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D75CC3C51C2A926100E590E6 /* main.m */; };
 		D75CC3C91C2A926100E590E6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D75CC3C81C2A926100E590E6 /* AppDelegate.m */; };
@@ -218,6 +216,17 @@
 		D76F758D1D65ABA800D522B6 /* CenterTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D76F758C1D65ABA800D522B6 /* CenterTableView.m */; };
 		D76F75981D66F1D800D522B6 /* ParallaxHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D76F75971D66F1D800D522B6 /* ParallaxHeaderView.m */; };
 		D76F759B1D66F28D00D522B6 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = D76F759A1D66F28D00D522B6 /* UIImage+ImageEffects.m */; };
+		D7798C801DE2DC9500336B00 /* AlixPaylib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7798C7C1DE2DC9500336B00 /* AlixPaylib.a */; };
+		D7798C811DE2DC9500336B00 /* AlixPaylib_arc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7798C7D1DE2DC9500336B00 /* AlixPaylib_arc.a */; };
+		D7798C821DE2DC9500336B00 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7798C7E1DE2DC9500336B00 /* libcrypto.a */; };
+		D7798C831DE2DC9500336B00 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7798C7F1DE2DC9500336B00 /* libssl.a */; };
+		D7798C851DE2DCE300336B00 /* WemartSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7798C841DE2DCE300336B00 /* WemartSDK.framework */; };
+		D7798C881DE2DE5700336B00 /* ShopWeiMaoCtrller.m in Sources */ = {isa = PBXBuildFile; fileRef = D7798C871DE2DE5700336B00 /* ShopWeiMaoCtrller.m */; };
+		D7798C8A1DE2E44700336B00 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7798C891DE2E44700336B00 /* AlipaySDK.framework */; };
+		D7798C8C1DE2E52C00336B00 /* Wemart.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D7798C8B1DE2E52C00336B00 /* Wemart.bundle */; };
+		D7798C8E1DE2E79400336B00 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D7798C8D1DE2E79400336B00 /* libsqlite3.tbd */; };
+		D7798C901DE2E7BC00336B00 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D7798C8F1DE2E7BC00336B00 /* libz.tbd */; };
+		D7798C931DE2F5B700336B00 /* ShopNavCtrller.m in Sources */ = {isa = PBXBuildFile; fileRef = D7798C921DE2F5B700336B00 /* ShopNavCtrller.m */; };
 		D7886D481D8F91AA003D6D57 /* LiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7886D471D8F91AA003D6D57 /* LiveViewController.m */; };
 		D7886D4C1D8FBF59003D6D57 /* YzbListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D7886D4B1D8FBF59003D6D57 /* YzbListItem.m */; };
 		D79BE4AC1D588A9C00964005 /* NormalContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D79BE4AA1D588A9C00964005 /* NormalContentCell.m */; };
@@ -345,8 +354,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D724EEC81D59C65C00D893D5 /* ShopWebCtrller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShopWebCtrller.h; path = ../ShopWebCtrller.h; sourceTree = "<group>"; };
-		D724EEC91D59C65C00D893D5 /* ShopWebCtrller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShopWebCtrller.m; path = ../ShopWebCtrller.m; sourceTree = "<group>"; };
 		D724EECE1D5C628E00D893D5 /* TopLoopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopLoopView.h; path = CmsTable/TopLoopView.h; sourceTree = "<group>"; };
 		D724EECF1D5C628E00D893D5 /* TopLoopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopLoopView.m; path = CmsTable/TopLoopView.m; sourceTree = "<group>"; };
 		D724EED11D5C6F9A00D893D5 /* LoopInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoopInfoView.h; path = CmsTable/LoopInfoView.h; sourceTree = "<group>"; };
@@ -363,8 +370,6 @@
 		D73990221D4704FD003E633D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Index.storyboard; sourceTree = "<group>"; };
 		D73990241D470A77003E633D /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndexViewController.h; path = "pro/VC+V/IndexViewController.h"; sourceTree = SOURCE_ROOT; };
 		D73990251D470A77003E633D /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IndexViewController.m; path = "pro/VC+V/IndexViewController.m"; sourceTree = SOURCE_ROOT; };
-		D73990811D4883C0003E633D /* ShopNavCtrller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopNavCtrller.h; sourceTree = "<group>"; };
-		D73990821D4883C0003E633D /* ShopNavCtrller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopNavCtrller.m; sourceTree = "<group>"; };
 		D74266F51D49A629004D769B /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = pro/PrefixHeader.pch; sourceTree = "<group>"; };
 		D7428EF11D8E899700E64D65 /* GradientBGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GradientBGView.h; path = GradientBGView/GradientBGView.h; sourceTree = "<group>"; };
 		D7428EF21D8E899700E64D65 /* GradientBGView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GradientBGView.m; path = GradientBGView/GradientBGView.m; sourceTree = "<group>"; };
@@ -765,6 +770,19 @@
 		D76F75971D66F1D800D522B6 /* ParallaxHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParallaxHeaderView.m; sourceTree = "<group>"; };
 		D76F75991D66F28D00D522B6 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		D76F759A1D66F28D00D522B6 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		D7798C7C1DE2DC9500336B00 /* AlixPaylib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlixPaylib.a; sourceTree = "<group>"; };
+		D7798C7D1DE2DC9500336B00 /* AlixPaylib_arc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlixPaylib_arc.a; sourceTree = "<group>"; };
+		D7798C7E1DE2DC9500336B00 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		D7798C7F1DE2DC9500336B00 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
+		D7798C841DE2DCE300336B00 /* WemartSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WemartSDK.framework; path = pro/Help/wemart/WemartSDK.framework; sourceTree = "<group>"; };
+		D7798C861DE2DE5700336B00 /* ShopWeiMaoCtrller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopWeiMaoCtrller.h; sourceTree = "<group>"; };
+		D7798C871DE2DE5700336B00 /* ShopWeiMaoCtrller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopWeiMaoCtrller.m; sourceTree = "<group>"; };
+		D7798C891DE2E44700336B00 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		D7798C8B1DE2E52C00336B00 /* Wemart.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Wemart.bundle; sourceTree = "<group>"; };
+		D7798C8D1DE2E79400336B00 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		D7798C8F1DE2E7BC00336B00 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		D7798C911DE2F5B700336B00 /* ShopNavCtrller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopNavCtrller.h; sourceTree = "<group>"; };
+		D7798C921DE2F5B700336B00 /* ShopNavCtrller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopNavCtrller.m; sourceTree = "<group>"; };
 		D7886D461D8F91AA003D6D57 /* LiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LiveViewController.h; path = Live/LiveViewController.h; sourceTree = "<group>"; };
 		D7886D471D8F91AA003D6D57 /* LiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LiveViewController.m; path = Live/LiveViewController.m; sourceTree = "<group>"; };
 		D7886D4A1D8FBF59003D6D57 /* YzbListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzbListItem.h; sourceTree = "<group>"; };
@@ -962,10 +980,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7798C901DE2E7BC00336B00 /* libz.tbd in Frameworks */,
+				D7798C8E1DE2E79400336B00 /* libsqlite3.tbd in Frameworks */,
 				D76E83B21D6EF9970014FDEA /* libWeiboSDK.a in Frameworks */,
 				D7398FFA1D460B55003E633D /* libc++.tbd in Frameworks */,
+				D7798C831DE2DC9500336B00 /* libssl.a in Frameworks */,
 				D75CC65B1C2B9DA100E590E6 /* libsqlite3.0.tbd in Frameworks */,
 				D75CC6511C2A986600E590E6 /* Foundation.framework in Frameworks */,
+				D7798C811DE2DC9500336B00 /* AlixPaylib_arc.a in Frameworks */,
 				D75CC64F1C2A986000E590E6 /* UIKit.framework in Frameworks */,
 				D75CC64D1C2A985500E590E6 /* CoreGraphics.framework in Frameworks */,
 				D75CC64B1C2A984200E590E6 /* ImageIO.framework in Frameworks */,
@@ -974,10 +996,14 @@
 				D75CC6451C2A980D00E590E6 /* SystemConfiguration.framework in Frameworks */,
 				D73990161D462C51003E633D /* libWeChatSDK.a in Frameworks */,
 				D75CC6431C2A97FE00E590E6 /* CFNetwork.framework in Frameworks */,
+				D7798C801DE2DC9500336B00 /* AlixPaylib.a in Frameworks */,
+				D7798C851DE2DCE300336B00 /* WemartSDK.framework in Frameworks */,
 				D75CC63F1C2A97EC00E590E6 /* MediaPlayer.framework in Frameworks */,
 				D75CC63D1C2A97E000E590E6 /* QuartzCore.framework in Frameworks */,
 				D75CC63B1C2A97D600E590E6 /* Security.framework in Frameworks */,
 				D75CC6391C2A97CD00E590E6 /* libiconv.2.4.0.tbd in Frameworks */,
+				D7798C821DE2DC9500336B00 /* libcrypto.a in Frameworks */,
+				D7798C8A1DE2E44700336B00 /* AlipaySDK.framework in Frameworks */,
 				D75CC6371C2A97AE00E590E6 /* libstdc++.6.0.9.tbd in Frameworks */,
 				D75CC6351C2A97A200E590E6 /* libxml2.2.tbd in Frameworks */,
 				D75CC6331C2A979800E590E6 /* libicucore.tbd in Frameworks */,
@@ -1040,10 +1066,10 @@
 		D73990801D48839D003E633D /* shop */ = {
 			isa = PBXGroup;
 			children = (
-				D73990811D4883C0003E633D /* ShopNavCtrller.h */,
-				D73990821D4883C0003E633D /* ShopNavCtrller.m */,
-				D724EEC81D59C65C00D893D5 /* ShopWebCtrller.h */,
-				D724EEC91D59C65C00D893D5 /* ShopWebCtrller.m */,
+				D7798C911DE2F5B700336B00 /* ShopNavCtrller.h */,
+				D7798C921DE2F5B700336B00 /* ShopNavCtrller.m */,
+				D7798C861DE2DE5700336B00 /* ShopWeiMaoCtrller.h */,
+				D7798C871DE2DE5700336B00 /* ShopWeiMaoCtrller.m */,
 			);
 			name = shop;
 			path = "pro/VC+V/NavCtrllerInTabbarCtrller";
@@ -1061,6 +1087,8 @@
 		D75CC3B81C2A926100E590E6 = {
 			isa = PBXGroup;
 			children = (
+				D7798C8F1DE2E7BC00336B00 /* libz.tbd */,
+				D7798C8D1DE2E79400336B00 /* libsqlite3.tbd */,
 				D75CC40C1C2A95DD00E590E6 /* Prefix */,
 				D74266F51D49A629004D769B /* PrefixHeader.pch */,
 				D75CC3C31C2A926100E590E6 /* pro */,
@@ -1162,6 +1190,7 @@
 		D75CC3F91C2A92B200E590E6 /* Help */ = {
 			isa = PBXGroup;
 			children = (
+				D7798C7B1DE2DC9500336B00 /* AliPay-o文件 */,
 				D7CE29F21DAF6DE800FF452C /* SVProgressHUD */,
 				D7CE29411DA9F13800FF452C /* THLabel */,
 				D7CE29281DA9EDF500FF452C /* AttibutedLabel */,
@@ -1799,6 +1828,8 @@
 		D75CC6521C2A987600E590E6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D7798C8B1DE2E52C00336B00 /* Wemart.bundle */,
+				D7798C841DE2DCE300336B00 /* WemartSDK.framework */,
 				D7D79FCB1DDB0092004E52FC /* UMMobClick.framework */,
 				D7398FF91D460B55003E633D /* libc++.tbd */,
 				D75CC65A1C2B9DA100E590E6 /* libsqlite3.0.tbd */,
@@ -1986,6 +2017,18 @@
 				D76F75971D66F1D800D522B6 /* ParallaxHeaderView.m */,
 			);
 			path = ParallaxHeaderView;
+			sourceTree = "<group>";
+		};
+		D7798C7B1DE2DC9500336B00 /* AliPay-o文件 */ = {
+			isa = PBXGroup;
+			children = (
+				D7798C891DE2E44700336B00 /* AlipaySDK.framework */,
+				D7798C7C1DE2DC9500336B00 /* AlixPaylib.a */,
+				D7798C7D1DE2DC9500336B00 /* AlixPaylib_arc.a */,
+				D7798C7E1DE2DC9500336B00 /* libcrypto.a */,
+				D7798C7F1DE2DC9500336B00 /* libssl.a */,
+			);
+			path = "AliPay-o文件";
 			sourceTree = "<group>";
 		};
 		D7886D451D8F9185003D6D57 /* live */ = {
@@ -2490,6 +2533,7 @@
 				D7CE29B01DAA26EB00FF452C /* UserSimpleCell.xib in Resources */,
 				D7CE299F1DAA22A700FF452C /* FlywordInputView.xib in Resources */,
 				D7A8127C1D9D08B8001084EB /* HomeUserTableHeaderView.xib in Resources */,
+				D7798C8C1DE2E52C00336B00 /* Wemart.bundle in Resources */,
 				D76E83D71D705DF60014FDEA /* DetailParallaxHeader.xib in Resources */,
 				D7CE29711DAA184B00FF452C /* MyCommentsCell.xib in Resources */,
 				D7A8127A1D9D08B8001084EB /* HomeCell.xib in Resources */,
@@ -2615,6 +2659,7 @@
 				D75CC5C81C2A965000E590E6 /* HWWeakTimer.m in Sources */,
 				D7A812A91D9E121B001084EB /* ResultSBJ.m in Sources */,
 				D75CC6C21C2BEB0400E590E6 /* MyWebController.m in Sources */,
+				D7798C931DE2F5B700336B00 /* ShopNavCtrller.m in Sources */,
 				D75CC5C91C2A965000E590E6 /* KeyBoardTopBar.m in Sources */,
 				D7CE296D1DAA184B00FF452C /* MyCell.m in Sources */,
 				D75CC5D21C2A965000E590E6 /* MJRefreshAutoGifFooter.m in Sources */,
@@ -2691,7 +2736,6 @@
 				D76E83CA1D704A850014FDEA /* Kind.m in Sources */,
 				D7CE29351DA9EDF500FF452C /* WPAttributedStyleAction.m in Sources */,
 				D75CC5A01C2A965000E590E6 /* AFHTTPRequestOperationManager.m in Sources */,
-				D724EECA1D59C65C00D893D5 /* ShopWebCtrller.m in Sources */,
 				D76F75721D63217100D522B6 /* NSObject+Reflection.m in Sources */,
 				D75CC4511C2A95DE00E590E6 /* XTFileManager.m in Sources */,
 				D7CE29361DA9EDF500FF452C /* WPHotspotLabel.m in Sources */,
@@ -2715,7 +2759,6 @@
 				D79CE5941D585C6E0023E1AA /* NSTimer+Addition.m in Sources */,
 				D7CE2A4A1DB8989200FF452C /* RootCtrl+ActionJumpToSubao.m in Sources */,
 				D75CC6041C2A965000E590E6 /* UICollectionViewLeftAlignedLayout.m in Sources */,
-				D73990831D4883C0003E633D /* ShopNavCtrller.m in Sources */,
 				D75CC6021C2A965000E590E6 /* UIView+WebCacheOperation.m in Sources */,
 				D75CC7341C2D13C000E590E6 /* YYClassInfo.m in Sources */,
 				D75CC5C11C2A965000E590E6 /* CHTCollectionViewWaterfallLayout.m in Sources */,
@@ -2746,6 +2789,7 @@
 				D7D2A7F31DC2F5490042EB92 /* ZQWebViewHeader.m in Sources */,
 				D75CC5EA1C2A965000E590E6 /* QNUserAgent.m in Sources */,
 				D75CC44E1C2A95DE00E590E6 /* ServerRequest.m in Sources */,
+				D7798C881DE2DE5700336B00 /* ShopWeiMaoCtrller.m in Sources */,
 				D7A812941D9D0B28001084EB /* ArticleTopic.m in Sources */,
 				D7D79FD31DDE9E4C004E52FC /* LoginCtrller.m in Sources */,
 				D73990261D470A77003E633D /* IndexViewController.m in Sources */,
@@ -2967,6 +3011,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/pro/Help/wemart",
+					"$(PROJECT_DIR)/pro/Help/AliPay-o文件",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/pro/PrefixHeader.pch";
@@ -2977,8 +3023,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/pro/Help/weixinSDK1.7.2",
 					"$(PROJECT_DIR)/pro/Help/libWeiboSDK",
+					"$(PROJECT_DIR)/pro/Help/AliPay-o文件",
 				);
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -2987,6 +3034,7 @@
 				PRODUCT_NAME = pro;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
@@ -3001,6 +3049,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/pro/Help/wemart",
+					"$(PROJECT_DIR)/pro/Help/AliPay-o文件",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/pro/PrefixHeader.pch";
@@ -3011,6 +3061,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/pro/Help/weixinSDK1.7.2",
 					"$(PROJECT_DIR)/pro/Help/libWeiboSDK",
+					"$(PROJECT_DIR)/pro/Help/AliPay-o文件",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -3021,6 +3072,7 @@
 				PRODUCT_NAME = pro;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};
