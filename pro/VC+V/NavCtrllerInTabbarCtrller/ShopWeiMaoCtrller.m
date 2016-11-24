@@ -17,7 +17,7 @@ static NSString *kAPP_ID = @"62" ;
 static NSString *kAPP_SECRET = @"-----BEGIN PRIVATE KEY-----\nMIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAIWR6rmb7S0jfe2e5hWWIsqHzpiMcytgKKGCbvxNSrgKD3F7gcFQH17BsHwksaI1kCOhjHpp2zdSTv4b/7tGF3xTuKT2U1q5xdzvUYeougGI5xgNh9jWnhxFHrk92O29oco5fdIOkpC68FVGnGfbS9TI0JqgWQgALrwPYWLhat49AgMBAAECgYA08X6hrZ2YS74phtdabRVDRAtuyhUId2gDhMjrNtPMGSi/6Z2n+1ND4vBKdNz4F9UXWnxtNTJQPk7TSFPYblL2O+WGqCJX8TJYqOKvqg5bk/ZStOkuirnRZ+d4L2BToO7OL9Gs7ar1VCKbR3DQwleJ9MFa/3wCG38p1Q0MTC4LfQJBAPII82f1qZN1lpgONx0MA1tbxDqTehwYRF5rAVv6CZUCbwodimS6UAyZ434ndbICYy8OIPhWDObHr7nT961vGYsCQQCNRtocvUOHUnRAn3ZNW3O7x9Rq/yMO6pkob2xTl0GSCSgriz1kLAJeI62NZ86zr46XO9ckJL9nPlWfbPuiQZBXAkAoxotDS2bbOec6DMMKOLjkDky71Zav3wK9qWdcOH6exP8yBBIJsD3GMbLa0QkKCU7uYYH6dHzN8HxRYT2L0XjLAkAiMpxpiIboItVxLyh74T9KnTyWCdx6p98bIp2ePmbo6r6Gi9X4gY6xKwG/0PkAFeb2RM33Oc37N+OSC9d9l1FRAkAcscpIsHc4K7Q4sIWxkET+BbwDFVQYhQLuNXHhAlZm0XpgAK8wDD5z2b6VoGY89Fnq5nIEv2Wn8C+Fk4CocQeo\n-----END PRIVATE KEY-----" ;
 
 
-static NSString *kURL_Shop = @"http://www.wemart.cn/mobile/?chanId=&sellerId=126&a=shelf&m=index" ;
+static NSString *kURL_Shop = @"http://www.wemart.cn/mobile/?chanId=124&sellerId=126&a=shelf&m=index" ;
 
 
 @interface ShopWeiMaoCtrller ()

@@ -52,7 +52,9 @@
     self.lb_Kind.layer.cornerRadius = 5. ;
     self.lb_Kind.layer.masksToBounds = YES ;
     self.imgView.backgroundColor    = [UIColor whiteColor] ; // [UIColor blackColor] ;
-    self.backgroundWord.backgroundColor = [UIColor colorWithWhite:0.4 alpha:0.2] ;
+    self.backgroundWord.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.5] ;
+    
+    [self bringSubviewToFront:self.labelTitle] ;
 }
 
 - (void)setInfo:(id)info
@@ -72,8 +74,6 @@
                                                     attributes:@{NSFontAttributeName:font}
                                                        context:nil].size ;
     _w_kind.constant = labelsize.width + 18. ;
-
-    
 }
 
 @end
