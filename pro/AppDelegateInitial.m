@@ -15,8 +15,8 @@
 
 NSString *const UM_APPKEY       = @"582ac38dc62dca40fc000d1f" ;
 
-NSString *const WX_APPKEY       = @"wxcfc0cac5ea95bff5" ;
-//NSString *const WX_APPSECRET    = @"d4624c36b6795d1d99dcf0547af5443d" ;
+NSString *const WX_APPKEY       = @"wx392fcae86a27eb66" ;
+
 
 NSString *const WB_APPKEY       = @"1588912701" ;
 NSString *const WB_APPSECRET    = @"e4487f8fd3ef1fcaca1d4c1315e7a5af" ;

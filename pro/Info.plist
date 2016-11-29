@@ -29,7 +29,7 @@
 			<string>weixin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wxcfc0cac5ea95bff5</string>
+				<string>wx392fcae86a27eb66</string>
 			</array>
 		</dict>
 		<dict>
@@ -46,10 +46,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>wemart</string>
+			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>Wemart</string>
+				<string>wmSubao</string>
 			</array>
 		</dict>
 	</array>
@@ -63,6 +63,7 @@
 		<string>weibosdk2.5</string>
 		<string>subao</string>
 		<string>alipay</string>
+		<string>weixin</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
