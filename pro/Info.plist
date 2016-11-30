@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.32</string>
+	<string>1.0.6</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -54,7 +54,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.0.32</string>
+	<string>1.0.33</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>sinaweibohd</string>
@@ -63,7 +63,9 @@
 		<string>weibosdk2.5</string>
 		<string>subao</string>
 		<string>alipay</string>
+		<string>alipays</string>
 		<string>weixin</string>
+		<string>safepay</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

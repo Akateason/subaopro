@@ -8,7 +8,6 @@
 
 #import "DigitInformation.h"
 #import "ServerRequest.h"
-//#import "SBJson.h"
 #import "SDImageCache.h"
 #import "XTFileManager.h"
 #import "CommonFunc.h"
